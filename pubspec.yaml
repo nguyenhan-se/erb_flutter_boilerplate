@@ -1,0 +1,88 @@
+name: erb_flutter_boilerplate
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  # dart utils
+  dio: ^5.3.3
+  logging: ^1.2.0
+  fpdart: ^1.1.0
+  fast_immutable_collections: ^9.1.6
+  retrofit: ^4.0.3
+  tinycolor2: ^3.0.1
+  intl: ^0.18.1
+
+  # i18n
+  slang: ^3.25.0
+  slang_flutter: ^3.25.0
+
+  # flutter utils
+  hooks_riverpod: ^2.4.8
+  flutter_hooks: ^0.20.3
+  go_router: ^12.1.0
+  shared_preferences: ^2.2.2
+  url_launcher: ^6.2.1
+  dynamic_color: ^1.6.8
+  permission_handler: ^11.1.0
+  local_auth: ^2.1.7
+  flutter_flavor: ^3.1.1
+
+  # flutter widgets
+  cached_network_image: ^3.3.0
+
+  # annotations
+  riverpod_annotation: ^2.3.2
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  reactive_forms_annotations: ^4.2.0
+
+  # Mock
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # workflow
+  melos: ^3.2.0
+
+  flutter_lints: ^3.0.1
+  custom_lint: ^0.5.6
+  riverpod_lint: ^2.3.6
+
+  # generators
+  riverpod_generator: ^2.3.8
+  build_runner: ^2.4.6
+  freezed: ^2.4.5
+  json_serializable: ^6.7.1
+  slang_build_runner: ^3.25.0
+  go_router_builder: ^2.3.4
+  flutter_gen_runner: ^5.3.2
+  retrofit_generator: ^8.0.3
+  reactive_forms_generator: ^4.3.0
+
+flutter_gen:
+  output: lib/gen
+  line_length: 160
+  null_safety: true
+
+  integrations:
+    flutter_svg: true
+
+  assets:
+    enabled: true
+
+  fonts:
+    enabled: true
+
+flutter:
+  uses-material-design: true
