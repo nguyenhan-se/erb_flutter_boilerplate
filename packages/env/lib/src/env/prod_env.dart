@@ -4,7 +4,7 @@ import 'config/env_flavor.dart';
 
 part 'prod_env.g.dart';
 
-@Envied(name: 'Env', path: 'prod.env', allowOptionalFields: true)
+@Envied(name: 'Env', path: '.env.prod', allowOptionalFields: true)
 class ProdEnv implements EnvFlavor, EnvFields {
   const ProdEnv();
 

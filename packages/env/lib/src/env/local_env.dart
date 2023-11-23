@@ -4,7 +4,7 @@ import 'config/env_flavor.dart';
 
 part 'local_env.g.dart';
 
-@Envied(name: 'Env', path: 'local.env', allowOptionalFields: true)
+@Envied(name: 'Env', path: '.env.local', allowOptionalFields: true)
 class LocalEnv implements EnvFlavor, EnvFields {
   const LocalEnv();
 
