@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "robert-brunhage.flutter-riverpod-snippets",
+    "dart-code.flutter",
+    "dart-code.dart-code",
+    "pflannery.vscode-versionlens",
+    "gruntfuggly.todo-tree",
+    "blaugold.melos-code",
+    "peterschmalfeldt.explorer-exclude",
+    "irongeek.vscode-env"
+  ]
+}
