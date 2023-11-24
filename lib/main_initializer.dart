@@ -1,13 +1,19 @@
-part of 'main.dart';
+import 'package:env/env.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-Future<ProviderContainer> _mainInitializer() async {
+import 'core/features/app_settings/data/app_settings_repo.dart';
+import 'core/features/app_settings/domain/app_settings.dart';
+
+Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // * Register error handlers. For more info, see:
   // * https://docs.flutter.dev/testing/errors
   registerErrorHandlers();
   AppFlavor.initConfig();
-  usePathUrlStrategy();
 
   await initHive();
 

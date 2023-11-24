@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'core/features/app_settings/application/app_settings_service.dart';
+import 'core/infrastructure/services/app_env_service.dart';
 
 /// The main app widget at the root of the widget tree.
 class App extends ConsumerWidget {
@@ -9,8 +11,9 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appSettings = ref.watch(appSettingsServiceProvider);
+    final appEnv = ref.watch(appEnvServiceProvider);
 
-    return MaterialApp(
+    final materialApp = MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -24,17 +27,25 @@ class App extends ConsumerWidget {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
-        body: const Center(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'You have pushed the button this many times: ',
+                'You have pushed the button this many times:  ${appEnv.baseUrl}',
               ),
             ],
           ),
         ),
       ),
     );
+
+    final bannerEnabled = appSettings.bannerEnabled;
+    if (bannerEnabled) {
+      return FlavorBanner(
+        child: materialApp,
+      );
+    }
+    return materialApp;
   }
 }
