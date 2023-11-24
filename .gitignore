@@ -12,6 +12,18 @@ migrate_working_dir/
 # *.env*
 *_env.g.dart
 
+# main generated file
+lib/**/*.g.dart
+lib/**/*.mapper.dart
+lib/**/*.graphql.dart
+lib/**/*.gr.dart
+lib/**/*.freezed.dart
+lib/**/*.config.dart
+lib/**/*.gen.dart
+lib/**/*.mocks.dart
+lib/**/*.gform.dart
+
+
 # IntelliJ related
 *.iml
 *.ipr

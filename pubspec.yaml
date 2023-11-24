@@ -16,9 +16,12 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+  # logger
+  talker_dio_logger: ^2.3.1
+  logging: ^1.2.0
+
   # dart utils
   dio: ^5.3.3
-  logging: ^1.2.0
   fpdart: ^1.1.0
   fast_immutable_collections: ^9.1.6
   retrofit: ^4.0.3
@@ -60,6 +63,8 @@ dependencies:
     path: packages/env
   assets:
     path: packages/assets
+  erb_shared:
+    path: packages/erb_shared
 
 dev_dependencies:
   flutter_test:
