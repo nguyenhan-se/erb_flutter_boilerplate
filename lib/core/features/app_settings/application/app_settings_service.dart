@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../data/app_settings_repo.dart';
@@ -36,4 +37,14 @@ class AppSettingsService extends _$AppSettingsService {
     state = newSettings;
     _appSettingsRepo.saveSettings(newSettings);
   }
+}
+
+@riverpod
+ThemeMode currentAppThemeMode(CurrentAppThemeModeRef ref) {
+  final appSettings = ref.watch(appSettingsServiceProvider);
+  return appSettings.systemThemeMode
+      ? ThemeMode.system
+      : appSettings.darkMode
+          ? ThemeMode.dark
+          : ThemeMode.light;
 }

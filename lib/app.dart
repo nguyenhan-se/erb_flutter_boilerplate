@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'core/features/app_settings/application/app_settings_service.dart';
 import 'core/infrastructure/services/app_env_service.dart';
+import 'core/features/app_settings/application/application.dart';
 
 /// The main app widget at the root of the widget tree.
 class App extends ConsumerWidget {
@@ -15,18 +15,10 @@ class App extends ConsumerWidget {
 
     final materialApp = MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      themeMode: appSettings.systemThemeMode
-          ? ThemeMode.system
-          : appSettings.darkMode
-              ? ThemeMode.dark
-              : ThemeMode.light,
+      theme: ref.watch(lightThemeProvider).themeData,
+      darkTheme: ref.watch(darkThemeProvider).themeData,
+      themeMode: ref.watch(currentAppThemeModeProvider),
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -34,6 +26,11 @@ class App extends ConsumerWidget {
               Text(
                 'You have pushed the button this many times:  ${appEnv.baseUrl}',
               ),
+              ElevatedButton(
+                  onPressed: () => ref
+                      .read(appSettingsServiceProvider.notifier)
+                      .toggleDarkMode(),
+                  child: const Text('Toggle theme')),
             ],
           ),
         ),

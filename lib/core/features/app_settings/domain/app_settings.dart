@@ -22,9 +22,8 @@ class AppSettings with AppSettingsMappable {
   const AppSettings({
     this.bannerEnabled = true,
     this.darkMode = false,
-    this.systemThemeMode = true,
+    this.systemThemeMode = false,
   });
 
-  static const fromMap = AppSettingsMapper.fromMap;
   static const fromJson = AppSettingsMapper.fromJson;
 }
