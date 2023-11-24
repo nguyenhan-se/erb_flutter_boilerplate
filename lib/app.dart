@@ -27,12 +27,23 @@ class App extends ConsumerWidget {
               Text(
                 'You have pushed the button this many times:  ${appEnv.baseUrl}',
               ),
-              ERbButton(
-                  enableGradient: true,
+              ElevatedButton(
                   onPressed: () => ref
                       .read(appSettingsServiceProvider.notifier)
                       .toggleDarkMode(),
                   child: const Text('Toggle theme')),
+              ERbElevatedButton(
+                  // enableGradient: true,
+                  blockButton: true,
+                  onPressed: () => ref
+                      .read(appSettingsServiceProvider.notifier)
+                      .toggleDarkMode(),
+                  position: ERbPosition.end,
+                  icon: const Icon(
+                    Icons.audiotrack,
+                    size: 30.0,
+                  ),
+                  label: 'Toggle theme'),
               ERbOutlineGradientButton(
                   strokeWidth: 3,
                   onTap: () => ref
