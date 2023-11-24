@@ -12,6 +12,10 @@ class DefaultERbColorScheme extends ERbColorScheme {
           disable: const Color(0xff1D1B20),
           selectedColor: const Color(0xff0022B1),
           surfaceContainer: const Color(0xffFDFBF7),
+          primaryGradient: const LinearGradient(
+            colors: [Color(0xff3332CB), Color(0xFF0022B1)],
+            stops: [0, 1],
+          ),
         );
 
   const DefaultERbColorScheme.dark()
@@ -23,5 +27,9 @@ class DefaultERbColorScheme extends ERbColorScheme {
           disable: const Color(0xffE6E0E9),
           selectedColor: const Color(0xff0022B1),
           surfaceContainer: const Color(0xffFDFBF7),
+          primaryGradient: const LinearGradient(
+            colors: [Color(0xff3332CB), Color(0xFF0022B1)],
+            stops: [0, 1],
+          ),
         );
 }

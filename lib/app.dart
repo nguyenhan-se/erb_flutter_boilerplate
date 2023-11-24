@@ -1,3 +1,4 @@
+import 'package:erb_ui/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -26,8 +27,15 @@ class App extends ConsumerWidget {
               Text(
                 'You have pushed the button this many times:  ${appEnv.baseUrl}',
               ),
-              ElevatedButton(
+              ERbButton(
+                  enableGradient: true,
                   onPressed: () => ref
+                      .read(appSettingsServiceProvider.notifier)
+                      .toggleDarkMode(),
+                  child: const Text('Toggle theme')),
+              ERbOutlineGradientButton(
+                  strokeWidth: 3,
+                  onTap: () => ref
                       .read(appSettingsServiceProvider.notifier)
                       .toggleDarkMode(),
                   child: const Text('Toggle theme')),

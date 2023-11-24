@@ -29,7 +29,9 @@ class AppTheme {
 
     final ERbColorScheme eRbColorScheme = isDark
         ? const DefaultERbColorScheme.dark().copyWith()
-        : const DefaultERbColorScheme.light().copyWith();
+        : const DefaultERbColorScheme.light().copyWith(
+            primaryGradient: AppStaticColors.primaryIngredientColor,
+          );
 
     final theme = ERbTheme(
       colorScheme: colorScheme,

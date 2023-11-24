@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ERbColorSchemeExtension on ThemeData {
-  ERbColorScheme get customColorScheme => extension<ERbColorScheme>()!;
+  ERbColorScheme get eRbColorScheme => extension<ERbColorScheme>()!;
 }
 
 @immutable
@@ -14,6 +14,8 @@ class ERbColorScheme extends ThemeExtension<ERbColorScheme> {
     required this.disable,
     required this.selectedColor,
     required this.surfaceContainer,
+    required this.primaryGradient,
+    // gradient
   });
 
   final Color? success;
@@ -23,6 +25,7 @@ class ERbColorScheme extends ThemeExtension<ERbColorScheme> {
   final Color? disable;
   final Color? selectedColor;
   final Color? surfaceContainer;
+  final LinearGradient? primaryGradient;
 
   @override
   ERbColorScheme copyWith({
@@ -33,6 +36,7 @@ class ERbColorScheme extends ThemeExtension<ERbColorScheme> {
     Color? disable,
     Color? selectedColor,
     Color? surfaceContainer,
+    LinearGradient? primaryGradient,
   }) {
     return ERbColorScheme(
       success: success ?? this.success,
@@ -42,6 +46,7 @@ class ERbColorScheme extends ThemeExtension<ERbColorScheme> {
       disable: disable ?? this.disable,
       selectedColor: selectedColor ?? this.selectedColor,
       surfaceContainer: surfaceContainer ?? this.surfaceContainer,
+      primaryGradient: primaryGradient ?? this.primaryGradient,
     );
   }
 
@@ -59,6 +64,8 @@ class ERbColorScheme extends ThemeExtension<ERbColorScheme> {
       disable: Color.lerp(disable, other.disable, t),
       selectedColor: Color.lerp(selectedColor, other.selectedColor, t),
       surfaceContainer: Color.lerp(surfaceContainer, other.surfaceContainer, t),
+      primaryGradient:
+          LinearGradient.lerp(primaryGradient, other.primaryGradient, t),
     );
   }
 }
