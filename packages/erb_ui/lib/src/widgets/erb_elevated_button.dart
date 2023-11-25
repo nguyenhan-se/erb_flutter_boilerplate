@@ -1,7 +1,7 @@
 import 'package:erb_ui/theme.dart';
 import 'package:flutter/material.dart';
 
-import '_utils/position.dart';
+import '_const/position.dart';
 
 class ERbElevatedButton extends StatefulWidget {
   const ERbElevatedButton({

@@ -33,7 +33,7 @@ class App extends ConsumerWidget {
                       .toggleDarkMode(),
                   child: const Text('Toggle theme')),
               ERbElevatedButton(
-                  // enableGradient: true,
+                  enableGradient: true,
                   blockButton: true,
                   onPressed: () => ref
                       .read(appSettingsServiceProvider.notifier)
@@ -45,11 +45,18 @@ class App extends ConsumerWidget {
                   ),
                   label: 'Toggle theme'),
               ERbOutlineGradientButton(
-                  strokeWidth: 3,
-                  onTap: () => ref
-                      .read(appSettingsServiceProvider.notifier)
-                      .toggleDarkMode(),
-                  child: const Text('Toggle theme')),
+                strokeWidth: 3,
+                onTap: () => ref
+                    .read(appSettingsServiceProvider.notifier)
+                    .toggleDarkMode(),
+                label: 'Toggle theme',
+                // child: const Text('Toggle theme'),
+              ),
+              const ERbTextField(
+                labelText: 'Hello world',
+                helpText: 'asdasd',
+                hasAsterisk: true,
+              ),
             ],
           ),
         ),

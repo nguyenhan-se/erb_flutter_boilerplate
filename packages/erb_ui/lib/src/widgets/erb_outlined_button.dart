@@ -7,7 +7,6 @@ class ERbOutlineGradientButton extends StatelessWidget {
   final Radius? radius;
   final Corners? corners;
   final Gradient? gradient;
-  final EdgeInsets padding;
   final Color backgroundColor;
   final double elevation;
   final bool inkWell;
@@ -20,14 +19,14 @@ class ERbOutlineGradientButton extends StatelessWidget {
   final ValueChanged<bool>? onHover;
   final ValueChanged<bool>? onFocusChange;
   final BorderRadius _borderRadius;
-  final Widget child;
+  final Widget? child;
+  final String? label;
 
   ERbOutlineGradientButton({
     required this.strokeWidth,
     this.gradient,
     this.corners,
-    this.radius,
-    this.padding = const EdgeInsets.all(8),
+    this.radius = const Radius.circular(24),
     this.backgroundColor = Colors.transparent,
     this.elevation = 0,
     this.inkWell = false,
@@ -39,10 +38,10 @@ class ERbOutlineGradientButton extends StatelessWidget {
     this.onHighlightChanged,
     this.onHover,
     this.onFocusChange,
-    required this.child,
+    this.child,
+    this.label,
     super.key,
   })  : assert(strokeWidth > 0),
-        assert(padding.isNonNegative),
         assert(elevation >= 0),
         assert(radius == null || corners == null,
             'Cannot provide both a radius and corners.'),
@@ -56,11 +55,10 @@ class ERbOutlineGradientButton extends StatelessWidget {
 
     final gradientColor = gradient ??
         theme.eRbColorScheme.primaryGradient ??
-        const LinearGradient(
-          colors: [Colors.purple, Colors.pink],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        );
+        const DefaultERbColorScheme.light().primaryGradient;
+
+    final padding = theme.elevatedButtonTheme.style!.padding!
+        .resolve({MaterialState.pressed})!;
 
     return Material(
       color: backgroundColor,
@@ -81,11 +79,35 @@ class ERbOutlineGradientButton extends StatelessWidget {
         onHover: onHover,
         onFocusChange: onFocusChange,
         child: CustomPaint(
-          painter: _Painter(gradientColor, radius, strokeWidth, corners),
-          child: Padding(padding: padding, child: child),
+          painter: _Painter(gradientColor!, radius, strokeWidth, corners),
+          child: Padding(
+            padding: padding,
+            child: _getChild(context, gradientColor),
+          ),
         ),
       ),
     );
+  }
+
+  Widget? _getChild(BuildContext context, Gradient gradientColor) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+    final labelStyle = theme.textTheme.labelLarge;
+
+    final labelWidget = Text(
+      label!,
+      style:
+          isDarkMode ? labelStyle : labelStyle?.copyWith(color: Colors.white),
+    );
+    return label != null
+        ? isDarkMode
+            ? labelWidget
+            : ShaderMask(
+                shaderCallback: (Rect bounds) {
+                  return gradientColor.createShader(bounds);
+                },
+                child: labelWidget)
+        : child;
   }
 
   ///
