@@ -1,8 +1,17 @@
-# global_options:
-#   dart_mappable_builder:
-#     options:
-#       renameMethods:
-#         fromJson: deserialize
-#         toJson: serialize
-#         fromMap: fromJson
-#         toMap: toJson
+targets:
+  $default:
+    builders:
+      auto_route_generator:auto_route_generator: # this for @RoutePage
+        enabled: true
+        generate_for:
+          - lib/routes/**
+          - lib/core/features/**_screen.dart
+          - lib/features/**_screen.dart
+        options:
+          enable_cached_builds: true
+      auto_route_generator:auto_router_generator: # this for @AutoRouterConfig
+        enabled: true
+        generate_for:
+          - lib/routes/app_router.dart
+        options:
+          enable_cached_builds: true
