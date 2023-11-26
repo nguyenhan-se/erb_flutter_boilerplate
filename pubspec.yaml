@@ -44,6 +44,7 @@ dependencies:
   permission_handler: ^11.1.0
   local_auth: ^2.1.7
   flutter_flavor: ^3.1.1
+  app_settings: ^5.1.1
 
   # Device Identification
   device_info_plus: ^9.1.1
