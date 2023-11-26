@@ -17,7 +17,7 @@ class HomeScreen extends HookConsumerWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Text(
               'You have pushed the button this many times:  ${appEnv.baseUrl}',
             ),

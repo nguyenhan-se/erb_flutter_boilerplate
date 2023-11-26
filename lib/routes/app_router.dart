@@ -39,11 +39,11 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SplashRoute.page, path: '/', initial: true),
         CustomRoute(
           page: TabControllerRoute.page,
-          path: '/tabs',
+          path: '/app',
           children: [
             AutoRoute(
               path: 'home',
-              page: HomeTabRoute.page,
+              page: HomeStackRoute.page,
               children: [
                 AutoRoute(
                   initial: true,
@@ -56,7 +56,15 @@ class AppRouter extends $AppRouter {
                 ),
               ],
             ),
-            AutoRoute(page: SettingRoute.page, path: 'settings'),
+            AutoRoute(
+              path: 'settings',
+              page: SettingsStackRoute.page,
+              children: <AutoRoute>[
+                AutoRoute(
+                  page: SettingRoute.page,
+                ),
+              ],
+            ),
           ],
           transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
@@ -65,6 +73,11 @@ class AppRouter extends $AppRouter {
 }
 
 @RoutePage()
-class HomeTabScreen extends AutoRouter {
-  const HomeTabScreen({super.key});
+class HomeStackScreen extends AutoRouter {
+  const HomeStackScreen({super.key});
+}
+
+@RoutePage()
+class SettingsStackScreen extends AutoRouter {
+  const SettingsStackScreen({super.key});
 }
