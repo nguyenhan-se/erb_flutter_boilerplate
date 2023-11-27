@@ -19,7 +19,7 @@ class ERbSettingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromRGBO(240, 240, 240, 1),
+      // color: Theme.of(context).colorScheme.onSurface,
       width: MediaQuery.of(context).size.width,
       alignment: Alignment.center,
       child: ListView.builder(

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
-import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
 import 'package:erb_flutter_boilerplate/core/infrastructure/services/app_env_service.dart';
 
 @RoutePage()
@@ -21,18 +20,6 @@ class HomeScreen extends HookConsumerWidget {
             Text(
               'App env:  ${appEnv.baseUrl}',
             ),
-            ERbElevatedButton(
-                enableGradient: true,
-                blockButton: true,
-                onPressed: () => ref
-                    .read(appSettingsServiceProvider.notifier)
-                    .toggleDarkMode(),
-                position: ERbPosition.end,
-                icon: const Icon(
-                  Icons.audiotrack,
-                  size: 30.0,
-                ),
-                label: 'Toggle theme'),
             ERbOutlineGradientButton(
               strokeWidth: 3,
               onTap: () => AutoRouter.of(context).push(const HomeDetailRoute()),

@@ -136,45 +136,16 @@ class ERbSettingsTile extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  DefaultTextStyle(
-                                    style: TextStyle(
-                                      color: enabled
-                                          ? const Color.fromARGB(
-                                              255, 27, 27, 27)
-                                          : const Color.fromARGB(
-                                              255, 146, 144, 148),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                    child: title,
-                                  ),
+                                  title,
                                   if (value != null)
                                     Padding(
                                       padding: const EdgeInsets.only(top: 2.0),
-                                      child: DefaultTextStyle(
-                                        style: TextStyle(
-                                          color: enabled
-                                              ? const Color.fromARGB(
-                                                  255, 27, 27, 27)
-                                              : const Color.fromARGB(
-                                                  255, 146, 144, 148),
-                                        ),
-                                        child: value!,
-                                      ),
+                                      child: value!,
                                     )
                                   else if (description != null)
                                     Padding(
                                       padding: const EdgeInsets.only(top: 2.0),
-                                      child: DefaultTextStyle(
-                                        style: TextStyle(
-                                          color: enabled
-                                              ? const Color.fromARGB(
-                                                  255, 27, 27, 27)
-                                              : const Color.fromARGB(
-                                                  255, 146, 144, 148),
-                                        ),
-                                        child: description!,
-                                      ),
+                                      child: description!,
                                     ),
                                 ],
                               ),
@@ -216,15 +187,7 @@ class ERbSettingsTile extends StatelessWidget {
                 : const Color.fromARGB(255, 146, 144, 148),
           ),
         if (tileType == ERbSettingsTileType.navigationTile && value != null)
-          DefaultTextStyle(
-            style: TextStyle(
-              color: enabled
-                  ? const Color.fromARGB(255, 27, 27, 27)
-                  : const Color.fromARGB(255, 146, 144, 148),
-              fontSize: 17,
-            ),
-            child: value!,
-          ),
+          value!,
         if (tileType == ERbSettingsTileType.navigationTile)
           Padding(
             padding: const EdgeInsetsDirectional.only(start: 6, end: 2),

@@ -27,15 +27,15 @@ class ERbSettingsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsetsDirectional.only(
-            top: scaleFactor.scale(24),
-            bottom: scaleFactor.scale(10),
+            top: scaleFactor.scale(12),
+            bottom: scaleFactor.scale(4),
             start: 24,
             end: 24,
           ),
           child: title!,
         ),
         Container(
-          color: Colors.white,
+          // color: Colors.white,
           child: tileList,
         ),
       ],

@@ -40,6 +40,12 @@ class AppSettingsService extends _$AppSettingsService {
 }
 
 @riverpod
+bool isDarkMode(IsDarkModeRef ref) {
+  final appSettings = ref.watch(appSettingsServiceProvider);
+  return appSettings.darkMode;
+}
+
+@riverpod
 ThemeMode currentAppThemeMode(CurrentAppThemeModeRef ref) {
   final appSettings = ref.watch(appSettingsServiceProvider);
   return appSettings.systemThemeMode
