@@ -7,17 +7,16 @@ environment:
   flutter: ">=3.10.0 <4.0.0"
 
 dependencies:
-  equatable: ^2.0.5
   flutter:
     sdk: flutter
-  hooks_riverpod: ^2.3.6
-  fpdart: ^1.1.0
+  flutter_svg: ^2.0.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.1
-  assets_gen: ^1.5.0
+  build_runner: ^2.4.6
+  flutter_gen_runner: ^5.3.2
 
 flutter:
   # Must specify full path to each asset, directories will not work
@@ -25,10 +24,18 @@ flutter:
   #
   # Run the generator with `melos run assets`
   assets:
-    - packages/assets/images/flutter_logo.png
+    - assets/images/
 
-assets_gen:
-  code_style: lowerCamelCase
-  format_dart_code: true
-  gen_package_path: false
-  output: src/assets.dart
+flutter_gen:
+  output: lib/gen
+  line_length: 160
+  null_safety: true
+
+  integrations:
+    flutter_svg: true
+
+  assets:
+    enabled: true
+    outputs:
+      class_name: AppAssets
+      package_parameter_enabled: true

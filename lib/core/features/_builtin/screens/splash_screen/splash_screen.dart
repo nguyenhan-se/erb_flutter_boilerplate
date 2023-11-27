@@ -1,3 +1,4 @@
+import 'package:assets/assets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -24,8 +25,16 @@ class SplashScreen extends HookConsumerWidget {
       );
     }
 
-    return const Scaffold(
-      body: Center(child: Text('Splash screen loading.....')),
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppAssets.images.logo.image(width: 100, height: 100),
+            const Text('Splash screen loading.....'),
+          ],
+        ),
+      ),
     );
   }
 }

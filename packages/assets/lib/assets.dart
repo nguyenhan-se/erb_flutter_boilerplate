@@ -1,2 +1,3 @@
-export 'src/asset.dart';
-export 'src/assets.dart';
+library assets;
+
+export 'gen/assets.gen.dart';

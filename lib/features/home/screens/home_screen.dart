@@ -1,8 +1,8 @@
-import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_ui/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
 import 'package:erb_flutter_boilerplate/core/infrastructure/services/app_env_service.dart';
 
@@ -19,7 +19,7 @@ class HomeScreen extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'You have pushed the button this many times:  ${appEnv.baseUrl}',
+              'App env:  ${appEnv.baseUrl}',
             ),
             ERbElevatedButton(
                 enableGradient: true,
