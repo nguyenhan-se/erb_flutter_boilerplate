@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/sign_out_controller.dart';
 
 @RoutePage()
 class SettingScreen extends HookConsumerWidget {
@@ -54,6 +55,19 @@ class SettingScreen extends HookConsumerWidget {
                   title: const Text('User biometrics'),
                   initialValue: false,
                   onToggle: (bool value) {},
+                ),
+              ],
+            ),
+            ERbSettingsSection(
+              title: const Text('Account'),
+              tiles: <ERbSettingsTile>[
+                ERbSettingsTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text('SignOut'),
+                  enabled: !ref.watch(signOutControllerProvider).isLoading,
+                  onPressed: (context) {
+                    ref.read(signOutControllerProvider.notifier).signOut();
+                  },
                 ),
               ],
             ),

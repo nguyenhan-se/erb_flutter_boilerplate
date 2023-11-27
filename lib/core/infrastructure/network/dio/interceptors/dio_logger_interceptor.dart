@@ -3,7 +3,15 @@ import 'package:erb_shared/network.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioLoggerInterceptor extends BaseInterceptor {
-  final prettyDioLogger = PrettyDioLogger();
+  final prettyDioLogger = PrettyDioLogger(
+    error: true,
+    request: true,
+    requestHeader: true,
+    requestBody: true,
+    responseBody: true,
+    responseHeader: true,
+    compact: true,
+  );
 
   @override
   int get priority => BaseInterceptor.customLogPriority;

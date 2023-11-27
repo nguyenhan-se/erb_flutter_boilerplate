@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/auth_state_provider.dart';
+
 import 'app_router.gr.dart';
 
 final appRouterProvider = Provider<AppRouter>((ref) {
@@ -12,16 +14,15 @@ final appRouterReevaluateListenableProvider =
     Provider<ValueNotifier<bool?>>((ref) {
   final listenable = ValueNotifier<bool?>(null);
 
-  // ref.listen(
-  //   authStateProvider.select((user) => user.isSome()),
-  //   (_, isAuthenticated) => listenable.value = isAuthenticated,
-  // );
+  ref.listen(
+    authStateProvider.select((user) => user.isSome()),
+    (_, isAuthenticated) => listenable.value = isAuthenticated,
+  );
 
   ref.onDispose(() {
     listenable.dispose();
   });
 
-  // return AppRouter(ref);
   return listenable;
 });
 

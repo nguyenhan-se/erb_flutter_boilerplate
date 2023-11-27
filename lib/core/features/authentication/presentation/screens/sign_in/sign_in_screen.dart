@@ -1,7 +1,8 @@
 import 'package:erb_ui/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'package:erb_flutter_boilerplate/routes/routes.dart';
 
 import '../../../domain/auth_credential.dart';
 import 'sign_in_controller.dart';

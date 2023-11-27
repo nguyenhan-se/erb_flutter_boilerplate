@@ -5,7 +5,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'core/features/app_settings/data/app_settings_repo.dart';
+import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
+import 'core/features/authentication/domain/auth_credential.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,9 +35,11 @@ Future<void> initHive() async {
   await Hive.initFlutter();
 
   Hive.registerAdapter(AppSettingsAdapter());
+  Hive.registerAdapter(AuthCredentialAdapter());
 
   await Future.wait([
     AppSettingsRepo.prepare(),
+    AuthRepo.prepare(),
   ]);
 }
 

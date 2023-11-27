@@ -24,14 +24,14 @@ Dio createDio({
   //   };
   // }
 
-  dio.httpClientAdapter = IOHttpClientAdapter(
-    createHttpClient: () {
-      final client = HttpClient();
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => false;
-      return client;
-    },
-  );
+  // dio.httpClientAdapter = IOHttpClientAdapter(
+  //   createHttpClient: () {
+  //     final client = HttpClient();
+  //     client.badCertificateCallback =
+  //         (X509Certificate cert, String host, int port) => false;
+  //     return client;
+  //   },
+  // );
 
   dio
     ..options.baseUrl = baseOptions.baseUrl

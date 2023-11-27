@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:erb_shared/extensions.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/check_auth_provider.dart';
 
 part 'splash_provider.g.dart';
 
@@ -17,9 +18,9 @@ Future<void> splashServicesWarmup(SplashServicesWarmupRef ref) async {
       // await ref.watch(setupFCMProvider.future);
     }
   });
-  // final s4 = ref.watch(checkAuthProvider.future).suppressError();
+  final s4 = ref.watch(checkAuthProvider.future).suppressError();
 
-  await [min, s3].wait.throwAllErrors();
+  await [min, s3, s4].wait.throwAllErrors();
 }
 
 @riverpod

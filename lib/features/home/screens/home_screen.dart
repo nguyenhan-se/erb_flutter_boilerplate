@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/infrastructure/services/app_env_service.dart';
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/auth_state_provider.dart';
 
 @RoutePage()
 class HomeScreen extends HookConsumerWidget {
@@ -19,6 +20,9 @@ class HomeScreen extends HookConsumerWidget {
           children: [
             Text(
               'App env:  ${appEnv.baseUrl}',
+            ),
+            Text(
+              'Welcome:  ${ref.watch(authStateProvider)}',
             ),
             ERbOutlineGradientButton(
               strokeWidth: 3,

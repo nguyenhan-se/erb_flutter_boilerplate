@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:erb_flutter_boilerplate/core/utils/fp_framework.dart';
 
+import '../../../application/auth_state_provider.dart';
 import '../../../data/auth_repo.dart';
 import '../../../domain/auth_credential.dart';
 
@@ -19,6 +20,8 @@ class SignIn extends _$SignIn {
     state = await AsyncValue.guard(() async {
       final authRepo = ref.read(authRepoProvider);
       final credential = await authRepo.signIn(params);
+
+      ref.read(authStateProvider.notifier).authenticateUser(credential);
 
       return Some(credential);
     });

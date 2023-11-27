@@ -13,18 +13,18 @@ AppSettingsRepo appSettingsRepo(AppSettingsRepoRef ref) {
 }
 
 class AppSettingsRepo {
-  final Box<AppSettings> box;
-
   AppSettingsRepo(this.box);
 
   static const String key = 'appSettings';
 
+  final Box<AppSettings> box;
+
   void saveSettings(AppSettings settings) {
-    box.put('settings', settings);
+    box.put(key, settings);
   }
 
   AppSettings? getSettings() {
-    final settingsJson = box.get('settings');
+    final settingsJson = box.get(key);
     return settingsJson;
   }
 
