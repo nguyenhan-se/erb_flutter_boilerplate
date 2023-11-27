@@ -98,3 +98,45 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Averta
+      fonts:
+        - asset: assets/fonts/Averta-Black.otf
+          weight: 900
+        - asset: assets/fonts/Averta-BlackItalic.otf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/Averta-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Averta-BoldItalic.otf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Averta-ExtraBold.otf
+          weight: 800
+        - asset: assets/fonts/Averta-ExtraBoldItalic.otf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Averta-Extrathin.otf
+          weight: 100
+        - asset: assets/fonts/Averta-ExtrathinItalic.otf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Averta-Light.otf
+          weight: 300
+        - asset: assets/fonts/Averta-LightItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Averta-Regular.otf
+        - asset: assets/fonts/Averta-RegularItalic.otf
+          style: italic
+        - asset: assets/fonts/Averta-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/Averta-SemiboldItalic.otf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Averta-Thin.otf
+          weight: 200
+        - asset: assets/fonts/Averta-ThinItalic.otf
+          weight: 200
+          style: italic
