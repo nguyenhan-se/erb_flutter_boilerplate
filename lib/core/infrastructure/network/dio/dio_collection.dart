@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:erb_shared/network.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-// import '../../services/app_env_service.dart';
 import 'interceptors/dio_logger_interceptor.dart';
 
 part 'dio_collection.g.dart';

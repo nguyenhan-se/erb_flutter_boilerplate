@@ -15,3 +15,12 @@ targets:
           - lib/routes/app_router.dart
         options:
           enable_cached_builds: true
+
+global_options:
+  dart_mappable_builder:
+    options:
+      renameMethods:
+        fromJson: fromJsonString
+        toJson: toJsonString
+        fromMap: fromJson
+        toMap: toJson

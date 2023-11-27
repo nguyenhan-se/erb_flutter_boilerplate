@@ -1,14 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:erb_shared/network.dart';
-import 'package:talker_dio_logger/talker_dio_logger.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioLoggerInterceptor extends BaseInterceptor {
-  final talkerDioLog = TalkerDioLogger(
-    settings: const TalkerDioLoggerSettings(
-      printRequestHeaders: true,
-      printResponseHeaders: true,
-    ),
-  );
+  final prettyDioLogger = PrettyDioLogger();
 
   @override
   int get priority => BaseInterceptor.customLogPriority;
@@ -18,13 +13,13 @@ class DioLoggerInterceptor extends BaseInterceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) =>
-      talkerDioLog.onRequest(options, handler);
+      prettyDioLogger.onRequest(options, handler);
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) =>
-      talkerDioLog.onResponse(response, handler);
+      prettyDioLogger.onResponse(response, handler);
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) =>
-      talkerDioLog.onError(err, handler);
+      prettyDioLogger.onError(err, handler);
 }
