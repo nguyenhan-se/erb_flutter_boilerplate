@@ -39,6 +39,7 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => <AutoRoute>[
         AutoRoute(page: SplashRoute.page, path: '/', initial: true),
         AutoRoute(page: SignInRoute.page, path: '/sign'),
+        AutoRoute(page: TalkerRoute.page, path: '/log-talker'),
         CustomRoute(
           page: TabControllerRoute.page,
           path: '/app',

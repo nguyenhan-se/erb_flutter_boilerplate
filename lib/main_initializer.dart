@@ -3,18 +3,31 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 import 'core/features/app_settings/data/app_settings_repo.dart';
 import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
 import 'core/features/authentication/domain/auth_credential.dart';
+import 'core/presentation/providers/talker_provider.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // * Register error handlers. For more info, see:
   // * https://docs.flutter.dev/testing/errors
-  registerErrorHandlers();
+  final talker = TalkerFlutter.init(
+    settings: TalkerSettings(
+      useConsoleLogs: !kReleaseMode,
+      enabled: !kReleaseMode,
+    ),
+    logger: TalkerLogger(
+      output: debugPrint,
+      settings: const TalkerLoggerSettings(),
+    ),
+  );
+
+  registerErrorHandlers(talker);
   AppFlavor.initConfig();
 
   await initHive();
@@ -26,7 +39,12 @@ Future<ProviderContainer> mainInitializer() async {
   //   await windowManager.setMinimumSize(const Size(100, 200));
   // }
 
-  final container = ProviderContainer(observers: []);
+  final container = ProviderContainer(
+    observers: [],
+    overrides: [
+      talkerProvider.overrideWithValue(talker),
+    ],
+  );
 
   return container;
 }
@@ -44,14 +62,16 @@ Future<void> initHive() async {
 }
 
 /// Source: Flutter Foundations course by CodeWithAndrea
-void registerErrorHandlers() {
+void registerErrorHandlers(Talker talker) {
   // * Show some error UI if any uncaught exception happens
   FlutterError.onError = (FlutterErrorDetails details) {
+    talker.handle(details.exception, details.stack, 'Uncaught fatal exception');
     FlutterError.presentError(details);
     debugPrint(details.toString());
   };
   // * Handle errors from the underlying platform/OS
   PlatformDispatcher.instance.onError = (Object error, StackTrace stackTrace) {
+    talker.handle(error, stackTrace, 'Uncaught async exception');
     debugPrint(error.toString());
     return true;
   };

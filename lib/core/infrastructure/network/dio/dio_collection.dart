@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:erb_shared/network.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:erb_flutter_boilerplate/core/presentation/providers/talker_provider.dart';
+
 import 'interceptors/dio_logger_interceptor.dart';
 
 part 'dio_collection.g.dart';
@@ -13,11 +15,15 @@ DioCollection dio(DioRef ref) {
   return DioCollection(
     mockDummyjson: createDio(
       baseOptions: BaseOptions(baseUrl: 'https://dummyjson.com'),
-      interceptors: [DioLoggerInterceptor()],
+      interceptors: [
+        DioLoggerInterceptor(ref.watch(talkerProvider)),
+      ],
     ),
     mockJsonplaceholder: createDio(
       baseOptions: BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'),
-      interceptors: [DioLoggerInterceptor()],
+      interceptors: [
+        DioLoggerInterceptor(ref.watch(talkerProvider)),
+      ],
     ),
   );
 }

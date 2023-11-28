@@ -1,8 +1,11 @@
+import 'package:app_constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 import 'core/features/app_settings/application/application.dart';
+import 'core/presentation/providers/talker_provider.dart';
 import 'routes/routes.dart';
 
 /// The main app widget at the root of the widget tree.
@@ -14,13 +17,15 @@ class App extends ConsumerWidget {
     final appRouter = ref.watch(appRouterProvider);
 
     final materialApp = MaterialApp.router(
-      title: 'Flutter Demo',
+      title: AppSettings.appTitle,
       theme: ref.watch(lightThemeProvider).themeData,
       darkTheme: ref.watch(darkThemeProvider).themeData,
       themeMode: ref.watch(currentAppThemeModeProvider),
       routerConfig: appRouter.config(
         reevaluateListenable: ref.watch(appRouterReevaluateListenableProvider),
-        navigatorObservers: () => [AutoRouteObserver()],
+        navigatorObservers: () => [
+          TalkerRouteObserver(ref.watch(talkerProvider)),
+        ],
       ),
     );
 

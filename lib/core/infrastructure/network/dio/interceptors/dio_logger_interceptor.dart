@@ -1,17 +1,25 @@
+import 'package:app_constants/app_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:erb_shared/network.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:talker_dio_logger/talker_dio_logger.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class DioLoggerInterceptor extends BaseInterceptor {
-  final prettyDioLogger = PrettyDioLogger(
-    error: true,
-    request: true,
-    requestHeader: true,
-    requestBody: true,
-    responseBody: true,
-    responseHeader: true,
-    compact: true,
-  );
+  final Talker talker;
+  late final TalkerDioLogger talkerDio;
+
+  DioLoggerInterceptor(this.talker) {
+    talkerDio = TalkerDioLogger(
+      talker: talker,
+      settings: const TalkerDioLoggerSettings(
+        printResponseData: LogSettings.enableDioResponseData,
+        printResponseHeaders: LogSettings.enableDioResponseHeaders,
+        printResponseMessage: LogSettings.enableDioResponseMessage,
+        printRequestData: LogSettings.enableDioRequestData,
+        printRequestHeaders: LogSettings.enableDioRequestHeaders,
+      ),
+    );
+  }
 
   @override
   int get priority => BaseInterceptor.customLogPriority;
@@ -21,13 +29,13 @@ class DioLoggerInterceptor extends BaseInterceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) =>
-      prettyDioLogger.onRequest(options, handler);
+      talkerDio.onRequest(options, handler);
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) =>
-      prettyDioLogger.onResponse(response, handler);
+      talkerDio.onResponse(response, handler);
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) =>
-      prettyDioLogger.onError(err, handler);
+      talkerDio.onError(err, handler);
 }

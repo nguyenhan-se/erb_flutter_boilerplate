@@ -6,7 +6,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'device_info_service.g.dart';
+part 'device_info_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<DeviceInfo> deviceInfo(DeviceInfoRef ref) async {

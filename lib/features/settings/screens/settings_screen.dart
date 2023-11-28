@@ -71,6 +71,18 @@ class SettingScreen extends HookConsumerWidget {
                 ),
               ],
             ),
+            ERbSettingsSection(
+              title: const Text('DEV'),
+              tiles: <ERbSettingsTile>[
+                ERbSettingsTile(
+                  leading: const Icon(Icons.manage_history_rounded),
+                  title: const Text('View Log'),
+                  onPressed: (context) {
+                    AutoRouter.of(context).push(const TalkerRoute());
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),
