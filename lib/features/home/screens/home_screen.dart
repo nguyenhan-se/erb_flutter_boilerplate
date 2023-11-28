@@ -1,4 +1,3 @@
-import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 import 'package:erb_ui/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/infrastructure/services/app_env_service.dart';
 import 'package:erb_flutter_boilerplate/core/features/authentication/application/auth_state_provider.dart';
+import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 
 @RoutePage()
 class HomeScreen extends HookConsumerWidget {
@@ -13,7 +13,7 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appEnv = ref.watch(appEnvServiceProvider);
-    final t = ref.watch(translateProvider);
+    final t = useI18n();
 
     return Scaffold(
       body: Center(

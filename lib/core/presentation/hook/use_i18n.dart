@@ -1,32 +1,9 @@
-// TranslationBuilder useI18n(
-//   WidgetRef ref,
-// ) {
-//   final context = useContext();
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-//   // const context = useContext();
+import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 
-//   // final currentTranslate = useState(Translations.of(context));
+StringsVi useI18n() {
+  final context = useContext();
 
-//   // // final state = useState(null);
-//   // final currentLocale =
-//   //     useMemoized(() => ref.watch(currentLanguageProvider) ?? AppLocale.vi);
-
-//   // useEffect(() {
-//   //   currentTranslate.value = AppLocaleUtils.parseLocaleParts(
-//   //           languageCode: currentLocale.languageCode,
-//   //           countryCode: currentLocale.countryCode)
-//   //       .build() as Null;
-
-//   //   return;
-//   // }, [currentLocale]);
-
-//   // return TranslationProvider.of(context).translations;
-//   // return (String key, [Map<String, String> params = const {}]) {
-//   //   return TranslationProvider.of(this).translations;
-//   // };
-//   return (String key, [Map<String, String> params = const {}]) {
-//     return AppLocale.vi.build();
-//   };
-// }
-
-typedef Translate = String Function(String, [Map<String, String>]);
+  return Translations.of(context);
+}

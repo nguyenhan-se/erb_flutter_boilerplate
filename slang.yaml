@@ -10,3 +10,4 @@ translate_var: translate
 string_interpolation: dart
 key_case: camel
 key_map_case: camel
+translation_class_visibility: public

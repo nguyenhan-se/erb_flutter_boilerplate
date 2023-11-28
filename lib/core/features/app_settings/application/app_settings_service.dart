@@ -69,13 +69,6 @@ ThemeMode currentAppThemeMode(CurrentAppThemeModeRef ref) {
 AppLocale? currentLanguage(CurrentLanguageRef ref) {
   final appSettings = ref.watch(appSettingsServiceProvider);
 
-  AppLocale? localeFromStr(String name) {
-    try {
-      return AppLocale.values.firstWhere((it) => it.name == name);
-    } on StateError {
-      return null;
-    }
-  }
-
-  return localeFromStr(appSettings.locale);
+  return AppLocale.values.firstWhere((it) => it.name == appSettings.locale,
+      orElse: () => AppLocale.vi);
 }
