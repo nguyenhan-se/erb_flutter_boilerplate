@@ -72,6 +72,15 @@ class _ERbElevatedButtonState extends State<ERbElevatedButton> {
     super.initState();
   }
 
+  @override
+  void didUpdateWidget(ERbElevatedButton oldWidget) {
+    child = widget.label != null ? Text(widget.label!) : widget.child;
+    icon = widget.icon;
+    onPressed = widget.onPressed;
+    position = widget.position;
+    super.didUpdateWidget(oldWidget);
+  }
+
   BorderRadius get _borderRadius =>
       widget.borderRadius ?? BorderRadius.circular(24);
 
@@ -104,6 +113,8 @@ class _ERbElevatedButtonState extends State<ERbElevatedButton> {
     final padding = theme.elevatedButtonTheme.style!.padding!
         .resolve({MaterialState.pressed});
 
+    final btnDisabled = widget.onPressed == null;
+
     return ElevatedButton(
       onPressed: widget.onPressed ?? widget.onPressed,
       onLongPress: widget.onLongPress,
@@ -120,7 +131,7 @@ class _ERbElevatedButtonState extends State<ERbElevatedButton> {
       child: Ink(
         decoration: BoxDecoration(
           borderRadius: _borderRadius,
-          gradient: widget.enableGradient ? gradientColor : null,
+          gradient: widget.enableGradient && !btnDisabled ? gradientColor : null,
         ),
         child: Container(
           width: buttonWidth(),
