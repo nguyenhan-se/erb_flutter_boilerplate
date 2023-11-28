@@ -22,6 +22,8 @@ class App extends HookConsumerWidget {
 
     useEffect(() {
       LocaleHelper.update(locale);
+
+      return;
     }, [locale]);
 
     final materialApp = MaterialApp.router(
