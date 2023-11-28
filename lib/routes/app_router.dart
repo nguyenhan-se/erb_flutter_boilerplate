@@ -69,7 +69,14 @@ class AppRouter extends $AppRouter {
               page: SettingsStackRoute.page,
               children: <AutoRoute>[
                 AutoRoute(
+                  initial: true,
                   page: SettingRoute.page,
+                ),
+                AutoRoute(
+                  guards: [authGuard],
+                  page: LanguageSettingRoute.page,
+                  path: 'languages',
+                  meta: const {'hideBottomNav': true},
                 ),
               ],
             ),

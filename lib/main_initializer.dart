@@ -11,6 +11,7 @@ import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
 import 'core/features/authentication/domain/auth_credential.dart';
 import 'core/presentation/providers/talker_log/talker_log.dart';
+import 'i18n/i18n.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ Future<ProviderContainer> mainInitializer() async {
 
   registerErrorHandlers(talker);
   AppFlavor.initConfig();
+  LocaleSettings.useDeviceLocale();
 
   await initHive();
 

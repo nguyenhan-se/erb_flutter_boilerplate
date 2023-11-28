@@ -1,0 +1,12 @@
+namespaces: true
+base_locale: vi
+fallback_strategy: base_locale
+input_directory: lib/i18n
+input_file_pattern: .i18n.json
+output_directory: lib/i18n
+# output_format: multiple_files
+# input_file_pattern: .i18n.yaml
+translate_var: translate
+string_interpolation: dart
+key_case: camel
+key_map_case: camel

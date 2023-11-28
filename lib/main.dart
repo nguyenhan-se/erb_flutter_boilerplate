@@ -3,6 +3,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'app.dart';
+import 'i18n/i18n.dart';
 import 'main_initializer.dart';
 
 Future<void> main() async {
@@ -18,7 +19,7 @@ Future<void> main() async {
           Breakpoint(start: 801, end: 1920, name: DESKTOP),
           Breakpoint(start: 1921, end: double.infinity, name: '4k'),
         ],
-        child: const App(),
+        child: TranslationProvider(child: const App()),
       ),
     ),
   );

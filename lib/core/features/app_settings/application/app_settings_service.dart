@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
+
 import '../data/app_settings_repo.dart';
 import '../domain/app_settings.dart';
 
@@ -13,6 +15,7 @@ class AppSettingsService extends _$AppSettingsService {
   @override
   AppSettings build() {
     _appSettingsRepo = ref.watch(appSettingsRepoProvider);
+    _appSettingsRepo.box.clear();
     final settings = _appSettingsRepo.getSettings();
     return settings ?? const AppSettings();
   }
@@ -37,6 +40,13 @@ class AppSettingsService extends _$AppSettingsService {
     state = newSettings;
     _appSettingsRepo.saveSettings(newSettings);
   }
+
+  void setLocale(AppLocale? locale) {
+    final newSettings =
+        state.copyWith(locale: locale != null ? locale.name : '');
+    state = newSettings;
+    _appSettingsRepo.saveSettings(newSettings);
+  }
 }
 
 @riverpod
@@ -53,4 +63,19 @@ ThemeMode currentAppThemeMode(CurrentAppThemeModeRef ref) {
       : appSettings.darkMode
           ? ThemeMode.dark
           : ThemeMode.light;
+}
+
+@riverpod
+AppLocale? currentLanguage(CurrentLanguageRef ref) {
+  final appSettings = ref.watch(appSettingsServiceProvider);
+
+  AppLocale? localeFromStr(String name) {
+    try {
+      return AppLocale.values.firstWhere((it) => it.name == name);
+    } on StateError {
+      return null;
+    }
+  }
+
+  return localeFromStr(appSettings.locale);
 }

@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # add this
+    sdk: flutter
 
   cupertino_icons: ^1.0.2
 

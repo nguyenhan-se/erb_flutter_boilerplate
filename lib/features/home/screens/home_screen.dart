@@ -1,3 +1,4 @@
+import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 import 'package:erb_ui/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,6 +13,7 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appEnv = ref.watch(appEnvServiceProvider);
+    final t = ref.watch(translateProvider);
 
     return Scaffold(
       body: Center(
@@ -22,7 +24,7 @@ class HomeScreen extends HookConsumerWidget {
               'App env:  ${appEnv.baseUrl}',
             ),
             Text(
-              'Welcome:  ${ref.watch(authStateProvider)}',
+              '${t.common.welcome}: ${ref.watch(authStateProvider).match(() => '', (credential) => '${credential.firstName} ${credential.lastName} ')}',
             ),
             ERbOutlineGradientButton(
               strokeWidth: 3,

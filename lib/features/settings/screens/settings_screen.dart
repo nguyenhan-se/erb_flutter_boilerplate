@@ -1,3 +1,4 @@
+import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -17,7 +18,7 @@ class SettingScreen extends HookConsumerWidget {
           sections: [
             ERbSettingsSection(
               title: const Text('General'),
-              tiles: <ERbSettingsTile>[
+              tiles: [
                 ERbSettingsTile.switchTile(
                   leading: const Icon(Icons.notification_important_rounded),
                   title: const Text('Notification'),
@@ -36,14 +37,17 @@ class SettingScreen extends HookConsumerWidget {
                 ),
                 ERbSettingsTile.navigation(
                   leading: const Icon(Icons.language_outlined),
-                  title: const Column(
+                  title: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text('Language'),
+                      Text(translate.system.language),
                     ],
                   ),
-                  value: const Text('en'),
-                  onPressed: (context) {},
+                  value: Text(
+                      ref.watch(currentLanguageProvider)?.languageCode ?? ''),
+                  onPressed: (context) {
+                    AutoRouter.of(context).push(const LanguageSettingRoute());
+                  },
                 ),
               ],
             ),

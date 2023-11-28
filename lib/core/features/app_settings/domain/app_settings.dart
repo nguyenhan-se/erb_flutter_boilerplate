@@ -19,10 +19,15 @@ class AppSettings with AppSettingsMappable {
   @HiveField(2)
   final bool systemThemeMode;
 
+  @MappableField()
+  @HiveField(3)
+  final String locale;
+
   const AppSettings({
     this.bannerEnabled = true,
     this.darkMode = false,
     this.systemThemeMode = false,
+    this.locale = '',
   });
 
   static const fromJson = AppSettingsMapper.fromJson;

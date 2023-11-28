@@ -1,11 +1,13 @@
 import 'package:app_constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import 'core/features/app_settings/application/application.dart';
 import 'core/presentation/providers/talker_log/talker_provider.dart';
+import 'i18n/i18n.dart';
 import 'routes/routes.dart';
 
 /// The main app widget at the root of the widget tree.
@@ -27,6 +29,9 @@ class App extends ConsumerWidget {
           TalkerRouteObserver(ref.watch(talkerProvider)),
         ],
       ),
+      locale: TranslationProvider.of(context).flutterLocale, // use provider
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
     );
 
     final bannerEnabled = appSettings.bannerEnabled;

@@ -1,0 +1,14 @@
+{
+  "ops_error": "Error",
+  "remote": {
+    "no_internet_exception": "Abnormal network",
+    "cancellation_exception": "Your request has been cancelled",
+    "token_expired": "User has no permissions (token error, username, password)!",
+    "bad_certificate": "Fail https requests for older devices.",
+    "timeout": "The network request timed out!"
+  },
+  "unknown_exception": "An unknown error occurred",
+  "screen_not_found": "Oops! Screen not found!",
+  "location_permission_not_granted": "Locations permission not granted",
+  "location_service_disable": "The location service on the device is disable"
+}
