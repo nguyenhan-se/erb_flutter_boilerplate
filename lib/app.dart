@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import 'core/features/app_settings/application/application.dart';
-import 'core/presentation/providers/talker_provider.dart';
+import 'core/presentation/providers/talker_log/talker_provider.dart';
 import 'routes/routes.dart';
 
 /// The main app widget at the root of the widget tree.

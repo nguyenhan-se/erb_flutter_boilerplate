@@ -9,4 +9,11 @@ class LogSettings {
   static const enableDioResponseMessage = kDebugMode;
   static const enableDioRequestData = kDebugMode;
   static const enableDioRequestHeaders = false;
+
+  /// log riverpod
+  static const defaultEnableRiverpodLog = kDebugMode;
+  static const enableRiverpodDidAddProvider = kDebugMode;
+  static const enableRiverpodDidDisposeProvider = false;
+  static const enableRiverpodDidUpdateProvider = kDebugMode;
+  static const enableRiverpodDidFail = kDebugMode;
 }

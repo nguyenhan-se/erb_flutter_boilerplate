@@ -1,3 +1,4 @@
+import 'package:app_constants/app_constants.dart';
 import 'package:env/env.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'core/features/app_settings/data/app_settings_repo.dart';
 import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
 import 'core/features/authentication/domain/auth_credential.dart';
-import 'core/presentation/providers/talker_provider.dart';
+import 'core/presentation/providers/talker_log/talker_log.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +41,18 @@ Future<ProviderContainer> mainInitializer() async {
   // }
 
   final container = ProviderContainer(
-    observers: [],
+    observers: [
+      TalkerProviderObserver(
+        talker: talker,
+        settings: const TalkerProviderObserverSettings(
+          enabled: LogSettings.defaultEnableRiverpodLog,
+          printDidAddProvider: LogSettings.enableRiverpodDidAddProvider,
+          printDidDisposeProvider: LogSettings.enableRiverpodDidDisposeProvider,
+          printDidUpdateProvider: LogSettings.enableRiverpodDidUpdateProvider,
+          printDidFail: LogSettings.enableRiverpodDidFail,
+        ),
+      ),
+    ],
     overrides: [
       talkerProvider.overrideWithValue(talker),
     ],
