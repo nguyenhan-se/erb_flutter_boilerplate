@@ -8,12 +8,24 @@ import '../../../domain/auth_credential.dart';
 import 'sign_in_controller.dart';
 
 @RoutePage()
-class SignInScreen extends HookConsumerWidget {
-  const SignInScreen({super.key});
+class SignInScreen extends ConsumerWidget {
+  final void Function(bool isLoggedIn)? onSignInResult;
+
+  const SignInScreen({
+    this.onSignInResult,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = ref.watch(signInProvider).isLoading;
+    ref.listen(signInProvider, (previous, next) {
+      next.whenOrNull(data: (credential) {
+        credential.match(() {}, (_) {
+          onSignInResult?.call(true);
+        });
+      });
+    });
 
     return Scaffold(
       appBar: AppBar(),

@@ -30,11 +30,6 @@ class HomeScreen extends HookConsumerWidget {
               label: 'Go Home Detail',
               // child: const Text('Toggle theme'),
             ),
-            ERbElevatedButton(
-              onPressed: () => AutoRouter.of(context).push(const SignInRoute()),
-              label: 'Go Signin screen',
-              // child: const Text('Toggle theme'),
-            ),
             const ERbTextField(
               labelText: 'Hello world',
               helpText: 'asdasd',

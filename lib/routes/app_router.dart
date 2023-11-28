@@ -5,9 +5,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:erb_flutter_boilerplate/core/features/authentication/application/auth_state_provider.dart';
 
 import 'app_router.gr.dart';
+import 'guards/auth_guard.dart';
 
 final appRouterProvider = Provider<AppRouter>((ref) {
-  return AppRouter(ref);
+  final authGuard = AuthGuard(ref);
+
+  return AppRouter(authGuard: authGuard);
 });
 
 final appRouterReevaluateListenableProvider =
@@ -28,9 +31,9 @@ final appRouterReevaluateListenableProvider =
 
 @AutoRouterConfig()
 class AppRouter extends $AppRouter {
-  final Ref ref;
+  final AuthGuard authGuard;
 
-  AppRouter(this.ref);
+  AppRouter({required this.authGuard});
 
   @override
   RouteType get defaultRouteType => const RouteType.adaptive();
@@ -38,7 +41,8 @@ class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => <AutoRoute>[
         AutoRoute(page: SplashRoute.page, path: '/', initial: true),
-        AutoRoute(page: SignInRoute.page, path: '/sign'),
+        AutoRoute(page: SignInRoute.page, path: '/sign-in'),
+        AutoRoute(page: SignUpRoute.page, path: '/sign-up'),
         AutoRoute(page: TalkerRoute.page, path: '/log-talker'),
         CustomRoute(
           page: TabControllerRoute.page,
@@ -53,6 +57,7 @@ class AppRouter extends $AppRouter {
                   page: HomeRoute.page,
                 ),
                 AutoRoute(
+                  guards: [authGuard],
                   page: HomeDetailRoute.page,
                   path: 'detail',
                   meta: const {'hideBottomNav': true},
