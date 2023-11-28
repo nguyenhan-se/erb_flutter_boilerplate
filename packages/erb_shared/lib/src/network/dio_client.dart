@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:dartx/dartx.dart';
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 
 import 'interceptors/base_interceptor.dart';
 

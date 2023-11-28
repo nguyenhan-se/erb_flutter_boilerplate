@@ -17,6 +17,9 @@ targets:
           enable_cached_builds: true
 
 global_options:
+  json_serializable:
+    runs_before:
+      - retrofit_generator
   dart_mappable_builder:
     options:
       renameMethods:
@@ -24,3 +27,5 @@ global_options:
         toJson: toJsonString
         fromMap: fromJson
         toMap: toJson
+    runs_before:
+      - retrofit_generator

@@ -122,7 +122,7 @@ scripts:
     packageFilters:
       dependsOn: build_runner
       noDependsOn: envied
-      ignore: localization
+      # ignore: localization
 
   watch:pkg:
     run: dart run build_runner watch
@@ -133,7 +133,18 @@ scripts:
     packageFilters:
       dependsOn: build_runner
       noDependsOn: envied
-      ignore: localization
+      # ignore: localization
+
+  watch_force:pkg:
+    run: dart run build_runner watch --delete-conflicting-outputs
+    exec:
+      # concurrency: 1
+      failFast: true
+    description: Run `build_runner watch` in the selected package. If all is selected, the command will only run in the first package.
+    packageFilters:
+      dependsOn: build_runner
+      noDependsOn: envied
+      # ignore: localization
 
   env:
     run: melos run env:pkg --no-select
