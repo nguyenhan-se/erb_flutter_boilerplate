@@ -19,23 +19,16 @@ command:
       # Generate environment files which should not be committed to the repository.
       # Instead, they are generated during the CI process before checking
       # if the rest of the package's code generation is up to date.
-      post: flutter pub get && dart pub global activate coverage ^1.6.4 && cd packages/env && dart pub get && dart run build_runner build -d
+      post: flutter pub get && dart pub global activate coverage ^1.6.4 && cd packages/env && dart pub get && dart run build_runner build -d && melos run i18n
 
 # See https://github.com/firebase/flutterfire/blob/master/melos.yaml for more examples
 scripts:
   # Custom lint is only applied to the packages and not the root app because of a dependency conflict with `integration_test` and `melos`
   pub:
-    run: melos run dart:pkg --no-select && melos run flutter:pkg --no-select
+    run: |
+      dart pub get && \
+      melos run flutter:pkg --no-select
     description: Run `dart pub get` in all packages.
-
-  dart:pkg:
-    run: dart pub get
-    exec:
-      failFast: true
-      # concurrency: 1
-    description: Run `dart pub get` in the selected package.
-    packageFilters:
-      noDependsOn: flutter
 
   flutter:pkg:
     run: flutter pub get
@@ -110,7 +103,11 @@ scripts:
     description: Verify formatting was applied.
 
   generate:
-    run: melos run assets && melos run env --no-select && melos run generate:pkg --no-select
+    run: |
+      melos run assets && \
+      melos run env --no-select && \
+      melos run generate:pkg --no-select && \
+      melos run i18n
     description: Run `build_runner build` in all packages.
 
   generate:pkg:
@@ -123,6 +120,24 @@ scripts:
       dependsOn: build_runner
       noDependsOn: envied
       # ignore: localization
+
+  i18n:
+    run: dart run slang
+    exec:
+      failFast: true
+    description: Run `dart run slang` generate dart file
+    packageFilters:
+      dirExists:
+        - lib/i18n
+
+  watch:i18n:
+    run: dart run slang watch
+    exec:
+      failFast: true
+    description: Run `dart run slang watch` auto Rebuild generate dart file
+    packageFilters:
+      dirExists:
+        - lib/i18n
 
   watch:pkg:
     run: dart run build_runner watch
