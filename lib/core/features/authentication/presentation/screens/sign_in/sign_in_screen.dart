@@ -26,7 +26,7 @@ class SignInScreen extends ConsumerWidget {
       });
     });
 
-    return Scaffold(
+    return AppScaffold(
       appBar: AppBar(),
       body: Column(
         children: [

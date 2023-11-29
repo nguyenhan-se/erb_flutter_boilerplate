@@ -1,8 +1,9 @@
-import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
+import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/app_settings_service.dart';
 
 @RoutePage()
@@ -21,7 +22,7 @@ class LanguageSettingScreen extends ConsumerWidget {
       );
     }
 
-    return Scaffold(
+    return AppScaffold(
       appBar: AppBar(title: const Text('lang title')),
       body: SafeArea(
         child: ListView(
