@@ -1,4 +1,6 @@
+import 'package:app_constants/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:erb_ui/erb_ui.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
@@ -29,17 +31,18 @@ class SignInScreen extends ConsumerWidget {
 
     return AppScaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          const Center(
-            child: Text('sign in screen'),
-          ),
-          AsyncButton(
+      body: ERbFormLayout.simple(
+        content: const Center(
+          child: Text('sign in screen'),
+        ),
+        bottom: Padding(
+          padding: KEdgeInsets.v16.size,
+          child: AsyncButton(
             onPressed: () => ref.read(signInProvider.notifier).signIn(
                 SignInParams(username: 'kminchelle', password: '0lelplR')),
             label: 'Sign in',
           ),
-        ],
+        ),
       ),
     );
   }

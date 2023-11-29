@@ -18,46 +18,49 @@ class HomeScreen extends HookConsumerWidget {
     final t = useI18n();
 
     return AppScaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'App env:  ${appEnv.baseUrl}',
-            ),
-            HookConsumer(builder: (context, ref, child) {
-              final credential = ref.watch(authStateProvider
-                  .select((item) => item.match(() => null, (value) => value)));
-              if (credential.isNull) {
-                return const SizedBox.shrink();
-              }
+      body: ERbFillViewportScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'App env:  ${appEnv.baseUrl}',
+              ),
+              HookConsumer(builder: (context, ref, child) {
+                final credential = ref.watch(authStateProvider.select(
+                    (item) => item.match(() => null, (value) => value)));
+                if (credential.isNull) {
+                  return const SizedBox.shrink();
+                }
 
-              return Column(
-                children: [
-                  Text(
-                    '${t.common.welcome}: ${credential!.firstName} ${credential.lastName}',
-                  ),
-                  CachedNetworkImageCircular(
-                    imageUrl: ref
-                        .watch(authStateProvider)
-                        .match(() => null, (credential) => credential.image),
-                    radius: 50,
-                  ),
-                ],
-              );
-            }),
-            ERbOutlineGradientButton(
-              strokeWidth: 3,
-              onTap: () => AutoRouter.of(context).push(const HomeDetailRoute()),
-              label: 'Go Home Detail',
-              // child: const Text('Toggle theme'),
-            ),
-            const ERbTextField(
-              labelText: 'Hello world',
-              helpText: 'asdasd',
-              hasAsterisk: true,
-            ),
-          ],
+                return Column(
+                  children: [
+                    Text(
+                      '${t.common.welcome}: ${credential!.firstName} ${credential.lastName}',
+                    ),
+                    CachedNetworkImageCircular(
+                      imageUrl: ref
+                          .watch(authStateProvider)
+                          .match(() => null, (credential) => credential.image),
+                      radius: 50,
+                    ),
+                  ],
+                );
+              }),
+              ERbOutlineGradientButton(
+                strokeWidth: 3,
+                onTap: () =>
+                    AutoRouter.of(context).push(const HomeDetailRoute()),
+                label: 'Go Home Detail',
+                // child: const Text('Toggle theme'),
+              ),
+              const ERbTextField(
+                labelText: 'Hello world',
+                helpText: 'asdasd',
+                hasAsterisk: true,
+              ),
+            ],
+          ),
         ),
       ),
     );
