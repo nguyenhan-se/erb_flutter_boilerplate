@@ -1,3 +1,4 @@
+import 'package:erb_shared/extensions.dart';
 import 'package:erb_ui/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -24,10 +25,27 @@ class HomeScreen extends HookConsumerWidget {
             Text(
               'App env:  ${appEnv.baseUrl}',
             ),
-            Text(
-              '${t.common.welcome}: ${ref.watch(authStateProvider).match(() => '', (credential) => '${credential.firstName} ${credential.lastName} ')}',
-            ),
-            ERbOopsError(),
+            HookConsumer(builder: (context, ref, child) {
+              final credential = ref.watch(authStateProvider
+                  .select((item) => item.match(() => null, (value) => value)));
+              if (credential.isNull) {
+                return const SizedBox.shrink();
+              }
+
+              return Column(
+                children: [
+                  Text(
+                    '${t.common.welcome}: ${credential!.firstName} ${credential.lastName}',
+                  ),
+                  CachedNetworkImageCircular(
+                    imageUrl: ref
+                        .watch(authStateProvider)
+                        .match(() => null, (credential) => credential.image),
+                    radius: 50,
+                  ),
+                ],
+              );
+            }),
             ERbOutlineGradientButton(
               strokeWidth: 3,
               onTap: () => AutoRouter.of(context).push(const HomeDetailRoute()),
