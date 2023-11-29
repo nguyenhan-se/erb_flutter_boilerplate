@@ -38,7 +38,7 @@ dependencies:
   hive_flutter: ^1.1.0
 
   # flutter utils
-  hooks_riverpod: ^2.4.8
+  hooks_riverpod: ^2.4.9
   flutter_hooks: ^0.20.3
   auto_route: ^7.8.4
   url_launcher: ^6.2.1
@@ -58,9 +58,7 @@ dependencies:
   cached_network_image: ^3.3.0
 
   # annotations
-  riverpod_annotation: ^2.3.2
-  freezed_annotation: ^2.4.1
-  json_annotation: ^4.8.1
+  riverpod_annotation: ^2.3.3
   reactive_forms_annotations: ^4.2.0
 
   # Mock
@@ -86,13 +84,11 @@ dev_dependencies:
 
   flutter_lints: ^3.0.1
   custom_lint: ^0.5.6
-  riverpod_lint: ^2.3.6
+  riverpod_lint: ^2.3.7
 
   # generators
-  riverpod_generator: ^2.3.8
+  riverpod_generator: ^2.3.9
   build_runner: ^2.4.6
-  freezed: ^2.4.5
-  json_serializable: ^6.7.1
   slang_build_runner: ^3.25.0
   auto_route_generator: ^7.3.2
   retrofit_generator: ^8.0.3
