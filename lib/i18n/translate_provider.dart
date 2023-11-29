@@ -6,7 +6,7 @@ import 'strings.g.dart';
 // use outside context
 final translateProvider = AutoDisposeProvider((ref) {
   final currentLanguage = ref.watch(currentLanguageProvider);
-  final lang = currentLanguage ?? AppLocale.vi;
+  final lang = currentLanguage;
 
   return AppLocaleUtils.parseLocaleParts(
           languageCode: lang.languageCode, countryCode: lang.countryCode)

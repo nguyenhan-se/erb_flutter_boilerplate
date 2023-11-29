@@ -66,7 +66,7 @@ ThemeMode currentAppThemeMode(CurrentAppThemeModeRef ref) {
 }
 
 @riverpod
-AppLocale? currentLanguage(CurrentLanguageRef ref) {
+AppLocale currentLanguage(CurrentLanguageRef ref) {
   final appSettings = ref.watch(appSettingsServiceProvider);
 
   return AppLocale.values.firstWhere((it) => it.name == appSettings.locale,

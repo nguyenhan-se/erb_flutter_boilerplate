@@ -2,9 +2,9 @@ import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
+import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
 import 'package:erb_flutter_boilerplate/core/features/authentication/application/sign_out_controller.dart';
 
@@ -13,6 +13,8 @@ class SettingScreen extends HookConsumerWidget {
   const SettingScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final t = useI18n();
+
     return AppScaffold(
       body: ERbSettingsList(
         sections: [
@@ -40,11 +42,10 @@ class SettingScreen extends HookConsumerWidget {
                 title: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(translate.system.language),
+                    Text(t.featureSettings.language.i18n),
                   ],
                 ),
-                value: Text(
-                    ref.watch(currentLanguageProvider)?.languageCode ?? ''),
+                value: Text(ref.watch(currentLanguageProvider).languageCode),
                 onPressed: (context) {
                   AutoRouter.of(context).push(const LanguageSettingRoute());
                 },

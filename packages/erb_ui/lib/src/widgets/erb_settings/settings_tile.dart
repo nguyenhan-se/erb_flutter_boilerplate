@@ -83,6 +83,7 @@ class ERbSettingsTile extends StatelessWidget {
     final cantShowAnimation = tileType == ERbSettingsTileType.switchTile
         ? onToggle == null && onPressed == null
         : onPressed == null;
+    final theme = Theme.of(context);
 
     return IgnorePointer(
       ignoring: !enabled,
@@ -112,8 +113,8 @@ class ERbSettingsTile extends StatelessWidget {
                   child: IconTheme(
                     data: IconTheme.of(context).copyWith(
                       color: enabled
-                          ? const Color.fromARGB(255, 70, 70, 70)
-                          : const Color.fromARGB(255, 146, 144, 148),
+                          ? theme.colorScheme.onSurface
+                          : theme.colorScheme.onSurface.withOpacity(0.12),
                     ),
                     child: leading!,
                   ),
@@ -136,7 +137,18 @@ class ERbSettingsTile extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  title,
+                                  // title,
+                                  DefaultTextStyle(
+                                    style: TextStyle(
+                                      color: enabled
+                                          ? theme.colorScheme.onSurface
+                                          : theme.colorScheme.onSurface
+                                              .withOpacity(0.12),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                    child: title,
+                                  ),
                                   if (value != null)
                                     Padding(
                                       padding: const EdgeInsets.only(top: 2.0),
@@ -174,6 +186,7 @@ class ERbSettingsTile extends StatelessWidget {
     required BuildContext context,
   }) {
     final scaleFactor = MediaQuery.of(context).textScaler;
+    final theme = Theme.of(context);
 
     return Row(
       children: [
@@ -194,8 +207,8 @@ class ERbSettingsTile extends StatelessWidget {
             child: IconTheme(
               data: IconTheme.of(context).copyWith(
                 color: enabled
-                    ? const Color.fromARGB(255, 70, 70, 70)
-                    : const Color.fromARGB(255, 146, 144, 148),
+                    ? theme.colorScheme.onSurface
+                    : theme.colorScheme.onSurface.withOpacity(0.12),
               ),
               child: Icon(
                 CupertinoIcons.chevron_forward,
