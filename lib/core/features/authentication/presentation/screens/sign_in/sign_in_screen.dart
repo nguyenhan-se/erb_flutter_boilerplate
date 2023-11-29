@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
+import 'package:erb_flutter_boilerplate/core/utils/riverpod_framework.dart';
 
 import '../../../domain/auth_credential.dart';
 import 'sign_in_controller.dart';
@@ -18,6 +18,7 @@ class SignInScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.easyAsyncListen(signInProvider);
     ref.listen(signInProvider, (previous, next) {
       next.whenOrNull(data: (credential) {
         credential.match(() {}, (_) {

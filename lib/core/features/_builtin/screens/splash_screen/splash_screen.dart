@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'providers/splash_provider.dart';
+import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 
 @RoutePage()
 class SplashScreen extends HookConsumerWidget {
@@ -31,7 +32,11 @@ class SplashScreen extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppAssets.images.logo.image(width: 100, height: 100),
-            const Text('Splash screen loading.....'),
+            HookConsumer(builder: (context, ref, child) {
+              final t = useI18n();
+
+              return Text(t.common.loading);
+            }),
           ],
         ),
       ),

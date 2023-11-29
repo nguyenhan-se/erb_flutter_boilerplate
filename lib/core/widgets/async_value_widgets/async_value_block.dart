@@ -15,7 +15,7 @@ class AsyncValueBlock<T> extends StatelessWidget {
     this.error,
     this.loading,
     this.empty,
-    this.refresh,
+    this.retry,
   });
 
   final AsyncValue<T> value;
@@ -23,7 +23,7 @@ class AsyncValueBlock<T> extends StatelessWidget {
   final Widget Function(Object, StackTrace?)? error;
   final Widget Function()? loading;
   final Widget Function()? empty;
-  final VoidCallback? refresh;
+  final VoidCallback? retry;
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +55,9 @@ class AsyncValueBlock<T> extends StatelessWidget {
 
       return ERbOopsError(
         text: error.errorMessage(context),
-        button: refresh != null
+        button: retry != null
             ? TextButton(
-                onPressed: refresh,
+                onPressed: retry,
                 child: Text(t.common.retry),
               )
             : null,
