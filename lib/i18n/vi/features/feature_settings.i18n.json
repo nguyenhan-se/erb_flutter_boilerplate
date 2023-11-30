@@ -3,7 +3,10 @@
     "i18n": "Ngôn ngữ",
     "pickLanguage": "Chọn ngôn ngữ"
   },
-  "notification": "Thông báo",
+  "notification": {
+    "setting": "Cài đặt thông báo",
+    "turnOffMsg": "Bạn có chắc chắn muốn tắt thông báo không?"
+  },
   "account": {
     "signout": "Đăng xuất"
   }

@@ -3,7 +3,10 @@
     "i18n": "Language",
     "pickLanguage": "Pick language"
   },
-  "notification": "Notification",
+  "notification": {
+    "setting": "Setting notification",
+    "turnOffMsg": "Are you sure? You want to turn off notification?"
+  },
   "account": {
     "signout": "Sign out"
   }

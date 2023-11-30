@@ -30,14 +30,14 @@ class SettingNotificationTile extends ERbSettingsTile {
 
       return ERbSettingsTile.switchTile(
         leading: const Icon(Icons.notification_important_rounded),
-        title: Text(t.featureSettings.notification),
+        title: Text(t.featureSettings.notification.setting),
         initialValue: ref.watch(permissionSettingsServiceProvider
             .select((permission) => permission.isNotificationsEnabled)),
         onToggle: (bool value) async {
           if (!value) {
             Dialogs.showAlertDialog(
               context,
-              message: 'Are you sure?',
+              message: t.featureSettings.notification.turnOffMsg,
               dialogType: DialogType.success,
               onPressed: () {
                 ref
