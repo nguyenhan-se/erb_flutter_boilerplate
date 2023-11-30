@@ -15,7 +15,7 @@ class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    useAdaptiveScreen();
+    useAdaptiveSize();
     final t = useI18n();
     final appEnv = ref.watch(appEnvServiceProvider);
 

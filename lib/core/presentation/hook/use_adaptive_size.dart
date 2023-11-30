@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:app_constants/app_constants.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+void useAdaptiveSize() {
+  final context = useContext();
+  AppDimension.of(context);
+}
 
 enum ScreenType {
   mobile,
@@ -13,7 +19,6 @@ class AppDimension {
   AppDimension._({
     required this.screenWidth,
     required this.screenHeight,
-    required this.devicePixelRatio,
     required this.screenType,
   });
 
@@ -21,18 +26,15 @@ class AppDimension {
 
   final double screenWidth;
   final double screenHeight;
-  final double devicePixelRatio;
   final ScreenType screenType;
 
   static AppDimension of(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
 
     final screen = AppDimension._(
       screenWidth: screenWidth,
       screenHeight: screenHeight,
-      devicePixelRatio: devicePixelRatio,
       screenType: _getScreenType(screenWidth),
     );
 
