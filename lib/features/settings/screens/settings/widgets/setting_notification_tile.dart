@@ -1,5 +1,6 @@
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
@@ -47,9 +48,20 @@ class SettingNotificationTile extends ERbSettingsTile {
             );
           } else {
             final notificationPermission = NotificationPermission();
+            final isGranted = await notificationPermission.isGranted;
+            if (isGranted) {
+              ref
+                  .read(permissionSettingsServiceProvider.notifier)
+                  .toggleNotificationEnabled();
+              return;
+            }
+
             final permission = await notificationPermission.request();
-            if (permission == PermissionStatus.permanentlyDenied &&
-                context.mounted) {
+            // NOTE: if support web need handle case PermissionStatus.permanentlyDenied
+
+            if (!kIsWeb &&
+                context.mounted &&
+                permission == PermissionStatus.permanentlyDenied) {
               Dialogs.showAlertAppSettingDialog(
                 context,
                 reason: t.system.requestPermissionMsg.notification,

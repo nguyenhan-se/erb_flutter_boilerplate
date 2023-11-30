@@ -7,10 +7,10 @@ import 'package:talker_flutter/talker_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'core/features/app_settings/application/application.dart';
-import 'core/presentation/providers/talker_log/talker_log.dart';
 import 'i18n/i18n.dart';
 import 'routes/routes.dart';
+import 'core/features/app_settings/application/application.dart';
+import 'core/presentation/providers/talker_log/talker_log.dart';
 
 /// The main app widget at the root of the widget tree.
 class App extends HookConsumerWidget {
@@ -41,9 +41,21 @@ class App extends HookConsumerWidget {
     ///    iPhone 12 Pro Max                 => 6.7": 428 x 926 (points)
     final materialApp = ScreenUtilInit(
         designSize: const Size(AppSettings.wdp, AppSettings.hdp),
+        fontSizeResolver: (fontSize, instance) =>
+            FontSizeResolvers.radius(fontSize, instance),
+        ensureScreenSize: true,
         builder: (BuildContext context, child) {
-          ScreenUtil.init(context);
+          final textScaler = ScreenUtil().scaleText;
+
           return MaterialApp.router(
+            builder: (context, child) {
+              final MediaQueryData data = MediaQuery.of(context);
+              // NOTE: global text scaler, no need to .sp
+              return MediaQuery(
+                data: data.copyWith(textScaler: TextScaler.linear(textScaler)),
+                child: child ?? const SizedBox.shrink(),
+              );
+            },
             title: AppSettings.appTitle,
             theme: ref.watch(lightThemeProvider).themeData,
             darkTheme: ref.watch(darkThemeProvider).themeData,

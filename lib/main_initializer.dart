@@ -6,7 +6,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:app_constants/app_constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'i18n/i18n.dart';
 import 'core/features/authentication/data/auth_repo.dart';
@@ -38,7 +37,6 @@ Future<ProviderContainer> mainInitializer() async {
   LocaleSettings.useDeviceLocale();
 
   await initHive();
-  await ScreenUtil.ensureScreenSize();
 
   // Config for OS
   // if (!kIsWeb &&
