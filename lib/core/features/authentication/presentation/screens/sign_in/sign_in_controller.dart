@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:erb_flutter_boilerplate/core/utils/fp_framework.dart';
+import 'package:erb_flutter_boilerplate/core/presentation/utils/fp_framework.dart';
 
 import '../../../application/auth_state_provider.dart';
 import '../../../data/auth_repo.dart';

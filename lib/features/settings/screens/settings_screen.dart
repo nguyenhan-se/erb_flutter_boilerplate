@@ -1,12 +1,13 @@
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:erb_shared/extensions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
-import 'package:erb_flutter_boilerplate/core/features/authentication/application/sign_out_controller.dart';
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/application.dart';
 
 @RoutePage()
 class SettingScreen extends HookConsumerWidget {
@@ -69,7 +70,9 @@ class SettingScreen extends HookConsumerWidget {
               ERbSettingsTile(
                 leading: const Icon(Icons.logout),
                 title: const Text('SignOut'),
-                enabled: !ref.watch(signOutControllerProvider).isLoading,
+                enabled: (!ref.watch(signOutControllerProvider).isLoading)
+                        .takeIf((it) => ref.watch(isSignedProvider)) ??
+                    false,
                 onPressed: (context) {
                   ref.read(signOutControllerProvider.notifier).signOut();
                 },

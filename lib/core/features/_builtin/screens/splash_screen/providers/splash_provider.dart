@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:erb_shared/extensions.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
-import 'package:erb_flutter_boilerplate/core/features/authentication/application/check_auth_provider.dart';
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/application.dart';
 
 part 'splash_provider.g.dart';
 

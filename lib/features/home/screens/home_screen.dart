@@ -7,7 +7,7 @@ import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 import 'package:erb_flutter_boilerplate/core/infrastructure/services/app_env_service.dart';
-import 'package:erb_flutter_boilerplate/core/features/authentication/application/auth_state_provider.dart';
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/application.dart';
 
 @RoutePage()
 class HomeScreen extends HookConsumerWidget {

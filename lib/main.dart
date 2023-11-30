@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'app.dart';
 import 'i18n/i18n.dart';

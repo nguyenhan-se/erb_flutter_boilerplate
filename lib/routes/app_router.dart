@@ -1,8 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:erb_flutter_boilerplate/core/features/authentication/application/auth_state_provider.dart';
+import 'package:erb_flutter_boilerplate/core/features/authentication/application/application.dart';
 
 import 'app_router.gr.dart';
 import 'guards/auth_guard.dart';

@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'package:erb_flutter_boilerplate/core/utils/fp_framework.dart';
+import 'package:erb_flutter_boilerplate/core/presentation/utils/fp_framework.dart';
 
 import '../domain/auth_credential.dart';
 
@@ -18,4 +18,9 @@ class AuthState extends _$AuthState {
   void unAuthenticateUser() {
     state = const None();
   }
+}
+
+@Riverpod(keepAlive: true)
+bool isSigned(IsSignedRef ref) {
+  return ref.watch(authStateProvider.select((auth) => auth.isSome()));
 }

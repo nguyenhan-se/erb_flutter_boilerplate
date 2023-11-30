@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../dialogs/dialogs.dart';
-import 'async_value_block.dart';
-
+import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 import 'package:erb_flutter_boilerplate/core/infrastructure/exceptions/exception.dart';
+
+import 'async_value_block.dart';
 
 class AsyncBlockProvider<T> extends HookConsumerWidget {
   const AsyncBlockProvider({

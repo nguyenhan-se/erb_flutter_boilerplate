@@ -1,16 +1,16 @@
-import 'package:app_constants/app_constants.dart';
-import 'package:flutter/material.dart';
 import 'package:erb_ui/erb_ui.dart';
+import 'package:flutter/material.dart';
+import 'package:app_constants/app_constants.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
-import 'package:erb_flutter_boilerplate/core/utils/riverpod_framework.dart';
+import 'package:erb_flutter_boilerplate/core/presentation/utils/riverpod_framework.dart';
 
 import '../../../domain/auth_credential.dart';
 import 'sign_in_controller.dart';
 
 @RoutePage()
-class SignInScreen extends ConsumerWidget {
+class SignInScreen extends HookConsumerWidget {
   final void Function(bool isLoggedIn)? onSignInResult;
 
   const SignInScreen({
@@ -20,7 +20,8 @@ class SignInScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.easyAsyncListen(signInProvider);
+    useEasyAsyncListen(signInProvider);
+
     ref.listen(signInProvider, (previous, next) {
       next.whenOrNull(data: (credential) {
         credential.match(() {}, (_) {
@@ -39,7 +40,7 @@ class SignInScreen extends ConsumerWidget {
           padding: KEdgeInsets.v16.size,
           child: AsyncButton(
             onPressed: () => ref.read(signInProvider.notifier).signIn(
-                SignInParams(username: 'kminchelle', password: '0lelplR')),
+                SignInParams(username: 'kminchelle', password: '0lelplRe')),
             label: 'Sign in',
           ),
         ),
