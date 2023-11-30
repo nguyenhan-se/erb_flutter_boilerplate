@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'layout/erb_overflow_transform_box.dart';
+
 Future<T?> showERbAlertDialog<T extends Object?>({
   required BuildContext context,
   Widget? title,
@@ -9,15 +11,18 @@ Future<T?> showERbAlertDialog<T extends Object?>({
   ERbDialogData eRbDialogData = const ERbDialogData(),
   bool barrierDismissible = true,
 }) async {
-  final reformedTitlePadding = EdgeInsets.only(
-    left: titlePadding.horizontal / 2,
-    right: titlePadding.horizontal / 2,
-    top: title == null ? titlePadding.vertical / 2 : 0,
-    bottom: titlePadding.vertical / 2,
+  final reformedContentPadding = EdgeInsets.symmetric(
+    horizontal: contentPadding.horizontal / 2,
+  ).copyWith(
+    top: title == null ? contentPadding.vertical / 2 : 0,
+    bottom: contentPadding.vertical / 2,
   );
-  final reformedActionsPadding = EdgeInsets.only(
-    left: eRbDialogData.actionsPadding.horizontal / 2,
-    right: eRbDialogData.actionsPadding.horizontal / 2,
+
+  final horizontalActionPadding = eRbDialogData.actionsPadding.horizontal / 2;
+
+  final reformedActionsPadding = EdgeInsets.symmetric(
+    horizontal: horizontalActionPadding,
+  ).copyWith(
     top: title == null && content == null
         ? eRbDialogData.actionsPadding.vertical / 2
         : 0,
@@ -33,22 +38,20 @@ Future<T?> showERbAlertDialog<T extends Object?>({
       child: PopScope(
         //This prevent closing the dialog when pressing device's back button
         canPop: barrierDismissible,
-        child: UnconstrainedBox(
-          constrainedAxis: Axis.horizontal,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: eRbDialogData.maxWidth),
-            child: AlertDialog(
-              title: title,
-              titlePadding: reformedTitlePadding,
-              content: content != null ? content(context) : null,
-              contentPadding: contentPadding,
-              actions: eRbDialogData.actions?.call(context),
-              actionsPadding: reformedActionsPadding,
-              actionsAlignment: MainAxisAlignment.spaceAround,
-              insetPadding: eRbDialogData.insetPadding,
-              shape: eRbDialogData.shape,
-              backgroundColor: eRbDialogData.backgroundColor,
-            ),
+        child: ERbOverflowTransformBox(
+          transform: (constraints) =>
+              ConstraintsTransformBox.widthUnconstrained(constraints),
+          child: AlertDialog(
+            title: title,
+            titlePadding: titlePadding,
+            content: content != null ? content(context) : null,
+            contentPadding: reformedContentPadding,
+            actions: eRbDialogData.actions?.call(context),
+            actionsPadding: reformedActionsPadding,
+            actionsAlignment: MainAxisAlignment.spaceAround,
+            insetPadding: eRbDialogData.insetPadding,
+            shape: eRbDialogData.shape,
+            backgroundColor: eRbDialogData.backgroundColor,
           ),
         ),
       ),

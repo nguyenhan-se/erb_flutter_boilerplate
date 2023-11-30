@@ -40,7 +40,7 @@ class SignInScreen extends HookConsumerWidget {
           padding: KEdgeInsets.v16.size,
           child: AsyncButton(
             onPressed: () => ref.read(signInProvider.notifier).signIn(
-                SignInParams(username: 'kminchelle', password: '0lelplRe')),
+                SignInParams(username: 'kminchelle', password: '0lelplR')),
             label: 'Sign in',
           ),
         ),

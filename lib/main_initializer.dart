@@ -1,4 +1,5 @@
 import 'package:env/env.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -10,9 +11,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'i18n/i18n.dart';
 import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
+import 'core/features/app_settings/domain/permission_settings.dart';
 import 'core/presentation/providers/talker_log/talker_log.dart';
 import 'core/features/app_settings/data/app_settings_repo.dart';
 import 'core/features/authentication/domain/auth_credential.dart';
+import 'core/features/app_settings/data/permission_settings_repo.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,8 +73,10 @@ Future<void> initHive() async {
 
   Hive.registerAdapter(AppSettingsAdapter());
   Hive.registerAdapter(AuthCredentialAdapter());
+  Hive.registerAdapter(PermissionSettingsAdapter());
 
   await Future.wait([
+    PermissionSettingsRepo.prepare(),
     AppSettingsRepo.prepare(),
     AuthRepo.prepare(),
   ]);

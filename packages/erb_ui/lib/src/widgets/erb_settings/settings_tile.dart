@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 enum ERbSettingsTileType { simpleTile, switchTile, navigationTile }
 
@@ -94,12 +94,12 @@ class ERbSettingsTile extends StatelessWidget {
               ? null
               : () {
                   if (tileType == ERbSettingsTileType.switchTile) {
-                    onToggle?.call(initialValue);
+                    onToggle?.call(!initialValue);
                   } else {
                     onPressed?.call(context);
                   }
                 },
-          highlightColor: const Color.fromARGB(255, 146, 144, 148),
+          highlightColor: theme.colorScheme.onSurface.withOpacity(0.12),
           child: Row(
             children: [
               if (leading != null)
@@ -197,7 +197,7 @@ class ERbSettingsTile extends StatelessWidget {
             onChanged: onToggle,
             activeColor: enabled
                 ? activeSwitchColor
-                : const Color.fromARGB(255, 146, 144, 148),
+                : theme.colorScheme.onSurface.withOpacity(0.12),
           ),
         if (tileType == ERbSettingsTileType.navigationTile && value != null)
           value!,

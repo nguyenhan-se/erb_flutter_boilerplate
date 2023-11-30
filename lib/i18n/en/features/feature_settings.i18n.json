@@ -2,5 +2,9 @@
   "language": {
     "i18n": "Language",
     "pickLanguage": "Pick language"
+  },
+  "notification": "Notification",
+  "account": {
+    "signout": "Sign out"
   }
 }

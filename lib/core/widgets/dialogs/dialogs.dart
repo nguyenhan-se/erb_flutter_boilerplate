@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
+import 'package:erb_flutter_boilerplate/core/infrastructure/permission/permission_base.dart';
 
 //
 import 'alert_title.dart';
@@ -121,6 +122,62 @@ abstract class Dialogs {
         shape: _defaultMaterialShape,
         actions: (context) => actions?.call(context),
         actionsPadding: _defaultTitlePadding,
+      ),
+    );
+  }
+
+  static Future<T?> showAlertAppSettingDialog<T extends Object?>(
+    BuildContext context, {
+    String? title,
+    required String reason,
+    VoidCallback? onGoAppSetting,
+  }) async {
+    return showERbAlertDialog(
+      context: context,
+      contentPadding: _defaultContentPadding,
+      titlePadding: KEdgeInsets.v12.size,
+      title: HookConsumer(
+        builder: (context, ref, child) {
+          final t = useI18n();
+          return Center(child: Text(title ?? t.system.requestPermission));
+        },
+      ),
+      content: (context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(reason),
+        ],
+      ),
+      eRbDialogData: ERbDialogData(
+        actionsPadding: KEdgeInsets.v8.size,
+        actions: (context) => [
+          HookConsumer(
+            builder: (context, ref, child) {
+              final t = useI18n();
+
+              return TextButton(
+                onPressed: () => AutoRouter.of(context).pop(),
+                child: Text(t.common.cancel),
+              );
+            },
+          ),
+          ERbElevatedButton(
+            enableGradient: true,
+            onPressed: () async {
+              unawaited(PermissionBase.openAppSettings());
+              AutoRouter.of(context).pop();
+              onGoAppSetting?.call();
+            },
+            child: HookConsumer(
+              builder: (context, ref, child) {
+                final t = useI18n();
+
+                return Text(t.system.openAppSetting);
+              },
+            ),
+          ),
+        ],
+        shape: _defaultMaterialShape,
       ),
     );
   }

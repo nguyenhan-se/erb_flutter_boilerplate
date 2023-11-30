@@ -2,5 +2,9 @@
   "language": {
     "i18n": "Ngôn ngữ",
     "pickLanguage": "Chọn ngôn ngữ"
+  },
+  "notification": "Thông báo",
+  "account": {
+    "signout": "Đăng xuất"
   }
 }

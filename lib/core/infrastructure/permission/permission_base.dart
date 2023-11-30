@@ -7,11 +7,6 @@ abstract class PermissionBase {
   /// The underlying permission instance.
   final Permission permission;
 
-  // /// Returns `true` if Permission is granted, otherwise returns `false`.
-  // Future<PermissionStatus> check() async {
-  //   return permission.status;
-  // }
-
   Future<PermissionStatus> request({bool manualOpenAppSetting = true}) async {
     // CASE: Permission is already granted.
     final initialStatus = await permission.status;
@@ -32,6 +27,7 @@ abstract class PermissionBase {
     } else if (await permission.isDenied) {
       // CASE: Permission is just denied.
       PermissionStatus status = await permission.request();
+
       if (status == PermissionStatus.permanentlyDenied) {
         if (!manualOpenAppSetting) {
           await openAppSettings();
@@ -50,7 +46,7 @@ abstract class PermissionBase {
   }
 
   /// Opens the App Setting or App Info Page provided by Operating System.
-  Future<void> openAppSettings() async {
+  static Future<void> openAppSettings() async {
     await AppSettings.openAppSettings(asAnotherTask: true);
   }
 }

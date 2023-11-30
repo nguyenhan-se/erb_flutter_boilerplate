@@ -1,13 +1,14 @@
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:erb_shared/extensions.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
-import 'package:erb_flutter_boilerplate/core/features/authentication/application/application.dart';
+
+import 'widgets/setting_notification_tile.dart';
+import 'widgets/setting_signout_tile.dart';
 
 @RoutePage()
 class SettingScreen extends HookConsumerWidget {
@@ -22,12 +23,7 @@ class SettingScreen extends HookConsumerWidget {
           ERbSettingsSection(
             title: const Text('General'),
             tiles: [
-              ERbSettingsTile.switchTile(
-                leading: const Icon(Icons.notification_important_rounded),
-                title: const Text('Notification'),
-                initialValue: false,
-                onToggle: (bool value) {},
-              ),
+              SettingNotificationTile(),
               ERbSettingsTile.switchTile(
                 leading: const Icon(Icons.dark_mode_outlined),
                 title: const Text('Theme'),
@@ -67,16 +63,7 @@ class SettingScreen extends HookConsumerWidget {
           ERbSettingsSection(
             title: const Text('Account'),
             tiles: <ERbSettingsTile>[
-              ERbSettingsTile(
-                leading: const Icon(Icons.logout),
-                title: const Text('SignOut'),
-                enabled: (!ref.watch(signOutControllerProvider).isLoading)
-                        .takeIf((it) => ref.watch(isSignedProvider)) ??
-                    false,
-                onPressed: (context) {
-                  ref.read(signOutControllerProvider.notifier).signOut();
-                },
-              ),
+              SettingSignOutTile(),
             ],
           ),
           ERbSettingsSection(

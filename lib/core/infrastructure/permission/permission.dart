@@ -2,6 +2,9 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'permission_base.dart';
 
+export 'package:permission_handler/permission_handler.dart'
+    show PermissionStatus;
+
 /// Represents Camera Permission.
 class CameraPermission extends PermissionBase {
   CameraPermission() : super(permission: Permission.camera);

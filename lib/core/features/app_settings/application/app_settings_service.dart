@@ -3,8 +3,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 
-import '../data/app_settings_repo.dart';
 import '../domain/app_settings.dart';
+import '../data/app_settings_repo.dart';
 
 part 'app_settings_service.g.dart';
 
@@ -15,7 +15,6 @@ class AppSettingsService extends _$AppSettingsService {
   @override
   AppSettings build() {
     _appSettingsRepo = ref.watch(appSettingsRepoProvider);
-    _appSettingsRepo.box.clear();
     final settings = _appSettingsRepo.getSettings();
     return settings ?? const AppSettings();
   }

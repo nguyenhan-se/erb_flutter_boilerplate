@@ -1,5 +1,10 @@
 {
   "languageName": "Tiếng việt",
   "languageAlias": "VN",
-  "goToHome": "Đến màn trang chủ"
+  "goToHome": "Đến màn trang chủ",
+  "openAppSetting": "Mở cài đặt",
+  "requestPermission": "Yêu cầu cấp quyền",
+  "requestPermissionMsg": {
+    "notification": "Cấp quyền để bạn có thể nhận thông báo."
+  }
 }
