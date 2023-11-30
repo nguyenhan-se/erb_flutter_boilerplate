@@ -11,6 +11,8 @@ class AppSettings {
   static const systemUiOverlay = SystemUiOverlayStyle(
     statusBarBrightness: Brightness.light,
   );
-  static const designWidth = 375.0;
-  static const designHeight = 812.0;
+
+  // app design size
+  static const double wdp = 428.0;
+  static const double hdp = 926.0;
 }

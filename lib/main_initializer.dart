@@ -1,17 +1,18 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:env/env.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:app_constants/app_constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:talker_flutter/talker_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'core/features/app_settings/data/app_settings_repo.dart';
+import 'i18n/i18n.dart';
 import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
-import 'core/features/authentication/domain/auth_credential.dart';
 import 'core/presentation/providers/talker_log/talker_log.dart';
-import 'i18n/i18n.dart';
+import 'core/features/app_settings/data/app_settings_repo.dart';
+import 'core/features/authentication/domain/auth_credential.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,7 @@ Future<ProviderContainer> mainInitializer() async {
   LocaleSettings.useDeviceLocale();
 
   await initHive();
+  await ScreenUtil.ensureScreenSize();
 
   // Config for OS
   // if (!kIsWeb &&
