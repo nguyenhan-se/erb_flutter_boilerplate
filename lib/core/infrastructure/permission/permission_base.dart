@@ -12,7 +12,7 @@ abstract class PermissionBase {
   //   return permission.status;
   // }
 
-  Future<PermissionStatus> request() async {
+  Future<PermissionStatus> request({bool manualOpenAppSetting = true}) async {
     // CASE: Permission is already granted.
     final initialStatus = await permission.status;
     if (initialStatus == PermissionStatus.granted ||
@@ -25,13 +25,17 @@ abstract class PermissionBase {
         (await permission.isRestricted);
 
     if (shouldPromptSettings) {
-      await openAppSettings();
+      if (!manualOpenAppSetting) {
+        await openAppSettings();
+      }
       return PermissionStatus.permanentlyDenied;
     } else if (await permission.isDenied) {
       // CASE: Permission is just denied.
       PermissionStatus status = await permission.request();
       if (status == PermissionStatus.permanentlyDenied) {
-        await openAppSettings();
+        if (!manualOpenAppSetting) {
+          await openAppSettings();
+        }
         return PermissionStatus.permanentlyDenied;
       }
     }
