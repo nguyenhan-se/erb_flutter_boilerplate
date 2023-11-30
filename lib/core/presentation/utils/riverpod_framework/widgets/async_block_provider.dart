@@ -1,9 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
-import 'package:erb_flutter_boilerplate/core/infrastructure/exceptions/exception.dart';
-
+import '../hooks/hooks.dart';
 import 'async_value_block.dart';
 
 class AsyncBlockProvider<T> extends HookConsumerWidget {
@@ -32,21 +30,10 @@ class AsyncBlockProvider<T> extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listenManual(
+    useEasyAsyncListen(
       provider,
-      (prevState, newState) {
-        newState.whenOrNull(
-          skipLoadingOnRefresh: false,
-          error: handleError
-              ? (err, st) => Dialogs.showAlertDialog(
-                    context,
-                    dialogType: DialogType.error,
-                    message: err.errorMessage(context),
-                  )
-              : null,
-          data: (data) => complete?.call(context, data),
-        );
-      },
+      handleError: handleError,
+      whenData: (data) => complete?.call(context, data),
     );
 
     return AsyncValueBlock<T>(

@@ -10,7 +10,7 @@ extension WidgetRefExtension on WidgetRef {
 
   /// Listen to a provider while easy handling Loading/Error dialogs.
   ///
-  /// You can set handleLoading/handleError to false to turn off auto handling for either of them.
+  /// You can set handleError to false to turn off auto handling for either of them.
   ///
   /// Use `whenData` If you want to perform something when the newState is data.
   void easyAsyncListen<T>(
