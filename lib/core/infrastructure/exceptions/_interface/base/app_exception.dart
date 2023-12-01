@@ -5,4 +5,4 @@ abstract class AppException implements Exception {
 }
 
 // Define more type when need
-enum AppExceptionType { remote, uncaught }
+enum AppExceptionType { remote, uncaught, localService }

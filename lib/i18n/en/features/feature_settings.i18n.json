@@ -9,5 +9,8 @@
   },
   "account": {
     "signout": "Sign out"
+  },
+  "auth": {
+    "auth_biometric": "Quick Authentication"
   }
 }

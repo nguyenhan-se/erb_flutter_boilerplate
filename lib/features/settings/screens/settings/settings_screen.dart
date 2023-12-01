@@ -8,6 +8,7 @@ import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
 
 import 'section_dev_setting.dart';
+import 'widgets/setting_biometric_tile.dart';
 import 'widgets/setting_notification_tile.dart';
 import 'widgets/setting_signout_tile.dart';
 
@@ -52,14 +53,7 @@ class SettingScreen extends HookConsumerWidget {
           ),
           ERbSettingsSection(
             title: const Text('Security'),
-            tiles: <ERbSettingsTile>[
-              ERbSettingsTile.switchTile(
-                leading: const Icon(Icons.lock),
-                title: const Text('User biometrics'),
-                initialValue: false,
-                onToggle: (bool value) {},
-              ),
-            ],
+            tiles: <ERbSettingsTile>[SettingBiometricTile()],
           ),
           ERbSettingsSection(
             title: const Text('Account'),

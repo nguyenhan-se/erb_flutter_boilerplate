@@ -9,5 +9,8 @@
   },
   "account": {
     "signout": "Đăng xuất"
+  },
+  "auth": {
+    "auth_biometric": "Cài đặt đăng nhập nhanh"
   }
 }

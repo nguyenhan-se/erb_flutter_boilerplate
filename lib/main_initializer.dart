@@ -10,11 +10,13 @@ import 'package:talker_flutter/talker_flutter.dart';
 import 'i18n/i18n.dart';
 import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
-import 'core/features/app_settings/domain/permission_settings.dart';
 import 'core/presentation/providers/talker_log/talker_log.dart';
 import 'core/features/app_settings/data/app_settings_repo.dart';
 import 'core/features/authentication/domain/auth_credential.dart';
+import 'core/features/app_settings/domain/permission_settings.dart';
 import 'core/features/app_settings/data/permission_settings_repo.dart';
+import 'core/features/authentication/domain/auth_biometric_setting.dart';
+import 'core/features/authentication/data/auth_biometric_setting_repo.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,11 +74,13 @@ Future<void> initHive() async {
   Hive.registerAdapter(AppSettingsAdapter());
   Hive.registerAdapter(AuthCredentialAdapter());
   Hive.registerAdapter(PermissionSettingsAdapter());
+  Hive.registerAdapter(AuthBiometricSettingAdapter());
 
   await Future.wait([
     PermissionSettingsRepo.prepare(),
     AppSettingsRepo.prepare(),
     AuthRepo.prepare(),
+    AuthBiometricSettingRepo.prepare()
   ]);
 }
 
