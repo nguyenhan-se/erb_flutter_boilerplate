@@ -30,7 +30,7 @@ Future<PageRouteInfo> splashTarget(SplashTargetRef ref) async {
       await ref.watch(networkInfoProvider).hasInternetConnection;
 
   if (hasInternetConnection) {
-    return const TabControllerRoute();
+    return const AppControllerRoute();
   } else {
     return const NoInternetRoute();
   }

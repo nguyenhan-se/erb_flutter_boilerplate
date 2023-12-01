@@ -23,8 +23,8 @@ enum TabMenu {
 }
 
 @RoutePage()
-class TabControllerScreen extends HookConsumerWidget {
-  const TabControllerScreen({super.key});
+class AppControllerScreen extends HookConsumerWidget {
+  const AppControllerScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AutoTabsRouter(

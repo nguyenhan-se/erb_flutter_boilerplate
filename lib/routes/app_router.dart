@@ -46,7 +46,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: TalkerRoute.page, path: '/log-talker'),
         AutoRoute(page: NoInternetRoute.page, path: '/no-internet'),
         CustomRoute(
-          page: TabControllerRoute.page,
+          page: AppControllerRoute.page,
           path: '/app',
           children: [
             AutoRoute(
