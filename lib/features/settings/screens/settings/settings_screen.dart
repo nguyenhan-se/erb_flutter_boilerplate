@@ -1,4 +1,3 @@
-import 'package:erb_flutter_boilerplate/features/settings/screens/settings/section_dev_setting.dart';
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -8,6 +7,7 @@ import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 import 'package:erb_flutter_boilerplate/core/features/app_settings/application/application.dart';
 
+import 'section_dev_setting.dart';
 import 'widgets/setting_notification_tile.dart';
 import 'widgets/setting_signout_tile.dart';
 
