@@ -45,7 +45,7 @@ class AsyncButton extends HookWidget {
               strokeWidth: 1.5,
             ),
           ),
-        _ => const SizedBox.shrink(),
+        _ => null,
       },
       label: label,
     );

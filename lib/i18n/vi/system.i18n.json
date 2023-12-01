@@ -3,6 +3,7 @@
   "languageAlias": "VN",
   "goToHome": "Đến màn trang chủ",
   "openAppSetting": "Mở cài đặt",
+  "hasInternetConnection": "Có kết nối internet.",
   "requestPermission": "Yêu cầu cấp quyền",
   "requestPermissionMsg": {
     "notification": "Cấp quyền để bạn có thể nhận thông báo."

@@ -3,6 +3,7 @@
   "languageAlias": "EN",
   "goToHome": "Go to home",
   "openAppSetting": "Open app setting",
+  "hasInternetConnection": "Has internet connection.",
   "requestPermission": "Request permission",
   "requestPermissionMsg": {
     "notification": "Grant permissions so you can receive notifications."

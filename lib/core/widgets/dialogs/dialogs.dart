@@ -53,13 +53,15 @@ abstract class Dialogs {
 
   static Future<T?> showAlertDialog<T extends Object?>(
     BuildContext context, {
+    required String message,
     String? title,
-    String? labelButton,
+    String? positiveText,
     VoidCallback? onPressed,
     DialogType? dialogType,
-    required String message,
+    bool? barrierDismissible,
   }) async {
     return showERbAlertDialog(
+      barrierDismissible: barrierDismissible ?? true,
       context: context,
       title: AlertTitle(
         title: title ?? '',
@@ -82,7 +84,7 @@ abstract class Dialogs {
               final t = useI18n();
 
               return ERbElevatedButton(
-                label: labelButton ?? t.common.ok,
+                label: positiveText ?? t.common.ok,
                 onPressed: () {
                   AutoRouter.of(context).pop();
                   onPressed?.call();

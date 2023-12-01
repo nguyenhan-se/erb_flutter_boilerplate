@@ -44,6 +44,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SignInRoute.page, path: '/sign-in'),
         AutoRoute(page: SignUpRoute.page, path: '/sign-up'),
         AutoRoute(page: TalkerRoute.page, path: '/log-talker'),
+        AutoRoute(page: NoInternetRoute.page, path: '/no-internet'),
         CustomRoute(
           page: TabControllerRoute.page,
           path: '/app',

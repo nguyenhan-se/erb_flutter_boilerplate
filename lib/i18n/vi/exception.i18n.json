@@ -1,14 +1,16 @@
 {
   "ops_error": "Có lỗi",
+  "screenNotFound": "Oops! Screen not found!",
+  "unknownException": "Lỗi không xác định xảy ra",
   "remote": {
-    "no_internet_exception": "Mạng bất thường",
-    "cancellation_exception": "Yêu cầu của bạn bị huỷ bỏ",
-    "token_expired": "Người dùng không có quyền (lỗi token, tên người dùng, mật khẩu)!",
-    "bad_certificate": "Fail https requests for older devices.",
+    "noInternetException": "Mạng bất thường",
+    "cancellationException": "Yêu cầu của bạn bị huỷ bỏ",
+    "tokenExpired": "Người dùng không có quyền (lỗi token, tên người dùng, mật khẩu)!",
+    "badCertificate": "Fail https requests for older devices.",
     "timeout": "Yêu cầu mạng đã hết thời gian chờ!"
   },
-  "unknown_exception": "Lỗi không xác định xảy ra",
-  "screen_not_found": "Oops! Screen not found!",
-  "location_permission_not_granted": "Locations permission not granted",
-  "location_service_disable": "The location service on the device is disable"
+  "internet": {
+    "noInternetConnection": "Không có kết nối Internet",
+    "pleaseCheckYourDeviceNetwork": "Vui lòng kiểm tra kết nối mạng của thiết bị của bạn."
+  }
 }

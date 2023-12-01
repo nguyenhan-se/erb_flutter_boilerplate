@@ -1,14 +1,16 @@
 {
   "ops_error": "Error",
+  "screenNotFound": "Oops! Screen not found!",
+  "unknownException": "An unknown error occurred",
   "remote": {
-    "no_internet_exception": "Abnormal network",
-    "cancellation_exception": "Your request has been cancelled",
-    "token_expired": "User has no permissions (token error, username, password)!",
-    "bad_certificate": "Fail https requests for older devices.",
+    "noInternetException": "Abnormal network",
+    "cancellationException": "Your request has been cancelled",
+    "tokenExpired": "User has no permissions (token error, username, password)!",
+    "badCertificate": "Fail https requests for older devices.",
     "timeout": "The network request timed out!"
   },
-  "unknown_exception": "An unknown error occurred",
-  "screen_not_found": "Oops! Screen not found!",
-  "location_permission_not_granted": "Locations permission not granted",
-  "location_service_disable": "The location service on the device is disable"
+  "internet": {
+    "noInternetConnection": "No internet connection",
+    "pleaseCheckYourDeviceNetwork": "Please check your device\"s network connection."
+  }
 }

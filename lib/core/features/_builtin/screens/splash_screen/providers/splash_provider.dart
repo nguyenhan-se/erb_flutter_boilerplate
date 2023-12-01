@@ -3,6 +3,7 @@ import 'package:erb_shared/extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
+import 'package:erb_flutter_boilerplate/core/infrastructure/network/network_info.dart';
 import 'package:erb_flutter_boilerplate/core/features/authentication/application/application.dart';
 
 part 'splash_provider.g.dart';
@@ -25,15 +26,12 @@ Future<void> splashServicesWarmup(SplashServicesWarmupRef ref) async {
 
 @riverpod
 Future<PageRouteInfo> splashTarget(SplashTargetRef ref) async {
-  // hasInternetConnection only support mobile
+  final hasInternetConnection =
+      await ref.watch(networkInfoProvider).hasInternetConnection;
 
-  // final hasConnection =
-  //     await ref.watch(networkServiceProvider).hasInternetConnection;
-  // if (hasConnection) {
-  //   return const SignInRoute().location;
-  // } else {
-  //   return const NoInternetRoute().location;
-  // }
-
-  return const TabControllerRoute();
+  if (hasInternetConnection) {
+    return const TabControllerRoute();
+  } else {
+    return const NoInternetRoute();
+  }
 }
