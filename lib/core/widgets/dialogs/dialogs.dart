@@ -7,9 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
-import 'package:erb_flutter_boilerplate/core/infrastructure/permission/permission_base.dart';
 
-//
 import 'alert_title.dart';
 
 export 'alert_title.dart' show DialogType;
@@ -126,11 +124,11 @@ abstract class Dialogs {
     );
   }
 
-  static Future<T?> showAlertAppSettingDialog<T extends Object?>(
+  static Future<T?> showRequestPermissionDialog<T extends Object?>(
     BuildContext context, {
     String? title,
     required String reason,
-    VoidCallback? onGoAppSetting,
+    Function(BuildContext context)? onPositiveClick,
   }) async {
     return showERbAlertDialog(
       context: context,
@@ -163,10 +161,8 @@ abstract class Dialogs {
           ),
           ERbElevatedButton(
             enableGradient: true,
-            onPressed: () async {
-              unawaited(PermissionBase.openAppSettings());
-              AutoRouter.of(context).pop();
-              onGoAppSetting?.call();
+            onPressed: () {
+              onPositiveClick?.call(context);
             },
             child: HookConsumer(
               builder: (context, ref, child) {

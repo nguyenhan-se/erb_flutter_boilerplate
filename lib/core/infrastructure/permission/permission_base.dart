@@ -46,7 +46,13 @@ abstract class PermissionBase {
   }
 
   /// Opens the App Setting or App Info Page provided by Operating System.
-  static Future<void> openAppSettings() async {
-    await AppSettings.openAppSettings(asAnotherTask: true);
+  static Future<void> openAppSettings({
+    AppSettingsType? type,
+    bool? asAnotherTask,
+  }) async {
+    await AppSettings.openAppSettings(
+      type: type ?? AppSettingsType.settings,
+      asAnotherTask: asAnotherTask ?? true,
+    );
   }
 }

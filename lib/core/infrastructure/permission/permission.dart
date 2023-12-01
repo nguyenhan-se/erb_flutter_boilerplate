@@ -2,6 +2,8 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'permission_base.dart';
 
+export 'permission_base.dart';
+export 'package:app_settings/app_settings.dart' show AppSettingsType;
 export 'package:permission_handler/permission_handler.dart'
     show PermissionStatus;
 
