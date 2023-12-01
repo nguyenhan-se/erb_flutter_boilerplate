@@ -126,8 +126,9 @@ abstract class Dialogs {
 
   static Future<T?> showRequestPermissionDialog<T extends Object?>(
     BuildContext context, {
-    String? title,
     required String reason,
+    String? title,
+    String? positiveText,
     Function(BuildContext context)? onPositiveClick,
   }) async {
     return showERbAlertDialog(
@@ -168,7 +169,7 @@ abstract class Dialogs {
               builder: (context, ref, child) {
                 final t = useI18n();
 
-                return Text(t.system.openAppSetting);
+                return Text(positiveText ?? t.system.openAppSetting);
               },
             ),
           ),

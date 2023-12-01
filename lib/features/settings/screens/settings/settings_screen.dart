@@ -1,3 +1,4 @@
+import 'package:erb_flutter_boilerplate/features/settings/screens/settings/section_dev_setting.dart';
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -66,18 +67,7 @@ class SettingScreen extends HookConsumerWidget {
               SettingSignOutTile(),
             ],
           ),
-          ERbSettingsSection(
-            title: const Text('DEV'),
-            tiles: <ERbSettingsTile>[
-              ERbSettingsTile(
-                leading: const Icon(Icons.manage_history_rounded),
-                title: const Text('View Log'),
-                onPressed: (context) {
-                  AutoRouter.of(context).push(const TalkerRoute());
-                },
-              ),
-            ],
-          ),
+          const SectionDevSetting()
         ],
       ),
     );
