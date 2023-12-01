@@ -40,18 +40,21 @@ Future<T?> showERbAlertDialog<T extends Object?>({
         canPop: barrierDismissible,
         child: ERbOverflowTransformBox(
           transform: (constraints) =>
-              ConstraintsTransformBox.widthUnconstrained(constraints),
-          child: AlertDialog(
-            title: title,
-            titlePadding: titlePadding,
-            content: content != null ? content(context) : null,
-            contentPadding: reformedContentPadding,
-            actions: eRbDialogData.actions?.call(context),
-            actionsPadding: reformedActionsPadding,
-            actionsAlignment: MainAxisAlignment.spaceAround,
-            insetPadding: eRbDialogData.insetPadding,
-            shape: eRbDialogData.shape,
-            backgroundColor: eRbDialogData.backgroundColor,
+              ConstraintsTransformBox.unmodified(constraints),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AlertDialog(
+              title: title,
+              titlePadding: titlePadding,
+              content: content != null ? content(context) : null,
+              contentPadding: reformedContentPadding,
+              actions: eRbDialogData.actions?.call(context),
+              actionsPadding: reformedActionsPadding,
+              actionsAlignment: MainAxisAlignment.spaceAround,
+              insetPadding: eRbDialogData.insetPadding,
+              shape: eRbDialogData.shape,
+              backgroundColor: eRbDialogData.backgroundColor,
+            ),
           ),
         ),
       ),

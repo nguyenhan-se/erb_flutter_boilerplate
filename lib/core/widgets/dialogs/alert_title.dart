@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:erb_shared/extensions.dart';
 import 'package:app_constants/app_constants.dart';
 
-enum DialogType { success, error }
+enum DialogType { success, error, warning, info }
+
+const double iconSize = 68;
 
 class AlertTitle extends StatelessWidget {
   const AlertTitle({
@@ -21,6 +23,10 @@ class AlertTitle extends StatelessWidget {
     switch (dialogType) {
       case DialogType.success:
         return theme.colorScheme.tertiary;
+      case DialogType.warning:
+        return theme.colorScheme.secondary;
+      case DialogType.info:
+        return theme.colorScheme.primary;
       default:
         return theme.colorScheme.error;
     }
@@ -30,6 +36,10 @@ class AlertTitle extends StatelessWidget {
     switch (dialogType) {
       case DialogType.success:
         return theme.colorScheme.tertiary;
+      case DialogType.warning:
+        return theme.colorScheme.secondary;
+      case DialogType.info:
+        return theme.colorScheme.primary;
       default:
         return theme.colorScheme.error;
     }
@@ -39,20 +49,32 @@ class AlertTitle extends StatelessWidget {
     switch (dialogType) {
       case DialogType.success:
         return AppAssets.icons.dialogSuccess.svg(
-          height: 68,
-          width: 68,
+          height: iconSize,
+          width: iconSize,
           fit: BoxFit.contain,
         );
       case DialogType.error:
         return AppAssets.icons.dialogError.svg(
-          height: 68,
-          width: 68,
+          height: iconSize,
+          width: iconSize,
+          fit: BoxFit.contain,
+        );
+      case DialogType.warning:
+        return AppAssets.icons.dialogWarning.svg(
+          height: iconSize,
+          width: iconSize,
+          fit: BoxFit.contain,
+        );
+      case DialogType.info:
+        return AppAssets.icons.dialogInfo.svg(
+          height: iconSize,
+          width: iconSize,
           fit: BoxFit.contain,
         );
       default:
         return AppAssets.images.loading.image(
-          height: 68,
-          width: 68,
+          height: iconSize,
+          width: iconSize,
           fit: BoxFit.contain,
         );
     }
@@ -76,7 +98,7 @@ class AlertTitle extends StatelessWidget {
                         topRight: KRadius.r8.radius,
                       ),
                     ),
-                    height: 68,
+                    height: iconSize,
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.min,

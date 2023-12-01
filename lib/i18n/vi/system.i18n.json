@@ -6,6 +6,7 @@
   "hasInternetConnection": "Có kết nối internet.",
   "requestPermission": "Yêu cầu cấp quyền",
   "requestPermissionMsg": {
-    "notification": "Cấp quyền để bạn có thể nhận thông báo."
+    "notification": "Cấp quyền để bạn có thể nhận thông báo.",
+    "biometric": "Cấp quyền để bạn có thể đăng nhập với sinh trắc học."
   }
 }

@@ -6,6 +6,7 @@
   "hasInternetConnection": "Has internet connection.",
   "requestPermission": "Request permission",
   "requestPermissionMsg": {
-    "notification": "Grant permissions so you can receive notifications."
+    "notification": "Grant permissions so you can receive notifications.",
+    "biometric": "Grant permissions so you can auth with biometric."
   }
 }

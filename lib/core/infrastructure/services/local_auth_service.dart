@@ -23,11 +23,18 @@ class LocalAuthenticationService {
 
   static bool get isPlatformSupported => isAndroid || isIOS || isWindows;
 
+  static Future<bool> get isDeviceSupported async {
+    if (!isPlatformSupported) return false;
+    return await _auth.isDeviceSupported();
+  }
+
   static Future<bool> get isAvail async {
     if (!isPlatformSupported) return false;
+
     if (!await _auth.canCheckBiometrics) {
       return false;
     }
+
     final biometrics = await _auth.getAvailableBiometrics();
 
     /// [biometrics] on Android and Windows is returned with error
@@ -53,9 +60,9 @@ class LocalAuthenticationService {
   }
 
   static Future<bool> authenticate([String? localizedReason]) async {
-    if (!await isAvail) return false;
+    if (!await isDeviceSupported) return false;
     try {
-      return _auth.authenticate(
+      final isAuth = await _auth.authenticate(
         localizedReason: localizedReason ?? 'Auth required',
         options: const AuthenticationOptions(
           useErrorDialogs: true,
@@ -63,6 +70,7 @@ class LocalAuthenticationService {
           biometricOnly: true,
         ),
       );
+      return isAuth;
     } on PlatformException catch (error) {
       if (error.code == localAuthErrorCode.lockedOut ||
           error.code == localAuthErrorCode.permanentlyLockedOut) {
@@ -70,6 +78,7 @@ class LocalAuthenticationService {
             kind: LocalServiceExceptionKind.biometric,
             message: error.message ?? 'Unknown error');
       }
+
       await _auth.stopAuthentication();
       return false;
     }

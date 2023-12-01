@@ -18,7 +18,8 @@ class AuthBiometricService extends _$AuthBiometricService {
         _authBiometricSetingRepo.getBiometricSettings() ??
             AuthBiometricSetting.empty();
 
-    final isBiometricSupported = await LocalAuthenticationService.isAvail;
+    final isBiometricSupported =
+        await LocalAuthenticationService.isDeviceSupported;
 
     return authBiometricSetting.copyWith(
       isBiometricSupported: isBiometricSupported,

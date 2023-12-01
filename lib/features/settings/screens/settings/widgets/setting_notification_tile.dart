@@ -37,7 +37,7 @@ class SettingNotificationTile extends ERbSettingsTile {
             Dialogs.showAlertDialog(
               context,
               message: t.featureSettings.notification.turnOffMsg,
-              dialogType: DialogType.success,
+              dialogType: DialogType.warning,
               onPressed: () {
                 ref
                     .read(permissionSettingsServiceProvider.notifier)
