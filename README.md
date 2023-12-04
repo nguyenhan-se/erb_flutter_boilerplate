@@ -1,19 +1,17 @@
-# riverpod_rnd
+# Erb flutter
 
-A new Flutter project.
+A Flutter template.
 
 ### Requirements
 
-- Dart: 3.1.0
-- Flutter SDK: 3.13.0
+- Dart: 3.2.0
+- Flutter SDK: 3.16.0
 
 ## Template: Getting Started
 
 1. Setup:
-   1. Install [puro](https://puro.dev) Flutter Environment Manager
-   1. Install Flutter using Puro
    1. Install [Melos](https://pub.dev/packages/melos) globally
-1. Run `melos bootstrap` to install dependencies for all packages and generate env files.
+1. Run `melos bootstrap` to install dependencies and `melos run generate` to generate for all packages.
 1. Rename App: [Change App/Package Name](#change-apppackage-name)
 1. Update Description: [pubspec.yaml](pubspec.yaml) and [README.md](README.md).
 1. Add Environment Variables: [ENVied Environment Variables](#envied-environment-variables) section for details.
@@ -21,10 +19,7 @@ A new Flutter project.
 1. [Change Splash Screen: flutter_native_splash](https://pub.dev/packages/flutter_native_splash)
 1. Setup the release build configuration, see the [Building](#building) section.
 1. Setup Codecov for the repository, see the [Codecov documentation](https://docs.codecov.com/docs/quick-start).
-1. Setup GitPod for the environment, see the [GitPod documentation](https://www.gitpod.io/docs/quickstart/flutter#flutter-quickstart).
-1. (**Important!**) Update the [LICENSE](./LICENSE.md) file. I give permission to relicense any
 code provided in this template, but the licenses of the packages must still be followed.
-1. Delete this `Template: Getting Started` section from the README.
 
 ### Change App/Package Name
 
@@ -62,7 +57,7 @@ to change the flavor. The following flavors are supported:
 ## Architecture
 
 This project uses the [Riverpod App Architecture](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/)
-in a feature-first manner where each feature is a separate package in the [lib/src/features/](./lib/src/features/) folder.
+in a feature-first manner where each feature is a separate package in the [lib/features/](./lib/features/) folder.
 Each feature has its own layers, which separate the business logic from the UI.
 
 ### Data Layer (Repositories)
@@ -115,9 +110,9 @@ defined for debug, profile, and release modes.
    - Each key must be added to each `.env*` file, unless a non null default value is added
      to the `@EnviedField` annotation.
    - It is recommended to use an empty string for the default and use `Env`'s getter to access the value.
-1. Update [src/env/app_env_fields.dart](packages/env/lib/src/env/app_env_fields.dart)
-with the new environment variables for `AppEnvFieldsGenerated` and `AppEnvFieldsNullable`.
-1. Add the new environment variables to the implementing `*Env` classes in the [src/env](packages/env/src/env/) directory.
+1. Update [packages/env/lib/src/env/env_fields.dart](packages/env/lib/src/env/env_fields.dart)
+with the new environment variables.
+1. Add the new environment variables to the implementing `*Env` classes in the [src/env](packages/env/lib/src/env/impl/) directory.
    - It must be done for *all* even if only one `.env` file is planned to be used
 1. Enable `obfuscate` for API keys in the `@EnviedField` annotation. (Note: still assume it is not secure)
 1. Optionally, add a `defaultValue` to the `@EnviedField` annotation for keys which are
@@ -145,21 +140,17 @@ Pub:
 - `melos run pub` - Run `pub get` in all packages.
 - `melos run dart:pkg` - Run `dart pub get` in the selected dart package.
 - `melos run flutter:pkg` - Run `flutter pub get` in the selected flutter package.
-- `melos run upgrade` - Run `pub upgrade` in all packages.
-- `melos run upgrade:pkg` - Run `pub upgrade` in the selected package.
+- `melos run pub-outdated` - Run `pub outdated` in all packages.
+- `melos run pub-upgrade` - Run `pub upgrade` in the package.
 
 Code Generation:
 
 - `dart run build_runner watch -d` - Watch and generate code for the app, does not work with subpackages
-- `melos run generate` - Run `build_runner build` in all packages that depend on `build_runner`.
-- `melos run generate:pkg` - Run `build_runner build` for a specific package (except `envied` packages).
-- `melos run watch:pkg` - Run `build_runner watch` for a specific package (except `envied` packages). It will not work if you choose "all" in the package selection prompt.
-- `melos run assets` - Run `assets_gen build` in all packages that depend on `assets_gen`.
-- `melos run assets:pkg` - Run `assets_gen build` for a specific package.
-- `melos run env` - Run `build_runner` in all packages that depends on `envied`.
-- `melos run env:pkg` - Run `build_runner` in a specific package that depends on `envied`.
-- `melos run loc` - Run `flutter gen-l10n` in the localization package to generate
-  the localized strings from the arb files.
+- `melos run generate` - Run `build_runner build` generate in all packages that depend on `build_runner` and i18n.
+- `melos run generate:pkg` - Run `build_runner build` in all packages that depend on `build_runner`.
+- `melos run generate:i18n` - Run `build_runner build` generate i18n.
+- `melos run watch:pkg` - Run `build_runner watch` for a specific package. It will not work if you choose "all" in the package selection prompt.
+- `melos run watch:i18n` - Run `build_runner watch` for i18n.
 
 ### Protip
 
@@ -185,30 +176,4 @@ dart run slang analyze --outdir=i18n
 dart run slang apply --outdir=i18n
 
 dart run slang analyze --outdir=i18n # update analyzation result files
-```
-
-# Building from Source
-
-- Sync dependencies
-
-```bash
-flutter pub get
-```
-
-- Run code generator
-
-```bash
-dart run build_runner build --delete-conflicting-outputs
-```
-
-- Generate translation
-
-```bash
-dart run slang
-```
-
-- Run the app with your favorite IDE/PDE. or from shell:
-
-```bash
-flutter run
 ```
