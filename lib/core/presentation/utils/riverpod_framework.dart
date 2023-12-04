@@ -6,3 +6,4 @@ export 'package:riverpod_annotation/riverpod_annotation.dart';
 export 'riverpod_framework/extensions/extensions.dart';
 export 'riverpod_framework/hooks/hooks.dart';
 export 'riverpod_framework/widgets/widgets.dart';
+export 'riverpod_framework/mixins/mixins.dart';

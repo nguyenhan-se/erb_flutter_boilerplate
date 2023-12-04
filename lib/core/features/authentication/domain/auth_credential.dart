@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 part 'auth_credential.mapper.dart';
 part 'auth_credential.g.dart';
 
-// @freezed
 @MappableClass()
 @HiveType(typeId: 2)
 class AuthCredential with AuthCredentialMappable {

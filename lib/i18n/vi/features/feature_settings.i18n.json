@@ -11,6 +11,7 @@
     "signout": "Đăng xuất"
   },
   "auth": {
-    "auth_biometric": "Cài đặt đăng nhập nhanh"
+    "auth_biometric": "Cài đặt đăng nhập nhanh",
+    "turnOffMsg": "Bạn có chắc chắn muốn tắt đăng nhập nhanh không?"
   }
 }

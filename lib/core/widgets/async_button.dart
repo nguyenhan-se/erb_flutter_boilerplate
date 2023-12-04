@@ -10,9 +10,11 @@ class AsyncButton extends HookWidget {
     super.key,
     required this.onPressed,
     required this.label,
+    this.enabled = true,
   });
   final AsyncCallback onPressed;
   final String label;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,12 @@ class AsyncButton extends HookWidget {
     }
 
     return ERbElevatedButton(
-      onPressed: switch (snapshot) {
-        AsyncSnapshot(connectionState: ConnectionState.waiting) => null,
-        _ => pressButton,
-      },
+      onPressed: enabled
+          ? switch (snapshot) {
+              AsyncSnapshot(connectionState: ConnectionState.waiting) => null,
+              _ => pressButton,
+            }
+          : null,
       enableGradient: true,
       position: ERbPosition.end,
       icon: switch (snapshot) {

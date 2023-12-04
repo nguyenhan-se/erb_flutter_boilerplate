@@ -1,6 +1,7 @@
 import '_interface/base/app_exception.dart';
 import '_interface/remote/remote_exception.dart';
 import '_interface/local_service/local_service_exception.dart';
+import '_interface/storage/storage_exception.dart';
 
 import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 
@@ -33,6 +34,12 @@ class AppExceptionMessage {
             (appException as LocalServiceException).kind) {
           LocalServiceExceptionKind.biometric => appException.message,
           LocalServiceExceptionKind.unknown => t.exception.unknownException,
+        },
+      AppExceptionType.storage => switch (
+            (appException as StorageException).kind) {
+          StorageExceptionKind.general => appException.message,
+          StorageExceptionKind.notFound => 'Cache not Found',
+          StorageExceptionKind.unknown => t.exception.unknownException,
         },
     };
   }

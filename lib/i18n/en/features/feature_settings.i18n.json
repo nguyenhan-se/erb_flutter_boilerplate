@@ -11,6 +11,7 @@
     "signout": "Sign out"
   },
   "auth": {
-    "auth_biometric": "Quick Authentication"
+    "auth_biometric": "Quick Authentication",
+    "turnOffMsg": "Are you sure? You want to turn off quick authentication?"
   }
 }

@@ -16,70 +16,74 @@ class SettingBiometricTile extends ERbSettingsTile {
 
   @override
   Widget build(BuildContext context) {
-    return HookConsumer(builder: (context, ref, child) {
-      final t = useI18n();
-      final (goAppSetting: goAppSetting) = useGoAppSetting(
-        onComeBack: () async {
-          final isValid = await LocalAuthenticationService.isAvail;
-          ref
-              .read(authBiometricServiceProvider.notifier)
-              .toggleBiometricEnabled(isValid);
-        },
-      );
-      final authBiometricSetting = ref.watch(authBiometricServiceProvider);
-
-      final isBiometricEnabled = useMemoized(() {
-        final authSetting = authBiometricSetting.valueOrNull;
-        if (authSetting.isNull) return false;
-        return authSetting!.isBiometricEnabled;
-      }, [authBiometricSetting]);
-
-      final isBiometricSupported = useMemoized(() {
-        final authSetting = authBiometricSetting.valueOrNull;
-        if (authSetting.isNull) return false;
-
-        return authSetting!.isBiometricSupported;
-      }, [authBiometricSetting]);
-
-      return ERbSettingsTile.switchTile(
-        leading: const Icon(Icons.lock),
-        title: Text(t.featureSettings.auth.authBiometric),
-        initialValue: isBiometricEnabled,
-        enabled: isBiometricSupported,
-        onToggle: (bool enabled) async {
-          if (!enabled) {
-            Dialogs.showAlertDialog(
-              context,
-              message: t.featureSettings.notification.turnOffMsg,
-              dialogType: DialogType.warning,
-              onPressed: () {
+    return LocalAuthenticationService.isPlatformSupported
+        ? HookConsumer(builder: (context, ref, child) {
+            final t = useI18n();
+            final (goAppSetting: goAppSetting) = useGoAppSetting(
+              onComeBack: () async {
+                final isValid = await LocalAuthenticationService.isAvail;
                 ref
                     .read(authBiometricServiceProvider.notifier)
-                    .toggleBiometricEnabled();
+                    .toggleBiometricEnabled(isValid);
               },
             );
-          } else {
-            final isAvail = await LocalAuthenticationService.isAvail;
-            if (context.mounted && !isAvail) {
-              Dialogs.showRequestPermissionDialog(
-                context,
-                reason: t.system.requestPermissionMsg.biometric,
-                onPositiveClick: (context) {
-                  goAppSetting();
-                  AutoRouter.of(context).pop();
-                },
-              );
-            } else {
-              final isAuth = await LocalAuthenticationService.authenticate();
-              if (isAuth) {
-                ref
-                    .read(authBiometricServiceProvider.notifier)
-                    .toggleBiometricEnabled();
-              }
-            }
-          }
-        },
-      );
-    });
+            final authBiometricSetting =
+                ref.watch(authBiometricServiceProvider);
+
+            final isBiometricEnabled = useMemoized(() {
+              final authSetting = authBiometricSetting.valueOrNull;
+              if (authSetting.isNull) return false;
+              return authSetting!.isBiometricEnabled;
+            }, [authBiometricSetting]);
+
+            final isBiometricSupported = useMemoized(() {
+              final authSetting = authBiometricSetting.valueOrNull;
+              if (authSetting.isNull) return false;
+
+              return authSetting!.isBiometricSupported;
+            }, [authBiometricSetting]);
+
+            return ERbSettingsTile.switchTile(
+              leading: const Icon(Icons.lock),
+              title: Text(t.featureSettings.auth.authBiometric),
+              initialValue: isBiometricEnabled,
+              enabled: isBiometricSupported,
+              onToggle: (bool enabled) async {
+                if (!enabled) {
+                  Dialogs.showAlertDialog(
+                    context,
+                    message: t.featureSettings.auth.turnOffMsg,
+                    dialogType: DialogType.warning,
+                    onPressed: () {
+                      ref
+                          .read(authBiometricServiceProvider.notifier)
+                          .toggleBiometricEnabled();
+                    },
+                  );
+                } else {
+                  final isAvail = await LocalAuthenticationService.isAvail;
+                  if (context.mounted && !isAvail) {
+                    Dialogs.showRequestPermissionDialog(
+                      context,
+                      reason: t.system.requestPermissionMsg.biometric,
+                      onPositiveClick: (context) {
+                        goAppSetting();
+                        AutoRouter.of(context).pop();
+                      },
+                    );
+                  } else {
+                    final isAuth =
+                        await LocalAuthenticationService.authenticate();
+                    if (isAuth) {
+                      ref
+                          .read(authBiometricServiceProvider.notifier)
+                          .toggleBiometricEnabled();
+                    }
+                  }
+                }
+              },
+            );
+          })
+        : const SizedBox.shrink();
   }
 }
