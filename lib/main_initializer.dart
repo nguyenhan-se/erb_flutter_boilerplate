@@ -1,4 +1,8 @@
+import 'dart:developer' as dev;
+
 import 'package:env/env.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -34,11 +38,12 @@ Future<ProviderContainer> mainInitializer() async {
     ),
   );
 
-  registerErrorHandlers(talker);
+  _registerErrorHandlers(talker);
   AppFlavor.initConfig();
-  LocaleSettings.useDeviceLocale();
 
-  await initHive();
+  LocaleSettings.useDeviceLocale();
+  await _initHive();
+  await _initFirebase();
 
   // Config for OS
   // if (!kIsWeb &&
@@ -68,7 +73,7 @@ Future<ProviderContainer> mainInitializer() async {
   return container;
 }
 
-Future<void> initHive() async {
+Future<void> _initHive() async {
   await Hive.initFlutter();
 
   Hive.registerAdapter(AppSettingsAdapter());
@@ -84,8 +89,29 @@ Future<void> initHive() async {
   ]);
 }
 
+Future<void> _initFirebase() async {
+  await Firebase.initializeApp(
+    options: FirebaseFlavor.getFirebaseOptions,
+  );
+  // Set the background messaging handler early on, as a named top-level function
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+}
+
+//This provided handler must be a top-level function.
+//It works outside the scope of the app in its own isolate.
+//More details: https://firebase.google.com/docs/cloud-messaging/flutter/receive#background_messages
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  /*await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );*/
+  dev.log('Handling a background message ${message.messageId}');
+}
+
 /// Source: Flutter Foundations course by CodeWithAndrea
-void registerErrorHandlers(Talker talker) {
+void _registerErrorHandlers(Talker talker) {
   // * Show some error UI if any uncaught exception happens
   FlutterError.onError = (FlutterErrorDetails details) {
     talker.handle(details.exception, details.stack, 'Uncaught fatal exception');

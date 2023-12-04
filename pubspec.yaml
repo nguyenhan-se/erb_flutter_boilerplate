@@ -51,6 +51,7 @@ dependencies:
   flutter_cache_manager: ^3.3.1
   flutter_screenutil: ^5.9.0
   flutter_secure_storage: ^9.0.0
+  flutter_local_notifications: ^16.1.0
 
   # Device Identification
   device_info_plus: ^9.1.1
@@ -59,6 +60,10 @@ dependencies:
 
   # flutter widgets
   cached_network_image: ^3.3.0
+
+  # Firebase service
+  firebase_core: ^2.24.0
+  firebase_messaging: ^14.7.6
 
   # annotations
   riverpod_annotation: ^2.3.3

@@ -1,12 +1,13 @@
 import 'package:envied/envied.dart';
-import 'config/env_fields.dart';
-import 'config/env_flavor.dart';
 
-part 'dev_env.g.dart';
+import '../env_fields.dart';
+import '../env_flavor.dart';
 
-@Envied(name: 'Env', path: '.env.dev', allowOptionalFields: true)
-class DevEnv implements EnvFlavor, EnvFields {
-  const DevEnv();
+part 'env_staging.g.dart';
+
+@Envied(name: 'Env', path: '.env.staging', allowOptionalFields: true)
+class EnvStaging implements EnvFlavor, EnvFields {
+  const EnvStaging();
 
   // Using nullable types or providing a default value for everything allows
   // the app to be build without setting up the .env file. This would be

@@ -11,6 +11,7 @@
 migrate_working_dir/
 # *.env*
 *_env.g.dart
+env_*.g.dart
 
 # main generated file
 lib/**/*.g.dart

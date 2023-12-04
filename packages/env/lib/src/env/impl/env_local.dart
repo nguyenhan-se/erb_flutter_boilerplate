@@ -1,12 +1,13 @@
 import 'package:envied/envied.dart';
-import 'config/env_fields.dart';
-import 'config/env_flavor.dart';
 
-part 'local_env.g.dart';
+import '../env_fields.dart';
+import '../env_flavor.dart';
+
+part 'env_local.g.dart';
 
 @Envied(name: 'Env', path: '.env.local', allowOptionalFields: true)
-class LocalEnv implements EnvFlavor, EnvFields {
-  const LocalEnv();
+class EnvLocal implements EnvFlavor, EnvFields {
+  const EnvLocal();
 
   // Using nullable types or providing a default value for everything allows
   // the app to be build without setting up the .env file. This would be
