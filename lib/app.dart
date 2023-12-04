@@ -9,8 +9,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'i18n/i18n.dart';
 import 'routes/routes.dart';
-import 'core/features/app_settings/application/application.dart';
 import 'core/presentation/providers/talker_log/talker_log.dart';
+import 'core/features/app_settings/application/application.dart';
+import 'core/features/notification/hooks/use_tap_app_notification.dart';
 
 /// The main app widget at the root of the widget tree.
 class App extends HookConsumerWidget {
@@ -39,7 +40,8 @@ class App extends HookConsumerWidget {
     ///    iPhone 12 mini                    => 5.4": 375 x 812 (points)
     ///    iPhone 12, 12 Pro                 => 6.1": 390 x 844 (points)
     ///    iPhone 12 Pro Max                 => 6.7": 428 x 926 (points)
-    final materialApp = ScreenUtilInit(
+    final materialApp = _EagerInitialization(
+      child: ScreenUtilInit(
         designSize: const Size(AppSettings.wdp, AppSettings.hdp),
         fontSizeResolver: (fontSize, instance) =>
             FontSizeResolvers.radius(fontSize, instance),
@@ -72,7 +74,9 @@ class App extends HookConsumerWidget {
             supportedLocales: AppLocaleUtils.supportedLocales,
             localizationsDelegates: GlobalMaterialLocalizations.delegates,
           );
-        });
+        },
+      ),
+    );
 
     final bannerEnabled = appSettings.bannerEnabled;
     if (bannerEnabled) {
@@ -81,5 +85,21 @@ class App extends HookConsumerWidget {
       );
     }
     return materialApp;
+  }
+}
+
+// NOTE: https://riverpod.dev/docs/essentials/eager_initialization
+class _EagerInitialization extends HookConsumerWidget {
+  const _EagerInitialization({required this.child});
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Eagerly initialize providers by watching them.
+    // By using "watch", the provider will stay alive and not be disposed.
+    // ignore: avoid_single_cascade_in_expression_statements
+    useTapAppNotification();
+
+    return child;
   }
 }

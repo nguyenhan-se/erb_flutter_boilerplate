@@ -1,7 +1,7 @@
 import 'package:assets/assets.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:erb_flutter_boilerplate/routes/routes.dart';
 
 import 'providers/splash_provider.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
@@ -19,7 +19,7 @@ class SplashScreen extends HookConsumerWidget {
           late PageRouteInfo nextRoute;
           newState.whenOrNull(
             data: (next) => nextRoute = next,
-            // error: (e, st) => nextRoute = const NoInternetRoute().location,
+            error: (e, st) => nextRoute = const NoInternetRoute(),
           );
           AutoRouter.of(context).replace(nextRoute);
         },
