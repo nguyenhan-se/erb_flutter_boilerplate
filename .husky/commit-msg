@@ -11,7 +11,7 @@ PLATFORM='.{1,20}'
 PATTERN="^($TYPE)\(($PLATFORM)\): "
 
 if ! [[ "$START_LINE" =~ $PATTERN ]]; then
-  echo "Bad commit message, see example: <type>(<optional scope 1-> 20 character>): <description>"
+  echo "Bad commit message, see example: <type>(<scope 1-> 20 character>): <description>"
   exit 1
 fi
 
