@@ -6,15 +6,11 @@ START_LINE=`head -n1 $INPUT_FILE`
 
 
 TYPE="feat|fix|refactor|perf|style|test|docs|build|ops|chore"
-PLATFORM='.{1,20}'
+SCOPE='.{1,20}'
 
-PATTERN="^($TYPE)\(($PLATFORM)\): "
+PATTERN="^($TYPE)(\(${SCOPE}\))?: "
 
 if ! [[ "$START_LINE" =~ $PATTERN ]]; then
-  echo "Bad commit message, see example: <type>(<scope 1-> 20 character>): <description>"
+  echo "Bad commit message, see example: <type>(<optional scope 1-> 20 character>): <description>"
   exit 1
 fi
-
-
-
-

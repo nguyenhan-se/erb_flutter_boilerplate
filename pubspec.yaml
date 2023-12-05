@@ -104,7 +104,10 @@ dev_dependencies:
   hive_generator: ^2.0.1
   dart_mappable_builder: ^4.0.1
   husky: 0.1.6
+  lint_staged: 0.4.2
 
+lint_staged:
+  "*/**.dart": dart format --fix 
 flutter:
   uses-material-design: true
 
