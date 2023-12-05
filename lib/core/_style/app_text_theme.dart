@@ -1,6 +1,7 @@
 part of 'app_theme.dart';
 
 const kFontFamily = 'Averta';
+const kFontPackageName = 'assets';
 
 class AppTextTheme {
   final Brightness _brightness;
@@ -21,109 +22,77 @@ class AppTextTheme {
         ? Typography.blackMountainView
         : Typography.whiteMountainView;
 
-    textTheme = typography.merge(TextTheme(
+    textTheme = typography.merge(const TextTheme(
       // headline1
-      displayLarge: applyFontFamily(
-        const TextStyle(
-          fontSize: 64,
-          letterSpacing: 1.6,
-          fontWeight: FontWeight.w300,
-        ),
+      displayLarge: TextStyle(
+        fontSize: 64,
+        letterSpacing: 1.6,
+        fontWeight: FontWeight.w300,
       ),
       // headline2
-      displayMedium: applyFontFamily(
-        const TextStyle(
-          fontSize: 48,
-          letterSpacing: 1.3,
-          fontWeight: FontWeight.w300,
-        ),
+      displayMedium: TextStyle(
+        fontSize: 48,
+        letterSpacing: 1.3,
+        fontWeight: FontWeight.w300,
       ),
       // headline3
-      displaySmall: applyFontFamily(
-        const TextStyle(
-          fontSize: 48,
-          letterSpacing: 0,
-        ),
+      displaySmall: TextStyle(
+        fontSize: 48,
+        letterSpacing: 0,
       ),
       // headline4
-      headlineMedium: applyFontFamily(
-        const TextStyle(
-          fontSize: 18,
-          letterSpacing: 1.3,
-          fontWeight: FontWeight.w300,
-        ),
+      headlineMedium: TextStyle(
+        fontSize: 18,
+        letterSpacing: 1.3,
+        fontWeight: FontWeight.w300,
       ),
       // headline5
-      headlineSmall: applyFontFamily(
-        const TextStyle(
-          fontSize: 20,
-          letterSpacing: 1.3,
-          fontWeight: FontWeight.w300,
-        ),
+      headlineSmall: TextStyle(
+        fontSize: 20,
+        letterSpacing: 1.3,
+        fontWeight: FontWeight.w300,
       ),
       // headline6
-      titleLarge: applyFontFamily(
-        const TextStyle(
-          fontSize: 20,
-          letterSpacing: 1.3,
-          fontWeight: FontWeight.w300,
-        ),
+      titleLarge: TextStyle(
+        fontSize: 20,
+        letterSpacing: 1.3,
+        fontWeight: FontWeight.w300,
       ),
       // subtitle1
-      titleMedium: applyFontFamily(
-        const TextStyle(
-          fontSize: 16,
-          letterSpacing: 1,
-          fontWeight: FontWeight.w300,
-        ),
+      titleMedium: TextStyle(
+        fontSize: 16,
+        letterSpacing: 1,
+        fontWeight: FontWeight.w300,
       ),
       // subtitle2
-      titleSmall: applyFontFamily(
-        const TextStyle(
-          height: 1.1,
-          fontSize: 16,
-          fontWeight: FontWeight.w300,
-        ),
+      titleSmall: TextStyle(
+        height: 1.1,
+        fontSize: 16,
+        fontWeight: FontWeight.w300,
       ),
       // bodyText1
-      bodyLarge: applyFontFamily(
-        const TextStyle(
-          fontSize: 14,
-        ),
-      ),
+      bodyMedium: TextStyle(fontSize: 14),
       // bodyText2
-      bodyMedium: applyFontFamily(
-        const TextStyle(
-          fontSize: 16,
-        ),
-      ),
+      bodyLarge: TextStyle(fontSize: 16),
       // button
-      labelLarge: applyFontFamily(
-        const TextStyle(
-          fontSize: 16,
-          letterSpacing: 1.2,
-        ),
+      labelLarge: TextStyle(
+        fontSize: 16,
+        letterSpacing: 1.2,
       ),
       // caption
-      bodySmall: applyFontFamily(
-        const TextStyle(
-          fontSize: 12,
-          letterSpacing: .4,
-        ),
+      bodySmall: TextStyle(
+        fontSize: 12,
+        letterSpacing: .4,
       ),
       // overline
-      labelSmall: applyFontFamily(
-        const TextStyle(
-          fontSize: 10,
-          letterSpacing: 1.5,
-        ),
+      labelSmall: TextStyle(
+        fontSize: 10,
+        letterSpacing: 1.5,
       ),
     ).apply(
       fontSizeDelta: _fontSizeDelta,
+      fontFamily: kFontFamily,
+      package: kFontPackageName,
     ));
   }
-}
-
-TextStyle applyFontFamily(TextStyle textStyle) {
-  return textStyle.copyWith(fontFamily: kFontFamily);
 }
