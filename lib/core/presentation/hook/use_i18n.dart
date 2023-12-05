@@ -7,5 +7,5 @@ import 'package:erb_flutter_boilerplate/i18n/i18n.dart';
 I18n useI18n() {
   final context = useContext();
 
-  return Translations.of(context);
+  return I18n.of(context);
 }

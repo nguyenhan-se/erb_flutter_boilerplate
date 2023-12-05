@@ -8,8 +8,8 @@ class ERbSettingsList extends StatelessWidget {
     this.shrinkWrap = false,
     this.physics,
     this.contentPadding,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool shrinkWrap;
   final List<ERbSettingsSection> sections;
