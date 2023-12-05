@@ -16,4 +16,13 @@ class LogSettings {
   static const enableRiverpodDidDisposeProvider = false;
   static const enableRiverpodDidUpdateProvider = kDebugMode;
   static const enableRiverpodDidFail = kDebugMode;
+
+  /// log auto_route
+  static const defaultEnableAutoRouteLog = kDebugMode;
+  static const enablePrintDidPush = kDebugMode;
+  static const enablePrintDidPop = kDebugMode;
+  static const enablePrintDidReplace = kDebugMode;
+  static const enablePrintDidRemove = false;
+  static const enablePrintDidInitTabRoute = false;
+  static const enablePrintDidChangeTabRoute = kDebugMode;
 }

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:erb_shared/utils.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
@@ -47,12 +45,12 @@ class LocalAuthenticationService {
   static Future<LocalAuthenticationOption> get localAuthenticationOption async {
     final availableBiometrics = await _auth.getAvailableBiometrics();
     if (availableBiometrics.contains(BiometricType.face)) {
-      return Platform.isIOS
+      return isIOS
           ? LocalAuthenticationOption.faceId
           : LocalAuthenticationOption.face;
     }
     if (availableBiometrics.contains(BiometricType.fingerprint)) {
-      return Platform.isIOS
+      return isIOS
           ? LocalAuthenticationOption.touchId
           : LocalAuthenticationOption.fingerprint;
     }
