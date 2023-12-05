@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:app_constants/app_constants.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:talker_flutter/talker_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -66,7 +65,20 @@ class App extends HookConsumerWidget {
               reevaluateListenable:
                   ref.watch(appRouterReevaluateListenableProvider),
               navigatorObservers: () => [
-                TalkerRouteObserver(ref.watch(talkerProvider)),
+                RouterObserver(
+                  talker: ref.watch(talkerProvider),
+                  settings: const TalkerRouterObserverSettings(
+                    enabled: LogSettings.defaultEnableAutoRouteLog,
+                    printDidPush: LogSettings.enablePrintDidPush,
+                    printDidPop: LogSettings.enablePrintDidPop,
+                    printDidReplace: LogSettings.enablePrintDidReplace,
+                    printDidRemove: LogSettings.enablePrintDidRemove,
+                    printDidInitTabRoute:
+                        LogSettings.enablePrintDidInitTabRoute,
+                    printDidChangeTabRoute:
+                        LogSettings.enablePrintDidChangeTabRoute,
+                  ),
+                ),
               ],
             ),
             locale:
