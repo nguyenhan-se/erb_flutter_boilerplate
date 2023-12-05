@@ -17,7 +17,7 @@ command:
       # Generate environment files which should not be committed to the repository.
       # Instead, they are generated during the CI process before checking
       # if the rest of the package's code generation is up to date.
-      # post:
+      post: dart run husky install
 
 # See https://github.com/firebase/flutterfire/blob/master/melos.yaml for more examples
 scripts:
