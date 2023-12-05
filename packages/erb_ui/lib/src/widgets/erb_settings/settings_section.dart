@@ -7,8 +7,8 @@ class ERbSettingsSection extends StatelessWidget {
     required this.tiles,
     this.margin,
     this.title,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final List<ERbSettingsTile> tiles;
   final EdgeInsetsDirectional? margin;

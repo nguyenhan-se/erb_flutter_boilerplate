@@ -12,8 +12,8 @@ class ERbSettingsTile extends StatelessWidget {
     this.description,
     this.onPressed,
     this.enabled = true,
-    Key? key,
-  }) : super(key: key) {
+    super.key,
+  }) {
     onToggle = null;
     initialValue = false;
     activeSwitchColor = null;
@@ -50,8 +50,8 @@ class ERbSettingsTile extends StatelessWidget {
     this.description,
     this.onPressed,
     this.enabled = true,
-    Key? key,
-  }) : super(key: key) {
+    super.key,
+  }) {
     onToggle = null;
     initialValue = false;
     activeSwitchColor = null;
@@ -68,8 +68,8 @@ class ERbSettingsTile extends StatelessWidget {
     this.description,
     this.onPressed,
     this.enabled = true,
-    Key? key,
-  }) : super(key: key) {
+    super.key,
+  }) {
     value = null;
     tileType = ERbSettingsTileType.switchTile;
   }
@@ -226,9 +226,9 @@ class ERbSettingsTileAdditionalInfo extends InheritedWidget {
 
   const ERbSettingsTileAdditionalInfo({
     required this.needToShowDivider,
-    required Widget child,
+    required super.child,
     super.key,
-  }) : super(child: child);
+  });
 
   @override
   bool updateShouldNotify(ERbSettingsTileAdditionalInfo oldWidget) => true;
