@@ -4,13 +4,11 @@ part 'app_notification.mapper.dart';
 
 @MappableClass()
 class AppNotification with AppNotificationMappable {
-  final String tabName;
-  final String? routeLocation;
+  final String path;
   final Map<String, dynamic>? data;
 
   AppNotification({
-    required this.tabName,
-    required this.routeLocation,
+    required this.path,
     required this.data,
   });
 

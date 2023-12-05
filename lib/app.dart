@@ -9,9 +9,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'i18n/i18n.dart';
 import 'routes/routes.dart';
+import 'core/features/notification/hooks/hooks.dart';
 import 'core/presentation/providers/talker_log/talker_log.dart';
 import 'core/features/app_settings/application/application.dart';
-import 'core/features/notification/hooks/use_tap_app_notification.dart';
 
 /// The main app widget at the root of the widget tree.
 class App extends HookConsumerWidget {
@@ -89,16 +89,15 @@ class App extends HookConsumerWidget {
 }
 
 // NOTE: https://riverpod.dev/docs/essentials/eager_initialization
+// Eagerly initialize providers by watching them.
+// By using "watch", the provider will stay alive and not be disposed.
 class _EagerInitialization extends HookConsumerWidget {
   const _EagerInitialization({required this.child});
   final Widget child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Eagerly initialize providers by watching them.
-    // By using "watch", the provider will stay alive and not be disposed.
-    // ignore: avoid_single_cascade_in_expression_statements
-    useTapAppNotification();
+    useForegroundAppNotification();
 
     return child;
   }

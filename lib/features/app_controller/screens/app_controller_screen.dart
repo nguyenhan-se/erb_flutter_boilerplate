@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
+import 'package:erb_flutter_boilerplate/core/features/notification/hooks/hooks.dart';
 
 enum TabMenu {
   home(Icons.home),
@@ -27,6 +28,8 @@ class AppControllerScreen extends HookConsumerWidget {
   const AppControllerScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    useTapAppNotification();
+
     return AutoTabsRouter(
       routes: const [
         HomeRoute(),
