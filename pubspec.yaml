@@ -82,7 +82,8 @@ dependencies:
     path: packages/erb_shared
   erb_ui:
     path: packages/erb_ui
-
+  riverpod_infinite_scroll:
+    path: packages/riverpod_infinite_scroll
 dev_dependencies:
   flutter_test:
     sdk: flutter
