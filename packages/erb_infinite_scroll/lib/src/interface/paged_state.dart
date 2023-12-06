@@ -1,17 +1,15 @@
 import 'dart:math';
+
 import 'package:collection/collection.dart';
 
 const undefined = Object();
 
-// We can't use freezed here because otherwise the PagedState could not be extended
-
-/// [PagedState] contains the state that is needed to render an infinite scroll list
-/// This class can be extended to add more properties specific to particular use cases
 class PagedState<PageKeyType, ItemType> {
   final List<ItemType>? records;
   final dynamic error;
   final PageKeyType? nextPageKey;
   final List<PageKeyType> previousPageKeys;
+
   const PagedState({
     this.records,
     this.error,
