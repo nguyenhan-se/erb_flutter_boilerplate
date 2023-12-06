@@ -4,14 +4,14 @@ class LogSettings {
   const LogSettings._();
 
   /// log dio interceptor
-  static const enableDioResponseData = kDebugMode;
+  static const enableDioResponseData = false;
   static const enableDioResponseHeaders = false;
   static const enableDioResponseMessage = kDebugMode;
   static const enableDioRequestData = kDebugMode;
   static const enableDioRequestHeaders = false;
 
   /// log riverpod
-  static const defaultEnableRiverpodLog = kDebugMode;
+  static const defaultEnableRiverpodLog = false;
   static const enableRiverpodDidAddProvider = kDebugMode;
   static const enableRiverpodDidDisposeProvider = false;
   static const enableRiverpodDidUpdateProvider = kDebugMode;

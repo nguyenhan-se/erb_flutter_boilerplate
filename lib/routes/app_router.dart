@@ -45,6 +45,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SignUpRoute.page, path: '/sign-up'),
         AutoRoute(page: TalkerRoute.page, path: '/log-talker'),
         AutoRoute(page: NoInternetRoute.page, path: '/no-internet'),
+        ..._demoRoutes,
         CustomRoute(
           page: AppControllerRoute.page,
           path: '/app',
@@ -97,3 +98,19 @@ class HomeStackScreen extends AutoRouter {
 class SettingsStackScreen extends AutoRouter {
   const SettingsStackScreen({super.key});
 }
+
+final List<AutoRoute> _demoRoutes = [
+  AutoRoute(
+    page: DemoControllerRoute.page,
+    path: '/demos',
+    children: [
+      AutoRoute(
+        initial: true,
+        page: DemoInfiniteListRoute.page,
+      ),
+      AutoRoute(
+        page: DemoCompRoute.page,
+      ),
+    ],
+  ),
+];

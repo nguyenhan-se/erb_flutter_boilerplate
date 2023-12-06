@@ -8,14 +8,16 @@ import 'interface/paged_state.dart';
 mixin PagedMixin<PageKeyType, ItemType>
     on AutoDisposeNotifier<PagedState<PageKeyType, ItemType>>
     implements PagedNotifier<PageKeyType, ItemType> {
-  late PagedFetcher<PageKeyType, ItemType> _dataFetcher;
+  late PagedFetcher<PageKeyType, ItemType> _fetcher;
 
   PagedState<PageKeyType, ItemType> init({
-    required PagedFetcher<PageKeyType, ItemType> dataFetcher,
+    required PagedFetcher<PageKeyType, ItemType> fetcher,
   }) {
-    _dataFetcher = dataFetcher;
+    _fetcher = fetcher;
     return PagedState<PageKeyType, ItemType>();
   }
+
+  PagedFetcher<PageKeyType, ItemType> get fetcher => _fetcher;
 
   @override
   Future<List<ItemType>?> load(PageKeyType page, int limit) async {
@@ -27,20 +29,20 @@ mixin PagedMixin<PageKeyType, ItemType>
     }
 
     try {
-      final records = await _dataFetcher.load(page, limit);
+      final records = await _fetcher.load(page, limit);
 
       state = state.copyWith(
           records: [
             ...(state.records ?? <ItemType>[]),
             ...(records ?? <ItemType>[])
           ],
-          nextPageKey: _dataFetcher.nextPageKeyBuilder(records, page, limit),
+          nextPageKey: _fetcher.nextPageKeyBuilder(records, page, limit),
           previousPageKeys: {...state.previousPageKeys, page}.toList());
       return records;
     } catch (e) {
       state = state.copyWith(
-          error: _dataFetcher.errorBuilder != null
-              ? _dataFetcher.errorBuilder!(e)
+          error: _fetcher.errorBuilder != null
+              ? _fetcher.errorBuilder!(e)
               : 'An error occurred. Please try again.');
     }
 

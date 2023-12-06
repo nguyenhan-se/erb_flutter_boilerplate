@@ -1,7 +1,7 @@
 import 'package:erb_infinite_scroll/erb_infinite_scroll.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'user_controller.g.dart';
+part 'demo_user_controller.g.dart';
 
 class User {
   final String id;
@@ -15,11 +15,11 @@ class User {
 }
 
 @riverpod
-class UserController extends _$UserController with PagedMixin<int, User> {
+class DemoUserController extends _$DemoUserController with PagedMixin<int, User> {
   @override
   PagedState<int, User> build() {
     return init(
-      dataFetcher: PagedFetcher(
+      fetcher: PagedFetcher(
         load: (page, limit) async {
           return await Future.delayed(
             const Duration(milliseconds: 500),

@@ -10,8 +10,6 @@ import 'package:erb_flutter_boilerplate/core/presentation/utils/riverpod_framewo
 import 'package:erb_flutter_boilerplate/core/infrastructure/services/app_env_service.dart';
 import 'package:erb_flutter_boilerplate/core/features/authentication/application/application.dart';
 
-import 'user_list.dart';
-
 @RoutePage()
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
@@ -61,20 +59,18 @@ class HomeScreen extends HookConsumerWidget {
                       label: 'Go Home Detail',
                       // child: const Text('Toggle theme'),
                     ),
-                    KSizedBox.h24.size.flex,
-                    const ERbTextField(
-                      labelText: 'Hello world',
-                      helpText: 'asdasd',
-                      hasAsterisk: true,
+                    KSizedBox.h12.size.flex,
+                    ERbElevatedButton(
+                      label: 'Go Demos',
+                      onPressed: () {
+                        AutoRouter.of(context).pushNamed('/demos');
+                      },
                     ),
                   ],
                 ),
               ),
             ),
           ),
-          const Expanded(
-            child: TodoList(),
-          )
         ],
       ),
     );
