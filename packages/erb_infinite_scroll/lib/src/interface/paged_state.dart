@@ -4,11 +4,11 @@ import 'package:collection/collection.dart';
 
 const undefined = Object();
 
-class PagedState<PageKeyType, ItemType> {
+class PagedState<ItemType> {
   final List<ItemType>? records;
   final dynamic error;
-  final PageKeyType? nextPageKey;
-  final List<PageKeyType> previousPageKeys;
+  final int? nextPageKey;
+  final List<int> previousPageKeys;
 
   const PagedState({
     this.records,
@@ -17,19 +17,18 @@ class PagedState<PageKeyType, ItemType> {
     this.previousPageKeys = const [],
   });
 
-  PagedState<PageKeyType, ItemType> copyWith({
+  PagedState<ItemType> copyWith({
     List<ItemType>? records,
     dynamic error,
-    dynamic nextPageKey = undefined,
-    List<PageKeyType>? previousPageKeys,
+    int? nextPageKey,
+    List<int>? previousPageKeys,
   }) {
-    return PagedState<PageKeyType, ItemType>(
-        records: records ?? this.records,
-        error: error == undefined ? this.error : error,
-        nextPageKey: nextPageKey == undefined
-            ? this.nextPageKey
-            : nextPageKey as PageKeyType?,
-        previousPageKeys: previousPageKeys ?? this.previousPageKeys);
+    return PagedState<ItemType>(
+      records: records ?? this.records,
+      error: error == undefined ? this.error : error,
+      nextPageKey: nextPageKey ?? this.nextPageKey,
+      previousPageKeys: previousPageKeys ?? this.previousPageKeys,
+    );
   }
 
   @override

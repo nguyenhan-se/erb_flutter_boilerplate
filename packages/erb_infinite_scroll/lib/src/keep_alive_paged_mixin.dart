@@ -5,20 +5,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'interface/paged_fetcher.dart';
 import 'interface/paged_state.dart';
 
-mixin KeepAlivePagedMixin<PageKeyType, ItemType>
-    on Notifier<PagedState<PageKeyType, ItemType>>
-    implements PagedNotifier<PageKeyType, ItemType> {
-  late PagedFetcher<PageKeyType, ItemType> _dataFetcher;
+mixin KeepAlivePagedMixin<ItemType> on Notifier<PagedState<ItemType>>
+    implements PagedNotifier<ItemType> {
+  late PagedFetcher<ItemType> _dataFetcher;
 
-  PagedState<PageKeyType, ItemType> init({
-    required PagedFetcher<PageKeyType, ItemType> dataFetcher,
+  PagedState<ItemType> init({
+    required PagedFetcher<ItemType> dataFetcher,
   }) {
     _dataFetcher = dataFetcher;
-    return PagedState<PageKeyType, ItemType>();
+    return PagedState<ItemType>();
   }
 
   @override
-  Future<List<ItemType>?> load(PageKeyType page, int limit) async {
+  Future<List<ItemType>?> load(page, int limit) async {
     if (state.previousPageKeys.contains(page)) {
       await Future.delayed(const Duration(seconds: 0), () {
         state = state.copyWith();

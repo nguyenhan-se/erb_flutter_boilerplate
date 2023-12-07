@@ -15,9 +15,9 @@ class User {
 }
 
 @riverpod
-class DemoUserController extends _$DemoUserController with PagedMixin<int, User> {
+class DemoUserController extends _$DemoUserController with PagedMixin<User> {
   @override
-  PagedState<int, User> build() {
+  PagedState<User> build() {
     return init(
       fetcher: PagedFetcher(
         load: (page, limit) async {
@@ -36,7 +36,6 @@ class DemoUserController extends _$DemoUserController with PagedMixin<int, User>
             },
           );
         },
-        nextPageKeyBuilder: NextPageKeyBuilderDefault.mysqlPagination,
       ),
     );
   }

@@ -8,9 +8,9 @@ part 'demo_photo_controller.g.dart';
 
 @riverpod
 class DemoPhotoController extends _$DemoPhotoController
-    with PagedMixin<int, DemoPhoto> {
+    with PagedMixin<DemoPhoto> {
   @override
-  PagedState<int, DemoPhoto> build() {
+  PagedState<DemoPhoto> build() {
     final repo = ref.watch(mockJsonplaceholderRepoProvider);
 
     return init(
@@ -23,7 +23,6 @@ class DemoPhotoController extends _$DemoPhotoController
 
           return photos;
         },
-        nextPageKeyBuilder: NextPageKeyBuilderDefault.mysqlPagination,
       ),
     );
   }
