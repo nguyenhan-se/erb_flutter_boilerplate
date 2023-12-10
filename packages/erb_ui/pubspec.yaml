@@ -1,7 +1,6 @@
 name: erb_ui
 description: ERb libs - simple, generic widgets
-version: 0.0.1
-publish_to: none
+version: 0.0.2
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
@@ -11,9 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation: ^2.4.1
-
-  erb_shared:
-    path: ../erb_shared
+  erb_shared: ^0.0.1
 
 dev_dependencies:
   flutter_test:
