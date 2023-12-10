@@ -1,6 +1,6 @@
 name: erb_shared
-description: "packages erb shared"
-version: 0.0.1
+description: ERb libs - generic utils (including extensions, ...)
+version: 0.0.2
 
 environment:
   sdk: ">=3.2.0 <4.0.0"

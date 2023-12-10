@@ -1,6 +1,9 @@
 name: erb_infinite_scroll
-description: "A new Flutter package project."
-version: 0.0.1
+description:
+  ERb libs - Riverpod implementation of infinite_scroll_pagination, this package
+  allows to use infinite_scroll_pagination with Riverpod abstracting away the
+  complexity
+version: 0.0.1+1
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
