@@ -1,6 +1,6 @@
 # Erb flutter
 
-A Flutter template.
+An opinionated starting point for a Flutter app intended to provide the boilerplate needed to create a large app and provides utilities to separate code generation into separate packages.
 
 ### Requirements
 

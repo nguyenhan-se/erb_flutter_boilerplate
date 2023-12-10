@@ -32,7 +32,8 @@ dependencies:
   # i18n
   slang: ^3.26.2
   slang_flutter: ^3.26.2
-  intl: ^0.19.0
+  #https://github.com/flutter/flutter/issues/139861
+  intl: ^0.18.1
 
   # db local
   hive: ^2.2.3
