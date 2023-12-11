@@ -68,8 +68,7 @@ class SignInScreen extends HookConsumerWidget {
 
                   final isBiometricEnabled = useMemoized(() {
                     final authSetting = authBiometricSettingAsync.valueOrNull;
-                    if (authSetting.isNull &&
-                        !authSetting!.isBiometricSupported) {
+                    if (authSetting?.isBiometricSupported != true) {
                       return false;
                     }
 

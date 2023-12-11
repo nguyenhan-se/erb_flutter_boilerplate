@@ -514,7 +514,7 @@ packages:
       path: "packages/erb_ui"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.0.2"
   fake_async:
     dependency: transitive
     description:

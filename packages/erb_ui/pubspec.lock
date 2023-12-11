@@ -132,10 +132,9 @@ packages:
   erb_shared:
     dependency: "direct main"
     description:
-      name: erb_shared
-      sha256: "59b936bf1a940c5f687afeee2792aebe7eb0a421edd3a3980b0fc83ec491e9d2"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../erb_shared"
+      relative: true
+    source: path
     version: "0.0.1"
   fake_async:
     dependency: transitive
@@ -180,7 +179,7 @@ packages:
     source: hosted
     version: "2.4.5"
   freezed_annotation:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: freezed_annotation
       sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
