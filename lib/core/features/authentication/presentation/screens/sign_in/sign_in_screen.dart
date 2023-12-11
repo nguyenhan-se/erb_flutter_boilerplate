@@ -1,6 +1,5 @@
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:erb_shared/extensions.dart';
 import 'package:app_constants/app_constants.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';

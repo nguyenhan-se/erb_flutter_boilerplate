@@ -13,19 +13,19 @@ class DemoInfiniteListScreen extends HookConsumerWidget {
   const DemoInfiniteListScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _index = useState<int>(0);
+    final indexedStack = useState<int>(0);
 
     return Scaffold(
       appBar: AppBar(),
       body: CrossFadeIndexedStack(
-        index: _index.value,
+        index: indexedStack.value,
         duration: const Duration(milliseconds: 500),
         lazy: true,
         children: const [TabPhotoList(), TabUserList()],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _index.value,
-        onTap: (index) => _index.value = index,
+        currentIndex: indexedStack.value,
+        onTap: (index) => indexedStack.value = index,
         items: const [
           BottomNavigationBarItem(
               label: 'Demo Photo', icon: Icon(Icons.photo_album)),
