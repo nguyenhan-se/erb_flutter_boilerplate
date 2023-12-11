@@ -88,3 +88,5 @@ scripts:
     # May fails until https://github.com/dart-lang/pub/pull/3920 is released
     run: melos exec dart pub upgrade --major-versions
     description: Run `dart pub upgrade --major-versions` for all packages.
+
+  release: melos version --yes && melos publish --yes --no-dry-run

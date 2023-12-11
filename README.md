@@ -1,6 +1,6 @@
 # Erb flutter
 
-A Flutter template.
+An opinionated starting point for a Flutter app intended to provide the boilerplate needed to create a large app and provides utilities to separate code generation into separate packages.
 
 ### Requirements
 
@@ -72,7 +72,6 @@ Repository pattern use cases:
 
 1. talking to REST APIs
 2. talking to local or remote databases (e.g. Sembast, Hive, Firestore, etc.)
-3. talking to device-specific APIs (e.g. permissions, camera, location, etc.)
 
 ### Domain Layer (Models)
 
@@ -128,12 +127,11 @@ This project uses [Melos](https://pub.dev/packages/melos) to manage the monorepo
   dart pub global activate melos
   # Setup local dependency overrides for packages in the monorepo
   melos bootstrap
-
   # Or if dart executables are not on your path
   dart pub global run melos bootstrap
   ```
-  
-#### Scripts
+
+### Scripts
 
 Pub:
 
@@ -152,28 +150,48 @@ Code Generation:
 - `melos run watch:pkg` - Run `build_runner watch` for a specific package. It will not work if you choose "all" in the package selection prompt.
 - `melos run watch:i18n` - Run `build_runner watch` for i18n.
 
+### Slang
+
+This project uses [Slang](https://pub.dev/packages/slang) to Type-safe i18n.
+
+- Translating untranslated strings
+
+  - Run slang analyzer to check for missing translations
+
+   ```bash
+   dart run slang analyze --outdir=i18n
+   ```
+
+  - Open [i18n/\_missing_translations.json](i18n/_missing_translations.json) and then translate your language of choice.
+
+  - After editing the file, you can apply it to the actual json translation file by running:
+
+   ```bash
+   dart run slang apply --outdir=i18n
+
+   dart run slang analyze --outdir=i18n # update analyzation result files
+   ```
+
 ### Protip
 
 - Run [build_runner](https://pub.dev/packages/build_runner) after editing some areas that needs a code generator such as entities and routing.
 - Run [slang](https://pub.dev/packages/slang) after editing translation files (\*.i18n.json).
 - [build_runner](https://pub.dev/packages/build_runner) and [slang](https://pub.dev/packages/slang) has some features that will be helpful during development such as auto-rebuild and translation analysis, so it's highly recommended to check the documentations and familiarize yourself with it.
 
-# Translation
+## Git Contribution submission specification
 
-### Translating untranslated strings
-
-- Run slang analyzer to check for missing translations
-
-```bash
-dart run slang analyze --outdir=i18n
-```
-
-- Open [i18n/\_missing_translations.json](i18n/_missing_translations.json) and then translate your language of choice.
-
-- After editing the file, you can apply it to the actual json translation file by running:
-
-```bash
-dart run slang apply --outdir=i18n
-
-dart run slang analyze --outdir=i18n # update analyzation result files
-```
+- reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
+  - `feat` Add new features
+  - `fix` Fix the problem/BUG
+  - `style` The code style is related and does not affect the running result
+  - `perf` Optimization/performance improvement
+  - `refactor` Refactor
+  - `revert` Undo edit
+  - `test` Test related
+  - `docs` Documentation/notes
+  - `chore` Dependency update/scaffolding configuration modification etc.
+  - `workflow` Workflow improvements
+  - `ci` Continuous integration
+  - `types` Type definition file changes
+  - `wip` In development
+  

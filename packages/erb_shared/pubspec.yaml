@@ -1,6 +1,7 @@
 name: erb_shared
-description: "packages erb shared"
+description: ERb libs - generic utils (including extensions, ...)
 version: 0.0.1
+homepage: https://github.com/nguyenhan-se/erb_flutter_boilerplate
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
