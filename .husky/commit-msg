@@ -5,7 +5,7 @@ INPUT_FILE=$1
 START_LINE=`head -n1 $INPUT_FILE`
 
 
-TYPE="feat|fix|refactor|perf|style|test|docs|build|ops|chore"
+TYPE="feat|fix|style|perf|refactor|revert|test|docs|chore|workflow|ci|types|wip"
 SCOPE='.{1,20}'
 
 PATTERN="^($TYPE)(\(${SCOPE}\))?: "
