@@ -1,0 +1,23 @@
+update_fastlane
+
+default_platform(:android)
+
+platform :android do
+
+
+  require ‘fileutils’
+  languages = ["de-DE", "en-US"]
+
+  desc "Submits the APK to Appcenter track"
+  lane :upload_to_app_center_internal do
+    appcenter_upload(
+        api_token: ENV["API_TOKEN_APPCENTER"],
+        owner_name: ENV["OWNER_NAME"],
+        app_name: ENV["APP_NAME"],
+        file: "./build/app/outputs/flutter-apk/app-release.apk",
+        notify_testers: true,
+        destinations: ENV["DESTINATIONS"]
+      )
+  end
+ 
+end

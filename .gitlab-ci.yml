@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deloy
+  
+#BUILD
+.docker_image:
+   image: ghcr.io/cirruslabs/flutter:3.16.0
+
+.generate_bootstrap:
+  extends: .docker_image
+  before_script:
+    - flutter pub get  
+    - export PATH="$PATH":"$HOME/.pub-cache/bin"
+    - flutter pub global activate melos
+    - melos bootstrap
+    - melos generate
+
+         
+build:
+  extends: .generate_bootstrap
+  stage: build
+  script: flutter build apk --release --dart-define=FLAVOR=staging --build-number=$CI_PIPELINE_ID
+  artifacts:
+    paths:
+      - build/app/outputs/flutter-apk/app-release.apk
+    expire_in: 1 day
+  only:
+    - staging  #listen branch change code auto build
+
+
+#DELOY 
+.setup_fastlane_android:
+  before_script:
+    - gem install bundler
+    - bundle install  
+
+deloy_appcenter:
+  extends: .setup_fastlane_android
+  stage: deloy
+  script: 
+    - bundle exec fastlane upload_to_app_center_internal
+  only:
+    - staging   #listen branch change code auto build
+  
+
+
