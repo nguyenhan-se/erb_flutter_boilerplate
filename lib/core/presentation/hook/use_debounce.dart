@@ -1,19 +1,33 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'use_timeout_fn.dart';
+/// Signature of function that is returned by [useDebounce].
+typedef DebouncedCallback = void Function(VoidCallback callback);
 
-// #Example
-// useDebounce(() {
-//   bounceValue.value = inputValue.value;
-// }, const Duration(seconds: 1));
+/// Returns a function whose invocation will be delayed by [duration].
+///
+/// When the returned function is called again, the previous (scheduled)
+/// invocation is canceled.
+///
+/// See also:
+///
+///  * <https://rxmarbles.com/#debounce>, which this hook implements.
+DebouncedCallback useDebounce(Duration duration) {
+  final debouncer = useMemoized(() => _Debouncer(duration), [duration]);
+  return debouncer.run;
+}
 
-/// Flutter hook that delays invoking a function until after wait milliseconds
-/// have elapsed since the last time the debounced function was invoked.
-/// The third argument is the array of values that the debounce depends on,
-/// in the same manner as useEffect. The debounce timeout will start when one
-/// of the values changes.
-void useDebounce(VoidCallback fn, Duration delay, [List<Object?>? keys]) {
-  final timeout = useTimeoutFn(fn, delay);
-  useEffect(() => timeout.reset, keys);
+class _Debouncer {
+  _Debouncer(this.duration);
+
+  final Duration duration;
+
+  Timer? _timer;
+
+  void run(VoidCallback callback) {
+    _timer?.cancel();
+    _timer = Timer(duration, callback);
+  }
 }
