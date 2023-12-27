@@ -1,4 +1,4 @@
-## 0.0.2
+## NEXT_VERSION
 
 - Fix next page key
 - Fix nextPageKeyBuilder
