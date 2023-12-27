@@ -20,8 +20,7 @@ abstract interface class PagedNotifier<ItemType> {
 class PagedFetcher<ItemType> {
   /// Load function
   final LoadFunction<ItemType> load;
-  final NextPageKeyBuilder<ItemType> nextPageKeyBuilder =
-      NextPageKeyBuilderDefault.mysqlPagination;
+  final NextPageKeyBuilder<ItemType>? nextPageKeyBuilder;
 
   /// A builder for providing a custom error string
   final dynamic Function(dynamic error)? errorBuilder;
@@ -29,10 +28,6 @@ class PagedFetcher<ItemType> {
   PagedFetcher({
     required this.load,
     this.errorBuilder,
-    NextPageKeyBuilder<ItemType>? nextPageKeyBuilder,
-  }) {
-    if (nextPageKeyBuilder != null) {
-      nextPageKeyBuilder = nextPageKeyBuilder;
-    }
-  }
+    this.nextPageKeyBuilder,
+  });
 }

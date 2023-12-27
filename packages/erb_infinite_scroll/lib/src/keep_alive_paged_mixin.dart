@@ -33,7 +33,9 @@ mixin KeepAlivePagedMixin<ItemType> on Notifier<PagedState<ItemType>>
             ...(state.records ?? <ItemType>[]),
             ...(records ?? <ItemType>[])
           ],
-          nextPageKey: _dataFetcher.nextPageKeyBuilder(records, page, limit),
+          nextPageKey: _dataFetcher.nextPageKeyBuilder
+                  ?.call(records, page, limit) ??
+              NextPageKeyBuilderDefault.mysqlPagination(records, page, limit),
           previousPageKeys: {...state.previousPageKeys, page}.toList());
       return records;
     } catch (e) {

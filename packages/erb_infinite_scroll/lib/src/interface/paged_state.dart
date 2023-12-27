@@ -26,7 +26,7 @@ class PagedState<ItemType> {
     return PagedState<ItemType>(
       records: records ?? this.records,
       error: error == undefined ? this.error : error,
-      nextPageKey: nextPageKey ?? this.nextPageKey,
+      nextPageKey: nextPageKey,
       previousPageKeys: previousPageKeys ?? this.previousPageKeys,
     );
   }
