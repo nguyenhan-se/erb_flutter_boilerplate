@@ -89,4 +89,4 @@ scripts:
     run: melos exec dart pub upgrade --major-versions
     description: Run `dart pub upgrade --major-versions` for all packages.
 
-  release: melos version --yes && melos publish --yes --no-dry-run
+  release: melos publish --yes --no-dry-run
