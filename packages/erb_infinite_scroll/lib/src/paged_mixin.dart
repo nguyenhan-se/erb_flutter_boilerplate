@@ -35,7 +35,9 @@ mixin PagedMixin<ItemType> on AutoDisposeNotifier<PagedState<ItemType>>
             ...(state.records ?? <ItemType>[]),
             ...(records ?? <ItemType>[])
           ],
-          nextPageKey: _fetcher.nextPageKeyBuilder(records, page, limit),
+          nextPageKey: _fetcher.nextPageKeyBuilder
+                  ?.call(records, page, limit) ??
+              NextPageKeyBuilderDefault.mysqlPagination(records, page, limit),
           previousPageKeys: {...state.previousPageKeys, page}.toList());
       return records;
     } catch (e) {
