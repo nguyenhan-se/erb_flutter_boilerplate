@@ -7,6 +7,7 @@ import 'package:erb_flutter_boilerplate/routes/routes.dart';
 
 import 'tab_photo_list.dart';
 import 'tab_user_list.dart';
+import 'tab_user_list_filter.dart';
 
 @RoutePage()
 class DemoInfiniteListScreen extends HookConsumerWidget {
@@ -21,7 +22,7 @@ class DemoInfiniteListScreen extends HookConsumerWidget {
         index: indexedStack.value,
         duration: const Duration(milliseconds: 500),
         lazy: true,
-        children: const [TabPhotoList(), TabUserList()],
+        children: const [TabPhotoList(), TabUserList(), TabUserListFilter()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexedStack.value,
@@ -30,7 +31,13 @@ class DemoInfiniteListScreen extends HookConsumerWidget {
           BottomNavigationBarItem(
               label: 'Demo Photo', icon: Icon(Icons.photo_album)),
           BottomNavigationBarItem(
-              label: 'Demo simple', icon: Icon(Icons.account_circle)),
+            label: 'Demo simple',
+            icon: Icon(Icons.account_circle),
+          ),
+          BottomNavigationBarItem(
+            label: 'Demo filter',
+            icon: Icon(Icons.filter_1),
+          ),
         ],
       ),
     );

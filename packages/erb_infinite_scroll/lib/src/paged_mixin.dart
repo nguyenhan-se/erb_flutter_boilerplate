@@ -5,9 +5,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'interface/paged_fetcher.dart';
 import 'interface/paged_state.dart';
 
-mixin PagedMixin<ItemType> on AutoDisposeNotifier<PagedState<ItemType>>
+typedef PagedMixin<ItemType> = _PagedMixin<ItemType, dynamic>;
+
+typedef PagedMixinFilter<ItemType, FilterType>
+    = _PagedMixin<ItemType, FilterType>;
+
+mixin _PagedMixin<ItemType, FilterType>
+    on AutoDisposeNotifier<PagedState<ItemType>>
     implements PagedNotifier<ItemType> {
   late PagedFetcher<ItemType> _fetcher;
+
+  FilterType? filter;
+
+  void updateFilter(FilterType? filter) {
+    this.filter = filter;
+  }
 
   PagedState<ItemType> init({
     required PagedFetcher<ItemType> fetcher,
