@@ -1,3 +1,7 @@
+## NEXT_VERSION
+
+- Add filter mixin PagedMixinFilter
+
 ## 0.0.2
 
 - Fix next page key
