@@ -48,9 +48,8 @@ class AutoTabsGuardRouter {
     bool notify = true,
     OnNavigationFailure? onFailure,
   }) async {
-    _stackRouter.root.routeData.route.guards;
-    final a = tabsRouter.stackData[index];
-    final can = await _canActive(a.route, onFailure: onFailure);
+    final routeData = tabsRouter.stackData[index];
+    final can = await _canActive(routeData.route, onFailure: onFailure);
     if (can.continueNavigation) {
       tabsRouter.setActiveIndex(index, notify: notify);
     }
