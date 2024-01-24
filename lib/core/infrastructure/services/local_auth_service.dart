@@ -57,6 +57,8 @@ class LocalAuthenticationService {
     return LocalAuthenticationOption.none;
   }
 
+  // NOTE:local_auth requires the use of a FragmentActivity instead of an Activity. To update your application:
+  // https://stackoverflow.com/questions/60635356/error-platformexceptionno-fragment-activity-local-auth-plugin-requires-activi
   static Future<bool> authenticate([String? localizedReason]) async {
     if (!await isDeviceSupported) return false;
     try {
