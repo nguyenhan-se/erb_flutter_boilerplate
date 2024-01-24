@@ -62,8 +62,8 @@ class App extends HookConsumerWidget {
             darkTheme: ref.watch(darkThemeProvider).themeData,
             themeMode: ref.watch(currentAppThemeModeProvider),
             routerConfig: appRouter.config(
-              reevaluateListenable:
-                  ref.watch(appRouterReevaluateListenableProvider),
+              // reevaluateListenable:
+              //     ref.read(appRouterReevaluateListenableProvider),
               navigatorObservers: () => [
                 RouterObserver(
                   talker: ref.watch(talkerProvider),
