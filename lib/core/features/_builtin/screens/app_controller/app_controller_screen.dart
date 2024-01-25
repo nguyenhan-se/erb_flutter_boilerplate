@@ -63,9 +63,9 @@ class _BottomNavBar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabsRouter = AutoTabsRouter.of(context);
+    final tabsGuard = AutoTabsRouter.of(context);
     final selectedIndex =
-        useListenableSelector(tabsRouter, () => tabsRouter.activeIndex);
+        useListenableSelector(tabsGuard, () => tabsGuard.activeIndex);
 
     final hideBottomNav =
         context.topRouteMatch.meta.containsKey('hideBottomNav') &&
@@ -76,7 +76,7 @@ class _BottomNavBar extends HookConsumerWidget {
       child: NavigationBar(
         selectedIndex: selectedIndex,
         onDestinationSelected: (index) {
-          tabsRouter.setActiveIndex(index);
+          tabsGuard.setActiveGuardIndex(index);
         },
         destinations: TabMenu.values.map((item) {
           return NavigationDestination(
