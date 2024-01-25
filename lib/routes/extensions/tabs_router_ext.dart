@@ -68,6 +68,7 @@ extension TabsGuardRouterExt on TabsRouter {
           reevaluateNext: breakOnReevaluate,
         );
       }
+      root.activeGuardObserver.remove(guard);
     }
     return ResolverResult(
       continueNavigation: true,
