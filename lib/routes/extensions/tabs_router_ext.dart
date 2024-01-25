@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 
-extension TabsRouterExt on TabsRouter {
+extension TabsGuardRouterExt on TabsRouter {
   Future<void> setActiveGuardIndex(
     int index, {
     bool notify = true,
@@ -41,6 +41,8 @@ extension TabsRouterExt on TabsRouter {
     for (var guard in guards) {
       final completer = Completer<ResolverResult>();
 
+      // NOTE: this will has no effect if there's a guard in progress
+      // NO Re-builds  routes in stack and reevaluate guarded
       root.activeGuardObserver.add(guard);
       guard.onNavigation(
         NavigationResolver(

@@ -46,7 +46,7 @@ class AppControllerScreen extends HookConsumerWidget {
         return PopScope(
           canPop: tabsRouter.activeIndex == 0,
           onPopInvoked: (didPop) {
-            tabsRouter.setActiveIndex(0);
+            tabsRouter.setActiveGuardIndex(0);
           },
           child: Scaffold(
             body: child,
@@ -63,9 +63,9 @@ class _BottomNavBar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabsGuard = AutoTabsRouter.of(context);
+    final tabsRouter = AutoTabsRouter.of(context);
     final selectedIndex =
-        useListenableSelector(tabsGuard, () => tabsGuard.activeIndex);
+        useListenableSelector(tabsRouter, () => tabsRouter.activeIndex);
 
     final hideBottomNav =
         context.topRouteMatch.meta.containsKey('hideBottomNav') &&
@@ -76,7 +76,7 @@ class _BottomNavBar extends HookConsumerWidget {
       child: NavigationBar(
         selectedIndex: selectedIndex,
         onDestinationSelected: (index) {
-          tabsGuard.setActiveGuardIndex(index);
+          tabsRouter.setActiveGuardIndex(index);
         },
         destinations: TabMenu.values.map((item) {
           return NavigationDestination(
