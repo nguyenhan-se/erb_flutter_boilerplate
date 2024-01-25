@@ -69,6 +69,7 @@ class AppRouter extends $AppRouter {
             AutoRoute(
               path: 'settings',
               page: SettingsStackRoute.page,
+              guards: [authGuard],
               children: <AutoRoute>[
                 AutoRoute(
                   initial: true,

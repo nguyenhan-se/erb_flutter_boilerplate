@@ -46,7 +46,7 @@ class AppControllerScreen extends HookConsumerWidget {
         return PopScope(
           canPop: tabsRouter.activeIndex == 0,
           onPopInvoked: (didPop) {
-            tabsRouter.setActiveIndex(0);
+            tabsRouter.setActiveGuardIndex(0);
           },
           child: Scaffold(
             body: child,
@@ -76,7 +76,7 @@ class _BottomNavBar extends HookConsumerWidget {
       child: NavigationBar(
         selectedIndex: selectedIndex,
         onDestinationSelected: (index) {
-          tabsRouter.setActiveIndex(index);
+          tabsRouter.setActiveGuardIndex(index);
         },
         destinations: TabMenu.values.map((item) {
           return NavigationDestination(
