@@ -1,3 +1,6 @@
+@MappableLib(generateInitializerForScope: InitializerScope.package)
+library main_initializer;
+
 import 'dart:developer' as dev;
 
 import 'package:env/env.dart';
@@ -7,11 +10,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 import 'package:app_constants/app_constants.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import 'i18n/i18n.dart';
+import 'main_initializer.init.dart';
 import 'core/features/authentication/data/auth_repo.dart';
 import 'core/features/app_settings/domain/app_settings.dart';
 import 'core/presentation/providers/talker_log/talker_log.dart';
@@ -24,6 +29,8 @@ import 'core/features/authentication/data/auth_biometric_setting_repo.dart';
 
 Future<ProviderContainer> mainInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Initializes all mappers
+  initializeMappers();
 
   // * Register error handlers. For more info, see:
   // * https://docs.flutter.dev/testing/errors

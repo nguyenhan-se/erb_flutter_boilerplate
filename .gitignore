@@ -23,6 +23,7 @@ lib/**/*.config.dart
 lib/**/*.gen.dart
 lib/**/*.mocks.dart
 lib/**/*.gform.dart
+lib/main_initializer.init.dart
 
 
 # IntelliJ related
