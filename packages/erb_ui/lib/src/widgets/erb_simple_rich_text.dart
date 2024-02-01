@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 //       ------------------Example---------------
-//  SimpleRichText(
+//  ErbSimpleRichText(
 //                 text:
 //                     'Text in *bold* , Text in !blue!, Text custom patter @comment ',
 //                 style: const TextStyle(fontSize: 16, color: Colors.black),
@@ -67,8 +67,8 @@ class OthersMarker {
   });
 }
 
-class SimpleRichText extends StatelessWidget {
-  const SimpleRichText({
+class ErbSimpleRichText extends StatelessWidget {
+  const ErbSimpleRichText({
     super.key,
     required this.text,
     this.style,
