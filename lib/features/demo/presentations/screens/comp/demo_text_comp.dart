@@ -1,6 +1,7 @@
-import 'package:app_constants/app_constants.dart';
+import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:app_constants/app_constants.dart';
 
 import 'package:erb_flutter_boilerplate/core/widgets/widgets.dart';
 
@@ -18,7 +19,7 @@ class DemoTextComp extends HookConsumerWidget {
           children: [
             CompTitle(
               title: 'Simple rich text',
-              child: SimpleRichText(
+              child: ErbSimpleRichText(
                 text: 'Text in *bold* , Text in !blue!',
                 style: const TextStyle(fontSize: 16, color: Colors.black),
                 othersMarkers: [

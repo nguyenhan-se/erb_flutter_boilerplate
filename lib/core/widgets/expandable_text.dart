@@ -1,18 +1,23 @@
 import 'dart:math';
 
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 const _defaultAnimationDuration = Duration(milliseconds: 200);
 
 //NOTE: Do not use with ERbFillViewportScrollView
+//Use only when height has been determined
 class ExpandableText extends HookWidget {
   const ExpandableText({
     required this.text,
     this.expandText = ' ...',
     this.expanded = false,
     this.style,
-    this.onChange,
+    this.onExpand,
+    this.isTriggerAllText = true,
     this.collapseText,
     this.expandedStyle,
     this.collapseStyle,
@@ -29,7 +34,8 @@ class ExpandableText extends HookWidget {
   final String text;
   final String expandText;
   final bool expanded;
-  final Function(bool)? onChange;
+  final Function(bool)? onExpand;
+  final bool isTriggerAllText;
   final String? collapseText;
   final TextStyle? style;
   final TextStyle? expandedStyle;
@@ -51,6 +57,11 @@ class ExpandableText extends HookWidget {
       return;
     }, [expanded]);
 
+    Future<void> updateExpanded() async {
+      await onExpand?.call(!isExpanded.value);
+      isExpanded.value = !isExpanded.value;
+    }
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final maxWidth = constraints.maxWidth;
@@ -63,6 +74,7 @@ class ExpandableText extends HookWidget {
               TextSpan(
                 text: collapseText,
                 style: collapseStyle ?? style,
+                recognizer: TapGestureRecognizer()..onTap = updateExpanded,
               )
           ],
         );
@@ -108,6 +120,7 @@ class ExpandableText extends HookWidget {
                 TextSpan(
                   text: expandText,
                   style: expandedStyle ?? style,
+                  recognizer: TapGestureRecognizer()..onTap = updateExpanded,
                 )
               ],
             );
@@ -115,10 +128,7 @@ class ExpandableText extends HookWidget {
         }
 
         return GestureDetector(
-          onTap: () async {
-            await onChange?.call(!isExpanded.value);
-            isExpanded.value = !isExpanded.value;
-          },
+          onTap: isTriggerAllText ? updateExpanded : null,
           child: AnimatedSize(
             duration: expandedDuration ?? _defaultAnimationDuration,
             curve: animationCurve ?? Curves.fastLinearToSlowEaseIn,
