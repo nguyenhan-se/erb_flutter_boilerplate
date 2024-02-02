@@ -110,7 +110,8 @@ class _ERbButtonState extends State<ERbButton> {
         child: Material(
           color: style.backgroundColor,
           child: InkWell(
-            onTap: () {},
+            onTap: widget.onTap,
+            onLongPress: widget.onLongPress,
             child: display,
           ),
         ),
