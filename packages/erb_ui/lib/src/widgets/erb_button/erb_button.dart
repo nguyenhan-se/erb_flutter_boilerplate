@@ -96,7 +96,7 @@ class _ERbButtonState extends State<ERbButton> {
     );
 
     if (widget.disabled) {
-      return display;
+      return Opacity(opacity: 0.5, child: display);
     }
 
     return Theme(

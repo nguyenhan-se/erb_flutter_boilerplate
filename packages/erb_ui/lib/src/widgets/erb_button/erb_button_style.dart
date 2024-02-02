@@ -42,7 +42,6 @@ class ERbButtonStyle {
 
       case null:
     }
-    _disabledColor(disabled);
   }
 
   ERbButtonStyle.generateOutlineStyleByTheme(
@@ -72,7 +71,6 @@ class ERbButtonStyle {
 
       case null:
     }
-    _disabledColor(disabled);
   }
 
   ERbButtonStyle.generateTextStyleByTheme(
@@ -96,16 +94,6 @@ class ERbButtonStyle {
         backgroundColor = Colors.transparent;
         textColor = themeData.colorScheme.onSurfaceVariant;
       case null:
-    }
-    _disabledColor(disabled);
-  }
-
-  void _disabledColor(bool disabled) {
-    if (disabled) {
-      const opacity = 0.5;
-      textColor = textColor?.withOpacity(opacity);
-      backgroundColor = backgroundColor?.withOpacity(opacity);
-      boderColor = boderColor?.withOpacity(opacity);
     }
   }
 
