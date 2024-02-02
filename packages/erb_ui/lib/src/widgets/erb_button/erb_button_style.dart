@@ -1,7 +1,7 @@
 import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
 
-class ErbButtonStyle {
+class ERbButtonStyle {
   Color? backgroundColor;
 
   Color? textColor;
@@ -12,7 +12,7 @@ class ErbButtonStyle {
 
   double? borderWidth;
 
-  ErbButtonStyle({
+  ERbButtonStyle({
     this.backgroundColor,
     this.textColor,
     this.radius,
@@ -20,18 +20,18 @@ class ErbButtonStyle {
     this.borderWidth,
   });
 
-  ErbButtonStyle.generateFillStyleByTheme(
-      BuildContext context, ErbButtonTheme? theme, bool disabled) {
+  ERbButtonStyle.generateFillStyleByTheme(
+      BuildContext context, ERbButtonTheme? theme, bool disabled) {
     switch (theme) {
-      case ErbButtonTheme.primary:
+      case ERbButtonTheme.primary:
         textColor = Theme.of(context).colorScheme.onPrimary;
         backgroundColor = Theme.of(context).colorScheme.primary;
         break;
-      case ErbButtonTheme.danger:
+      case ERbButtonTheme.danger:
         textColor = Theme.of(context).colorScheme.onError;
         backgroundColor = Theme.of(context).colorScheme.error;
         break;
-      case ErbButtonTheme.light:
+      case ERbButtonTheme.light:
         textColor = Theme.of(context).colorScheme.onPrimaryContainer;
         backgroundColor = Theme.of(context).colorScheme.primaryContainer;
         break;
@@ -41,22 +41,22 @@ class ErbButtonStyle {
     _disabledColor(disabled);
   }
 
-  ErbButtonStyle.generateOutlineStyleByTheme(
-      BuildContext context, ErbButtonTheme? theme, bool disabled) {
+  ERbButtonStyle.generateOutlineStyleByTheme(
+      BuildContext context, ERbButtonTheme? theme, bool disabled) {
     final themeData = Theme.of(context);
 
     switch (theme) {
-      case ErbButtonTheme.primary:
+      case ERbButtonTheme.primary:
         textColor = themeData.colorScheme.primary;
         backgroundColor = themeData.colorScheme.surface;
         boderColor = themeData.colorScheme.primary;
         break;
-      case ErbButtonTheme.danger:
+      case ERbButtonTheme.danger:
         textColor = themeData.colorScheme.error;
         backgroundColor = themeData.colorScheme.tertiaryContainer;
         boderColor = themeData.colorScheme.error;
         break;
-      case ErbButtonTheme.light:
+      case ERbButtonTheme.light:
         textColor = themeData.colorScheme.primary;
         backgroundColor = themeData.colorScheme.primary.withOpacity(0.05);
         boderColor = themeData.colorScheme.primary;
@@ -66,20 +66,20 @@ class ErbButtonStyle {
     _disabledColor(disabled);
   }
 
-  ErbButtonStyle.generateTextStyleByTheme(
-      BuildContext context, ErbButtonTheme? theme, bool disabled) {
+  ERbButtonStyle.generateTextStyleByTheme(
+      BuildContext context, ERbButtonTheme? theme, bool disabled) {
     final themeData = Theme.of(context);
 
     switch (theme) {
-      case ErbButtonTheme.primary:
+      case ERbButtonTheme.primary:
         textColor = themeData.colorScheme.primary;
         backgroundColor = Colors.transparent;
         break;
-      case ErbButtonTheme.danger:
+      case ERbButtonTheme.danger:
         textColor = themeData.colorScheme.error;
         backgroundColor = Colors.transparent;
         break;
-      case ErbButtonTheme.light:
+      case ERbButtonTheme.light:
         textColor = themeData.colorScheme.primary;
         backgroundColor = Colors.transparent;
         break;
@@ -97,7 +97,7 @@ class ErbButtonStyle {
     }
   }
 
-  ErbButtonStyle apply(ErbButtonStyle? data) => ErbButtonStyle(
+  ERbButtonStyle apply(ERbButtonStyle? data) => ERbButtonStyle(
         radius: data?.radius ?? radius,
         backgroundColor: data?.backgroundColor ?? backgroundColor,
         textColor: data?.textColor ?? textColor,

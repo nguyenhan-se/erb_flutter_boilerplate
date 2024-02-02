@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'erb_button_style.dart';
 
-enum ErbButtonSize { large, medium, small, extraSmall }
+enum ERbButtonSize { large, medium, small, extraSmall }
 
-enum ErbButtonType { fill, outline, text }
+enum ERbButtonType { fill, outline, text }
 
-enum ErbButtonShape { rectangle, round, square, circle, filled }
+enum ERbButtonShape { rectangle, round, square, circle, filled }
 
-enum ErbButtonTheme { primary, danger, light }
+enum ERbButtonTheme { primary, danger, light }
 
-class ErbButton extends StatefulWidget {
-  const ErbButton({
+class ERbButton extends StatefulWidget {
+  const ERbButton({
     super.key,
     this.text,
     this.onTap,
@@ -19,10 +19,10 @@ class ErbButton extends StatefulWidget {
     this.textStyle,
     this.disableTextStyle,
     this.disabled = false,
-    this.shape = ErbButtonShape.rectangle,
-    this.size = ErbButtonSize.medium,
-    this.theme = ErbButtonTheme.primary,
-    this.type = ErbButtonType.fill,
+    this.shape = ERbButtonShape.rectangle,
+    this.size = ERbButtonSize.medium,
+    this.theme = ERbButtonTheme.primary,
+    this.type = ERbButtonType.fill,
     this.style,
     this.disableStyle,
     this.activeStyle,
@@ -44,14 +44,14 @@ class ErbButton extends StatefulWidget {
   final TextStyle? textStyle;
   final TextStyle? disableTextStyle;
 
-  final ErbButtonSize size;
-  final ErbButtonType type;
-  final ErbButtonTheme? theme;
-  final ErbButtonShape shape;
+  final ERbButtonSize size;
+  final ERbButtonType type;
+  final ERbButtonTheme? theme;
+  final ERbButtonShape shape;
 
-  final ErbButtonStyle? style;
-  final ErbButtonStyle? activeStyle;
-  final ErbButtonStyle? disableStyle;
+  final ERbButtonStyle? style;
+  final ERbButtonStyle? activeStyle;
+  final ERbButtonStyle? disableStyle;
 
   final double? width;
   final double? height;
@@ -63,11 +63,11 @@ class ErbButton extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
 
   @override
-  State<ErbButton> createState() => _ErbButtonState();
+  State<ERbButton> createState() => _ERbButtonState();
 }
 
-class _ErbButtonState extends State<ErbButton> {
-  ErbButtonStyle get style {
+class _ERbButtonState extends State<ERbButton> {
+  ERbButtonStyle get style {
     if (widget.disabled) {
       return _disableStyle;
     }
@@ -81,12 +81,12 @@ class _ErbButtonState extends State<ErbButton> {
       height: _getHeight(),
       padding: _getPadding(),
       alignment:
-          widget.shape == ErbButtonShape.filled ? Alignment.center : null,
+          widget.shape == ERbButtonShape.filled ? Alignment.center : null,
       decoration: BoxDecoration(
-        shape: widget.shape == ErbButtonShape.circle
+        shape: widget.shape == ERbButtonShape.circle
             ? BoxShape.circle
             : BoxShape.rectangle,
-        borderRadius: widget.shape == ErbButtonShape.circle
+        borderRadius: widget.shape == ERbButtonShape.circle
             ? null
             : style.radius ?? BorderRadius.all(_getRadius()),
         color: widget.disabled ? style.backgroundColor : Colors.transparent,
@@ -102,7 +102,7 @@ class _ErbButtonState extends State<ErbButton> {
     return Theme(
       data: Theme.of(context).copyWith(splashFactory: InkRipple.splashFactory),
       child: ClipRRect(
-        borderRadius: widget.shape == ErbButtonShape.circle
+        borderRadius: widget.shape == ERbButtonShape.circle
             ? BorderRadius.all(
                 Radius.circular(_getHeight()),
               )
@@ -120,12 +120,12 @@ class _ErbButtonState extends State<ErbButton> {
 
   Radius _getRadius() {
     switch (widget.shape) {
-      case ErbButtonShape.rectangle:
-      case ErbButtonShape.square:
+      case ERbButtonShape.rectangle:
+      case ERbButtonShape.square:
         return const Radius.circular(4);
-      case ErbButtonShape.round:
-      case ErbButtonShape.circle:
-      case ErbButtonShape.filled:
+      case ERbButtonShape.round:
+      case ERbButtonShape.circle:
+      case ERbButtonShape.filled:
         return const Radius.circular(24);
     }
   }
@@ -136,13 +136,13 @@ class _ErbButtonState extends State<ErbButton> {
     }
     if (!widget.disabled && widget.textStyle != null) return widget.textStyle!;
     switch (widget.size) {
-      case ErbButtonSize.large:
+      case ERbButtonSize.large:
         return const TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
-      case ErbButtonSize.medium:
+      case ERbButtonSize.medium:
         return const TextStyle(fontSize: 16, fontWeight: FontWeight.w600);
-      case ErbButtonSize.small:
+      case ERbButtonSize.small:
         return const TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
-      case ErbButtonSize.extraSmall:
+      case ERbButtonSize.extraSmall:
         return const TextStyle(fontSize: 14, fontWeight: FontWeight.w600);
     }
   }
@@ -197,16 +197,16 @@ class _ErbButtonState extends State<ErbButton> {
     if (widget.width != null) {
       return widget.width;
     }
-    if ((widget.shape == ErbButtonShape.square ||
-        widget.shape == ErbButtonShape.circle)) {
+    if ((widget.shape == ERbButtonShape.square ||
+        widget.shape == ERbButtonShape.circle)) {
       switch (widget.size) {
-        case ErbButtonSize.large:
+        case ERbButtonSize.large:
           return 48;
-        case ErbButtonSize.medium:
+        case ERbButtonSize.medium:
           return 40;
-        case ErbButtonSize.small:
+        case ERbButtonSize.small:
           return 32;
-        case ErbButtonSize.extraSmall:
+        case ERbButtonSize.extraSmall:
           return 28;
       }
     }
@@ -218,13 +218,13 @@ class _ErbButtonState extends State<ErbButton> {
       return widget.height!;
     }
     switch (widget.size) {
-      case ErbButtonSize.large:
+      case ERbButtonSize.large:
         return 48;
-      case ErbButtonSize.medium:
+      case ERbButtonSize.medium:
         return 40;
-      case ErbButtonSize.small:
+      case ERbButtonSize.small:
         return 32;
-      case ErbButtonSize.extraSmall:
+      case ERbButtonSize.extraSmall:
         return 28;
     }
   }
@@ -233,25 +233,25 @@ class _ErbButtonState extends State<ErbButton> {
     if (widget.padding != null) {
       return widget.padding;
     }
-    var equalSide = widget.shape == ErbButtonShape.square ||
-        widget.shape == ErbButtonShape.circle;
+    var equalSide = widget.shape == ERbButtonShape.square ||
+        widget.shape == ERbButtonShape.circle;
 
     double horizontalPadding;
 
     switch (widget.size) {
-      case ErbButtonSize.large:
+      case ERbButtonSize.large:
         horizontalPadding = equalSide ? 12 : 20;
 
         break;
-      case ErbButtonSize.medium:
+      case ERbButtonSize.medium:
         horizontalPadding = equalSide ? 10 : 16;
 
         break;
-      case ErbButtonSize.small:
+      case ERbButtonSize.small:
         horizontalPadding = equalSide ? 7 : 12;
 
         break;
-      case ErbButtonSize.extraSmall:
+      case ERbButtonSize.extraSmall:
         horizontalPadding = equalSide ? 5 : 8;
 
         break;
@@ -273,25 +273,25 @@ class _ErbButtonState extends State<ErbButton> {
     return null;
   }
 
-  ErbButtonStyle _generateInnerStyle() {
+  ERbButtonStyle _generateInnerStyle() {
     switch (widget.type) {
-      case ErbButtonType.fill:
-        return ErbButtonStyle.generateFillStyleByTheme(
+      case ERbButtonType.fill:
+        return ERbButtonStyle.generateFillStyleByTheme(
             context, widget.theme, widget.disabled);
-      case ErbButtonType.outline:
-        return ErbButtonStyle.generateOutlineStyleByTheme(
+      case ERbButtonType.outline:
+        return ERbButtonStyle.generateOutlineStyleByTheme(
             context, widget.theme, widget.disabled);
-      case ErbButtonType.text:
-        return ErbButtonStyle.generateTextStyleByTheme(
+      case ERbButtonType.text:
+        return ERbButtonStyle.generateTextStyleByTheme(
             context, widget.theme, widget.disabled);
     }
   }
 
-  ErbButtonStyle get _activeStyle {
+  ERbButtonStyle get _activeStyle {
     return _generateInnerStyle().apply(widget.activeStyle ?? widget.style);
   }
 
-  ErbButtonStyle get _disableStyle {
+  ERbButtonStyle get _disableStyle {
     return _generateInnerStyle().apply(widget.disableStyle ?? widget.style);
   }
 }
