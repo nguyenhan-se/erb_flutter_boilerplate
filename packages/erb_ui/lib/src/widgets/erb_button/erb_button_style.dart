@@ -35,6 +35,10 @@ class ERbButtonStyle {
         textColor = Theme.of(context).colorScheme.onPrimaryContainer;
         backgroundColor = Theme.of(context).colorScheme.primaryContainer;
         break;
+      case ERbButtonTheme.defaultTheme:
+        backgroundColor = Theme.of(context).colorScheme.surfaceVariant;
+        textColor = Theme.of(context).colorScheme.onSurfaceVariant;
+        break;
 
       case null:
     }
@@ -61,6 +65,11 @@ class ERbButtonStyle {
         backgroundColor = themeData.colorScheme.primary.withOpacity(0.05);
         boderColor = themeData.colorScheme.primary;
         break;
+      case ERbButtonTheme.defaultTheme:
+        backgroundColor = themeData.colorScheme.surface;
+        textColor = themeData.colorScheme.onSurface;
+        boderColor = themeData.colorScheme.outline;
+
       case null:
     }
     _disabledColor(disabled);
@@ -83,6 +92,9 @@ class ERbButtonStyle {
         textColor = themeData.colorScheme.primary;
         backgroundColor = Colors.transparent;
         break;
+      case ERbButtonTheme.defaultTheme:
+        backgroundColor = Colors.transparent;
+        textColor = themeData.colorScheme.onSurfaceVariant;
       case null:
     }
     _disabledColor(disabled);

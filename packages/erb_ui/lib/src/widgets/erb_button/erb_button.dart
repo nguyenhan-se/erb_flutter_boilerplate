@@ -8,7 +8,7 @@ enum ERbButtonType { fill, outline, text }
 
 enum ERbButtonShape { rectangle, round, square, circle, filled }
 
-enum ERbButtonTheme { primary, danger, light }
+enum ERbButtonTheme { defaultTheme, primary, danger, light }
 
 class ERbButton extends StatefulWidget {
   const ERbButton({
