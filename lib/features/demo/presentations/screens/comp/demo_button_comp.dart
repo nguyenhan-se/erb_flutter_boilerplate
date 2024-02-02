@@ -1,8 +1,8 @@
-import 'package:app_constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:erb_ui/widgets.dart';
 import 'package:erb_shared/extensions.dart';
+import 'package:app_constants/app_constants.dart';
 
 class DemoButtonComp extends StatelessWidget {
   const DemoButtonComp({super.key});
@@ -278,6 +278,15 @@ class DemoButtonComp extends StatelessWidget {
                 shape: ERbButtonShape.circle,
               ),
             ],
+          ),
+          ERbButton(
+            onTap: () {},
+            width: double.infinity,
+            text: 'Rectangle',
+            size: ERbButtonSize.large,
+            type: ERbButtonType.fill,
+            theme: ERbButtonTheme.primary,
+            shape: ERbButtonShape.rectangle,
           ),
           ERbButton(
             onTap: () {},
