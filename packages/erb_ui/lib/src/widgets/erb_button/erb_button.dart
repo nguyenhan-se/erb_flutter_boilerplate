@@ -76,23 +76,26 @@ class _ERbButtonState extends State<ERbButton> {
 
   @override
   Widget build(BuildContext context) {
-    Widget display = Container(
-      width: _getWidth(),
-      height: _getHeight(),
-      padding: _getPadding(),
-      alignment:
-          widget.shape == ERbButtonShape.filled ? Alignment.center : null,
-      decoration: BoxDecoration(
-        shape: widget.shape == ERbButtonShape.circle
-            ? BoxShape.circle
-            : BoxShape.rectangle,
-        borderRadius: widget.shape == ERbButtonShape.circle
-            ? null
-            : style.radius ?? BorderRadius.all(_getRadius()),
-        color: widget.disabled ? style.backgroundColor : Colors.transparent,
-        border: _getBorder(context),
+    Widget display = MediaQuery(
+      data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
+      child: Container(
+        width: _getWidth(),
+        height: _getHeight(),
+        padding: _getPadding(),
+        alignment:
+            widget.shape == ERbButtonShape.filled ? Alignment.center : null,
+        decoration: BoxDecoration(
+          shape: widget.shape == ERbButtonShape.circle
+              ? BoxShape.circle
+              : BoxShape.rectangle,
+          borderRadius: widget.shape == ERbButtonShape.circle
+              ? null
+              : style.radius ?? BorderRadius.all(_getRadius()),
+          color: widget.disabled ? style.backgroundColor : Colors.transparent,
+          border: _getBorder(context),
+        ),
+        child: widget.child ?? _getChild(),
       ),
-      child: widget.child ?? _getChild(),
     );
 
     if (widget.disabled) {
@@ -157,7 +160,7 @@ class _ERbButtonState extends State<ERbButton> {
 
     final children = <Widget>[];
     if (widget.iconLeft != null) {
-      children.add(widget.iconLeft!);
+      children.add(_icon(widget.iconLeft!));
     }
     if (widget.text != null) {
       var text = Text(
@@ -168,7 +171,7 @@ class _ERbButtonState extends State<ERbButton> {
     }
 
     if (widget.iconRight != null) {
-      children.add(widget.iconRight!);
+      children.add(_icon(widget.iconRight!));
     }
 
     if (children.length >= 2) {
@@ -227,6 +230,25 @@ class _ERbButtonState extends State<ERbButton> {
         return 32;
       case ERbButtonSize.extraSmall:
         return 28;
+    }
+  }
+
+  Widget _icon(Widget icon) => SizedBox(
+        height: _getIconSize(),
+        width: _getIconSize(),
+        child: icon,
+      );
+
+  double _getIconSize() {
+    switch (widget.size) {
+      case ERbButtonSize.large:
+        return 24;
+      case ERbButtonSize.medium:
+        return 22;
+      case ERbButtonSize.small:
+        return 20;
+      case ERbButtonSize.extraSmall:
+        return 20;
     }
   }
 
