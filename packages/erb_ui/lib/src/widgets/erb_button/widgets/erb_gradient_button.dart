@@ -1,6 +1,7 @@
 import 'package:erb_ui/theme.dart';
 import 'package:flutter/material.dart';
 
+import '../const/enum.dart';
 import 'erb_gradient_style.dart';
 import 'gradient_box_border.dart';
 import '../base/erb_button_base.dart';

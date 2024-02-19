@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'erb_button_style.dart';
+import '../const/enum.dart';
 import '../base/erb_button_base.dart';
-
-enum ERbButtonTheme { defaultTheme, primary, danger, light }
 
 class ERbButton extends ERbButtonBase {
   const ERbButton({

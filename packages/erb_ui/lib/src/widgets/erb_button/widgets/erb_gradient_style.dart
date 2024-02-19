@@ -27,4 +27,19 @@ class ERbButtonGradientStyle {
         boderColor: data?.boderColor ?? boderColor,
         borderWidth: data?.borderWidth ?? borderWidth,
       );
+
+  ERbButtonGradientStyle copyWith({
+    Gradient? gradient,
+    Color? textColor,
+    Color? boderColor,
+    BorderRadiusGeometry? radius,
+    double? borderWidth,
+  }) =>
+      ERbButtonGradientStyle(
+        radius: radius ?? this.radius,
+        gradient: gradient ?? this.gradient,
+        textColor: textColor ?? this.textColor,
+        boderColor: boderColor ?? this.boderColor,
+        borderWidth: borderWidth ?? this.borderWidth,
+      );
 }
