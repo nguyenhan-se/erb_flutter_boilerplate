@@ -33,7 +33,10 @@ class AppStaticColors {
   static const Color onSurfaceVariant = Color(0xFF686868);
 
   static const LinearGradient primaryIngredientColor = LinearGradient(
-    colors: [Color(0xff3332CB), Color(0xFF0022B1)],
+    colors: [
+      Color(0xff273E7C),
+      Color(0xFF1435EB),
+    ],
     stops: [0, 1],
   );
   static const LinearGradient secondaryIngredientColor = LinearGradient(

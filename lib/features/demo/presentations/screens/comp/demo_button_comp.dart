@@ -18,6 +18,9 @@ class DemoButtonComp extends StatelessWidget {
         WidgetItemEx('Disable', _buildErbButtonDisable()),
         WidgetItemEx('Shape', _buildErbButtonShape()),
         WidgetItemEx('Custom Style', _buildErbButtonCustomStyle()),
+        WidgetItemEx('Gradient', _buildErbButtonGradientNormal()),
+        WidgetItemEx(
+            'Gradient disable', _buildErbButtonGradientDisableNormal()),
       ],
     );
   }
@@ -312,6 +315,146 @@ class DemoButtonComp extends StatelessWidget {
               backgroundColor: Colors.amber,
               radius: BorderRadius.all(KRadius.r32.radius),
             ),
+          ),
+        ],
+      );
+
+  Widget _buildErbButtonGradientNormal() => Wrap(
+        spacing: 4.0,
+        runSpacing: 4.0,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ERbGradientButton(
+                onTap: () {},
+                text: 'Gradient',
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.rectangle,
+              ),
+              KSizedBox.w4.size,
+              ERbGradientButton(
+                onTap: () {},
+                text: 'Gradient',
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.round,
+              ),
+              KSizedBox.w4.size,
+              ERbGradientButton(
+                onTap: () {},
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.square,
+                child: const Icon(
+                  Icons.account_balance_rounded,
+                  color: Colors.white,
+                ),
+              ),
+              KSizedBox.w4.size,
+              ERbGradientButton(
+                onTap: () {},
+                text: 'Gradient',
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.circle,
+                child: const Icon(
+                  Icons.account_balance_rounded,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          KSizedBox.h4.size,
+          ERbGradientButton(
+            onTap: () {},
+            text: 'Gradient',
+            size: ERbButtonSize.large,
+            type: ERbButtonType.fill,
+            shape: ERbButtonShape.filled,
+          ),
+          KSizedBox.h4.size,
+          ERbGradientButton(
+            onTap: () {},
+            text: 'Gradient',
+            size: ERbButtonSize.large,
+            type: ERbButtonType.outline,
+            shape: ERbButtonShape.filled,
+            style: ERbButtonGradientStyle(borderWidth: 3),
+          ),
+        ],
+      );
+
+  Widget _buildErbButtonGradientDisableNormal() => Wrap(
+        spacing: 4.0,
+        runSpacing: 4.0,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ERbGradientButton(
+                onTap: () {},
+                text: 'Gradient',
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.rectangle,
+                disabled: true,
+              ),
+              KSizedBox.w4.size,
+              ERbGradientButton(
+                onTap: () {},
+                text: 'Gradient',
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.round,
+                disabled: true,
+              ),
+              KSizedBox.w4.size,
+              ERbGradientButton(
+                onTap: () {},
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.square,
+                disabled: true,
+                child: const Icon(
+                  Icons.account_balance_rounded,
+                  color: Colors.white,
+                ),
+              ),
+              KSizedBox.w4.size,
+              ERbGradientButton(
+                onTap: () {},
+                text: 'Gradient',
+                size: ERbButtonSize.large,
+                type: ERbButtonType.fill,
+                shape: ERbButtonShape.circle,
+                disabled: true,
+                child: const Icon(
+                  Icons.account_balance_rounded,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          KSizedBox.h4.size,
+          ERbGradientButton(
+            onTap: () {},
+            text: 'Gradient',
+            size: ERbButtonSize.large,
+            type: ERbButtonType.fill,
+            shape: ERbButtonShape.filled,
+            disabled: true,
+          ),
+          KSizedBox.h4.size,
+          ERbGradientButton(
+            onTap: () {},
+            text: 'Gradient',
+            size: ERbButtonSize.large,
+            type: ERbButtonType.outline,
+            shape: ERbButtonShape.filled,
+            style: ERbButtonGradientStyle(borderWidth: 3),
+            disabled: true,
           ),
         ],
       );

@@ -1,5 +1,6 @@
-import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
+
+import 'erb_button.dart';
 
 class ERbButtonStyle {
   Color? backgroundColor;
