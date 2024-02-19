@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'erb_button_ink.dart';
+
 enum ERbButtonSize { large, medium, small, extraSmall }
 
 enum ERbButtonType { fill, outline, text }
@@ -51,7 +53,7 @@ abstract class ERbButtonBase extends StatefulWidget {
 }
 
 mixin ERbButtonBaseMixin<T extends ERbButtonBase> on State<T> {
-  Widget buttonBase({
+  Widget display({
     BorderRadiusGeometry? borderRadius,
     Color? color,
     BoxBorder? border,
@@ -60,8 +62,10 @@ mixin ERbButtonBaseMixin<T extends ERbButtonBase> on State<T> {
   }) =>
       Opacity(
         opacity: widget.disabled ? 0.5 : 1,
-        child: _inkButton(
-          borderRadius: widget.shape == ERbButtonShape.circle
+        child: ERbButtonInk(
+          onTap: widget.onTap,
+          onLongPress: widget.onLongPress,
+          splashRadius: widget.shape == ERbButtonShape.circle
               ? BorderRadius.all(Radius.circular(_getHeight()))
               : borderRadius,
           child: MediaQuery(
@@ -86,33 +90,6 @@ mixin ERbButtonBaseMixin<T extends ERbButtonBase> on State<T> {
               ),
               child: widget.child ?? getChild(textColor: textColor),
             ),
-          ),
-        ),
-      );
-
-  Widget _inkButton(
-          {required Widget child, BorderRadiusGeometry? borderRadius}) =>
-      Theme(
-        data:
-            Theme.of(context).copyWith(splashFactory: InkRipple.splashFactory),
-        child: ClipRRect(
-          borderRadius: borderRadius ?? BorderRadius.zero,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              child,
-              !widget.disabled
-                  ? Positioned.fill(
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: widget.onTap,
-                          onLongPress: widget.onLongPress,
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
-            ],
           ),
         ),
       );

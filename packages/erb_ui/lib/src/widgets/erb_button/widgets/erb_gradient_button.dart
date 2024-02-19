@@ -46,7 +46,7 @@ class _ERbButtonState extends State<ERbGradientButton> with ERbButtonBaseMixin {
 
   @override
   Widget build(BuildContext context) {
-    return buttonBase(
+    return display(
       borderRadius: style.radius ?? BorderRadius.all(getRadius()),
       gradient: widget.type == ERbButtonType.outline ? null : style.gradient,
       border: _getBorder(context),

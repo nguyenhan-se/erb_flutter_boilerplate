@@ -49,7 +49,7 @@ class _ERbButtonState extends State<ERbButton> with ERbButtonBaseMixin {
 
   @override
   Widget build(BuildContext context) {
-    return buttonBase(
+    return display(
       borderRadius: style.radius ?? BorderRadius.all(getRadius()),
       color: style.backgroundColor,
       border: _getBorder(context),
