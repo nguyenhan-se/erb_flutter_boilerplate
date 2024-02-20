@@ -1,5 +1,6 @@
-import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
+
+import '../const/enum.dart';
 
 class ERbButtonStyle {
   Color? backgroundColor;
@@ -103,5 +104,20 @@ class ERbButtonStyle {
         textColor: data?.textColor ?? textColor,
         boderColor: data?.boderColor ?? boderColor,
         borderWidth: data?.borderWidth ?? borderWidth,
+      );
+
+  ERbButtonStyle copyWith({
+    Color? backgroundColor,
+    Color? textColor,
+    BorderRadiusGeometry? radius,
+    Color? boderColor,
+    double? borderWidth,
+  }) =>
+      ERbButtonStyle(
+        radius: radius ?? this.radius,
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+        textColor: textColor ?? this.textColor,
+        boderColor: boderColor ?? this.boderColor,
+        borderWidth: borderWidth ?? this.borderWidth,
       );
 }

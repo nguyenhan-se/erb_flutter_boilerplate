@@ -11,4 +11,3 @@ export 'layout/erb_fill_viewport_scroll_view.dart';
 export 'layout/erb_overflow_transform_box.dart';
 export 'misc/cross_fade_indexed_stack.dart';
 export 'erb_button/erb_button.dart';
-export 'erb_button/erb_button_style.dart';
