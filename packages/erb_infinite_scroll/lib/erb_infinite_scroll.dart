@@ -6,3 +6,5 @@ export 'src/interface/paged_fetcher.dart';
 export 'src/paged_mixin.dart';
 export 'src/keep_alive_paged_mixin.dart';
 export 'src/erb_paged_builder.dart';
+export 'src/erb_paginated_list_view.dart';
+export 'src/erb_paginated_grid_view.dart';
