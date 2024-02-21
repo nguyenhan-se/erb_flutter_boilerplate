@@ -1,5 +1,8 @@
 ## NEXT_VERSION
 
+- Add widget ERbPagedListView,ERbPagedGridView
+- Add automatically refresh value when called update updateFilter
+
 ## 0.0.3
 
 ### Features

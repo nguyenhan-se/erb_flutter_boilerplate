@@ -1,3 +1,4 @@
+import 'package:erb_infinite_scroll/src/const/erb_paged_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -41,10 +42,10 @@ class ERbPagedBuilder<ItemType> extends ConsumerStatefulWidget {
     required InfiniteScrollKeepAliveProvider<ItemType> provider,
     required this.pagedBuilder,
     required this.itemBuilder,
-    required this.firstPageKey,
-    this.limit = 20,
-    this.pullToRefresh = false,
-    this.enableInfiniteScroll = true,
+    this.firstPageKey = ERbPagedSetting.firstPageKey,
+    this.limit = ERbPagedSetting.limit,
+    this.pullToRefresh = ERbPagedSetting.pullToRefresh,
+    this.enableInfiniteScroll = ERbPagedSetting.enableInfiniteScroll,
     this.invisibleItemsThreshold,
     this.firstPageErrorIndicatorBuilder,
     this.firstPageProgressIndicatorBuilder,
