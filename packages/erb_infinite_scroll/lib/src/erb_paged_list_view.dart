@@ -1,21 +1,23 @@
-import 'package:erb_infinite_scroll/erb_infinite_scroll.dart';
 import 'package:flutter/widgets.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-class ERbPaginatedListView<T> extends StatefulWidget {
-  const ERbPaginatedListView({
+import 'erb_paged_builder.dart';
+import 'const/erb_paged_setting.dart';
+
+class ERbPagedListView<T> extends StatefulWidget {
+  const ERbPagedListView({
     required InfiniteScrollAutoDisposeProvider<T> provider,
     required this.itemBuilder,
-    this.firstPageKey = 0,
-    this.limit = 20,
-    this.pullToRefresh = false,
-    this.useSliver = false,
-    this.enableInfiniteScroll = true,
-    this.shrinkWrap = false,
-    this.reverse = false,
+    this.firstPageKey = ERbPagedSetting.firstPageKey,
+    this.limit = ERbPagedSetting.limit,
+    this.pullToRefresh = ERbPagedSetting.pullToRefresh,
+    this.useSliver = ERbPagedSetting.useSliver,
+    this.enableInfiniteScroll = ERbPagedSetting.enableInfiniteScroll,
+    this.shrinkWrap = ERbPagedSetting.shrinkWrap,
+    this.reverse = ERbPagedSetting.reverse,
+    this.numSkeletons = ERbPagedSetting.numSkeletons,
     this.skeleton,
-    this.numSkeletons = 4,
     this.invisibleItemsThreshold,
     this.firstPageErrorIndicatorBuilder,
     this.firstPageProgressIndicatorBuilder,
@@ -27,18 +29,18 @@ class ERbPaginatedListView<T> extends StatefulWidget {
   })  : _autoDisposeProvider = provider,
         _provider = null;
 
-  const ERbPaginatedListView.keepAlive({
+  const ERbPagedListView.keepAlive({
     required InfiniteScrollKeepAliveProvider<T> provider,
     required this.itemBuilder,
-    this.firstPageKey = 0,
-    this.limit = 20,
-    this.pullToRefresh = false,
-    this.useSliver = false,
-    this.enableInfiniteScroll = true,
-    this.shrinkWrap = false,
-    this.reverse = false,
+    this.firstPageKey = ERbPagedSetting.firstPageKey,
+    this.limit = ERbPagedSetting.limit,
+    this.pullToRefresh = ERbPagedSetting.pullToRefresh,
+    this.useSliver = ERbPagedSetting.useSliver,
+    this.enableInfiniteScroll = ERbPagedSetting.enableInfiniteScroll,
+    this.shrinkWrap = ERbPagedSetting.shrinkWrap,
+    this.reverse = ERbPagedSetting.reverse,
+    this.numSkeletons = ERbPagedSetting.numSkeletons,
     this.skeleton,
-    this.numSkeletons = 4,
     this.invisibleItemsThreshold,
     this.firstPageErrorIndicatorBuilder,
     this.firstPageProgressIndicatorBuilder,
@@ -103,11 +105,10 @@ class ERbPaginatedListView<T> extends StatefulWidget {
       noMoreItemsIndicatorBuilder;
 
   @override
-  State<ERbPaginatedListView<T>> createState() =>
-      _ERbPaginatedListViewState<T>();
+  State<ERbPagedListView<T>> createState() => _ERbPagedListViewState<T>();
 }
 
-class _ERbPaginatedListViewState<T> extends State<ERbPaginatedListView<T>> {
+class _ERbPagedListViewState<T> extends State<ERbPagedListView<T>> {
   get _provider => widget._provider ?? widget._autoDisposeProvider!;
   List<Widget> get skeletons =>
       List.generate(widget.numSkeletons, (_) => widget.skeleton!);

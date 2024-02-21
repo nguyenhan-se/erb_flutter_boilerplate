@@ -17,8 +17,11 @@ mixin _PagedMixin<ItemType, FilterType>
 
   FilterType? filter;
 
-  void updateFilter(FilterType? filter) {
+  void updateFilter(FilterType? filter, {bool refresh = true}) {
     this.filter = filter;
+    if (refresh) {
+      ref.invalidateSelf();
+    }
   }
 
   PagedState<ItemType> init({
