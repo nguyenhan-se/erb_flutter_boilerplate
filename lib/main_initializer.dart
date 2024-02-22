@@ -41,7 +41,7 @@ Future<ProviderContainer> mainInitializer() async {
     ),
     logger: TalkerLogger(
       output: debugPrint,
-      settings: const TalkerLoggerSettings(),
+      settings: TalkerLoggerSettings(),
     ),
   );
 
