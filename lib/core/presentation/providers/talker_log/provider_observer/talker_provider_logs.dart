@@ -43,6 +43,7 @@ class ProviderUpdateLog extends TalkerLog {
     required this.provider,
     required this.container,
     required this.settings,
+    super.logLevel,
     this.previousValue,
     this.newValue,
   }) : super('🔄 DidUpdateProvider: ${provider.name}');

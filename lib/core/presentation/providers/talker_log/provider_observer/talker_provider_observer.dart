@@ -72,6 +72,7 @@ class TalkerProviderObserver extends ProviderObserver {
         provider: provider,
         container: container,
         settings: settings,
+        logLevel: LogLevel.info,
         previousValue: previousValue,
         newValue: newValue,
       ),
