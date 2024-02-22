@@ -110,7 +110,7 @@ class TalkerRouteLog extends TalkerLog {
   AnsiPen get pen => AnsiPen()..xterm(135);
 
   @override
-  String get title => WellKnownTitles.route.title;
+  String get key => TalkerLogType.route.key;
 
   static String _createMessage(
     String mess,

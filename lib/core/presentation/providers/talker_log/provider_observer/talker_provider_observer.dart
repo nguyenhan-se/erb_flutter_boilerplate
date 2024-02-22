@@ -75,7 +75,6 @@ class TalkerProviderObserver extends ProviderObserver {
         previousValue: previousValue,
         newValue: newValue,
       ),
-      logLevel: LogLevel.info,
     );
   }
 
