@@ -1,6 +1,8 @@
 ## NEXT_VERSION
 
-- Update changelog
+### Features
+
+- Add `erb-button`
 
 ## 0.0.2
 

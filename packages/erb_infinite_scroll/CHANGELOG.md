@@ -1,13 +1,15 @@
 ## NEXT_VERSION
 
-- Add widget ERbPagedListView,ERbPagedGridView
-- Add automatically refresh value when called update updateFilter
+### Features
+
+- Adds `ERbPagedListView`,`ERbPagedGridView` widget.
+- Add `automatically` refresh value when called update `updateFilter`
 
 ## 0.0.3
 
 ### Features
 
-- Add filter mixin PagedMixinFilter
+- Add `filter` mixin `PagedMixinFilter`
 
 ## 0.0.2
 
