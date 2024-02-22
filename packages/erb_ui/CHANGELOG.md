@@ -1,5 +1,7 @@
 ## NEXT_VERSION
 
+## 0.0.3
+
 ### Features
 
 - Add `erb-button`
