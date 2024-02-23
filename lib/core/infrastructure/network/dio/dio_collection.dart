@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
+import 'package:env/env.dart';
+import 'package:erb_flutter_boilerplate/core/infrastructure/network/dio/interceptors/movie_header_attachment_interceptor.dart';
 import 'package:erb_shared/extensions.dart';
 import 'package:erb_shared/network.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -35,10 +37,11 @@ DioCollection dio(DioRef ref) {
           )
         ]),
     ),
-    mockJsonplaceholder: createDio(
-      baseOptions: BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'),
+    movie: createDio(
+      baseOptions: BaseOptions(baseUrl: EnvFlavor().tmdbUrl),
       interceptors: [
         DioLoggerInterceptor(ref.watch(talkerProvider)),
+        ref.watch(movieHeaderAttachmentInterceptorProvider),
       ],
     ),
   );
@@ -46,10 +49,10 @@ DioCollection dio(DioRef ref) {
 
 class DioCollection {
   DioCollection({
-    required this.mockJsonplaceholder,
+    required this.movie,
     required this.mockDummyjson,
   });
 
-  final Dio mockJsonplaceholder;
+  final Dio movie;
   final Dio mockDummyjson;
 }
