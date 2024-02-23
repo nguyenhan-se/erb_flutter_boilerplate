@@ -19,10 +19,13 @@ abstract class MovieApi {
   factory MovieApi(Dio dio) = _MovieApi;
 
   @GET('/search/movie')
-  Future<PaginatedList<DemoMovie>> searchMovies(
-      @Queries() FilterMovieParams queries);
+  Future<PaginatedResponse<DemoMovie>> searchMovies(
+    @Queries() PaginatedQuery page,
+    @Queries() FilterMovieParams queries,
+  );
 
   @GET('/trending/movie/day')
-  Future<PaginatedList<DemoMovie>> trendingMovies(
-      @Queries() FilterMovieParams queries);
+  Future<PaginatedResponse<DemoMovie>> trendingMovies(
+    @Queries() PaginatedQuery page,
+  );
 }

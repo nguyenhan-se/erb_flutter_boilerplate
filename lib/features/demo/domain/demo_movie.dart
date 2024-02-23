@@ -55,11 +55,9 @@ class DemoMovie with DemoMovieMappable {
 @MappableClass()
 class FilterMovieParams with FilterMovieParamsMappable {
   final String? query;
-  final int? page;
 
   FilterMovieParams({
     this.query,
-    this.page,
   });
 
   factory FilterMovieParams.init() {

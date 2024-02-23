@@ -5,7 +5,7 @@ class AppGlobalSetting {
 
   static final baseUrl = EnvFlavor().baseUrl;
 
-  static final tmdbUrl = EnvFlavor().tmdbImg;
+  static final tmdbUrl = EnvFlavor().tmdbUrl;
 
   static final tmdbImg = EnvFlavor().tmdbImg;
 }

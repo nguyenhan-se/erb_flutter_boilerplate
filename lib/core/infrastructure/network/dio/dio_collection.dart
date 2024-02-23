@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:dio_smart_retry/dio_smart_retry.dart';
-import 'package:env/env.dart';
-import 'package:erb_shared/extensions.dart';
 import 'package:erb_shared/network.dart';
+import 'package:erb_shared/extensions.dart';
+import 'package:dio_smart_retry/dio_smart_retry.dart';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:erb_flutter_boilerplate/constants/app_glob_setting.dart';
 import 'package:erb_flutter_boilerplate/core/presentation/providers/talker_log/talker_provider.dart';
-import 'package:erb_flutter_boilerplate/core/infrastructure/network/dio/interceptors/movie_header_attachment_interceptor.dart';
 
 import 'interceptors/dio_logger_interceptor.dart';
+import 'interceptors/movie_header_attachment_interceptor.dart';
 
 part 'dio_collection.g.dart';
 
@@ -38,7 +39,7 @@ DioCollection dio(DioRef ref) {
         ]),
     ),
     movie: createDio(
-      baseOptions: BaseOptions(baseUrl: EnvFlavor().tmdbUrl),
+      baseOptions: BaseOptions(baseUrl: AppGlobalSetting.tmdbUrl),
       interceptors: [
         DioLoggerInterceptor(ref.watch(talkerProvider)),
         ref.watch(movieHeaderAttachmentInterceptorProvider),

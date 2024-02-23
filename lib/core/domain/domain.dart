@@ -1,1 +1,1 @@
-export 'paginated_list.dart';
+export 'paginated.dart';

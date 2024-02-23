@@ -20,7 +20,7 @@ class MovieItem extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(),
             child: CachedNetworkImage(
-              imageUrl: '${AppGlobalSetting.tmdbUrl}/${movie.posterPath}',
+              imageUrl: '${AppGlobalSetting.tmdbImg}/${movie.posterPath}',
               placeholder: (context, url) => const SizedBox(
                 width: 70,
                 height: 110,

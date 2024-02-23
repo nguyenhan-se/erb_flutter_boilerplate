@@ -1,4 +1,3 @@
-import 'package:erb_ui/erb_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:app_constants/app_constants.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -6,19 +5,18 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:erb_infinite_scroll/erb_infinite_scroll.dart';
 
 import 'package:erb_flutter_boilerplate/routes/routes.dart';
-import 'package:erb_flutter_boilerplate/core/presentation/hook/hook.dart';
 
 import 'widgets/movie_item.dart';
 import 'demo_movie_controller.dart';
 import 'widgets/movie_grid_item.dart';
 import '../../../domain/demo_movie.dart';
+import 'widgets/movie_search.dart';
 
 @RoutePage()
 class DemoInfiniteListScreen extends HookConsumerWidget {
   const DemoInfiniteListScreen({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final debounce = useDebounce(const Duration(milliseconds: 500));
     final gridViewEnabled = useState(false);
     return Scaffold(
       appBar: AppBar(),
@@ -26,16 +24,7 @@ class DemoInfiniteListScreen extends HookConsumerWidget {
         padding: KEdgeInsets.h16.size,
         child: Column(
           children: [
-            ERbTextField(
-              hintText: 'Search',
-              onChanged: (text) {
-                debounce(() {
-                  ref
-                      .read(demoMovieControllerProvider.notifier)
-                      .updateFilter(FilterMovieParams(query: text));
-                });
-              },
-            ),
+            const MovieSearch(),
             KSizedBox.h16.size,
             Expanded(
               child: gridViewEnabled.value

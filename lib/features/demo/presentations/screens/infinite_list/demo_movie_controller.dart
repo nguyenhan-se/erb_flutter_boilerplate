@@ -1,6 +1,7 @@
-import 'package:erb_shared/extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:erb_infinite_scroll/erb_infinite_scroll.dart';
+
+import 'package:erb_flutter_boilerplate/core/domain/domain.dart';
 
 import '../../../data/movie_repo.dart';
 import '../../../domain/demo_movie.dart';
@@ -18,13 +19,12 @@ class DemoMovieController extends _$DemoMovieController
       fetcher: PagedFetcher(
         load: (page, limit) async {
           await Future.delayed(const Duration(seconds: 2));
-          final params = filter?.copyWith(page: page);
-          if (params.isNotNull && params!.query!.isNotEmpty) {
-            final data = await repo.searchMovies(params.copyWith(page: page));
+          if (filter?.query?.isNotEmpty ?? false) {
+            final data =
+                await repo.searchMovies(PaginatedQuery(page: page), filter!);
             return data;
           }
-          final data = await repo.trendingMovies(
-              (filter ?? FilterMovieParams.init()).copyWith(page: page));
+          final data = await repo.trendingMovies(PaginatedQuery(page: page));
           return data;
         },
       ),

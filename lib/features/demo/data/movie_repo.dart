@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'package:erb_flutter_boilerplate/core/domain/domain.dart';
 import 'package:erb_flutter_boilerplate/core/infrastructure/exceptions/exception.dart';
 
 import 'movie_api.dart';
@@ -17,16 +18,17 @@ class MovieRepo with RepositoryExceptionMixin {
 
   final MovieApi api;
 
-  Future<List<DemoMovie>> searchMovies(FilterMovieParams params) async {
+  Future<List<DemoMovie>> searchMovies(
+      PaginatedQuery page, FilterMovieParams params) async {
     return runAsyncCatching(action: () async {
-      final responses = await api.searchMovies(params);
+      final responses = await api.searchMovies(page, params);
       return responses.results;
     });
   }
 
-  Future<List<DemoMovie>> trendingMovies(FilterMovieParams params) async {
+  Future<List<DemoMovie>> trendingMovies(PaginatedQuery page) async {
     return runAsyncCatching(action: () async {
-      final responses = await api.trendingMovies(params);
+      final responses = await api.trendingMovies(page);
       return responses.results;
     });
   }
