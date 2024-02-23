@@ -1,5 +1,7 @@
 ## NEXT_VERSION
 
+## 0.0.4
+
 ### Features
 
 - Adds `ERbPagedListView`,`ERbPagedGridView` widget.
