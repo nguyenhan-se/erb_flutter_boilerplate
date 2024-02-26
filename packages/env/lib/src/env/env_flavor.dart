@@ -21,10 +21,10 @@ abstract class EnvFlavor implements EnvFields {
   // https://github.com/petercinibulk/envied/issues/6
   factory EnvFlavor() {
     return _instance ??= switch (AppFlavor.fromEnvironment) {
-      Flavor.prod || Flavor.beta => const EnvProd(),
-      Flavor.staging => const EnvStaging(),
-      Flavor.dev => const EnvDev(),
-      Flavor.local => const EnvLocal(),
+      Flavor.prod || Flavor.beta => EnvProd(),
+      Flavor.staging => EnvStaging(),
+      Flavor.dev => EnvDev(),
+      Flavor.local => EnvLocal(),
     };
   }
 }
