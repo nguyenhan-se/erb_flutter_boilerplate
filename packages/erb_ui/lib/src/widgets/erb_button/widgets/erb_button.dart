@@ -13,6 +13,7 @@ class ERbButton extends ERbButtonBase {
     super.textStyle,
     super.disableTextStyle,
     super.disabled = false,
+    super.opacityDisabled,
     super.shape = ERbButtonShape.rectangle,
     super.size = ERbButtonSize.medium,
     this.theme = ERbButtonTheme.primary,
