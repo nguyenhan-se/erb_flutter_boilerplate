@@ -10,6 +10,7 @@ abstract class ERbButtonBase extends StatefulWidget {
     this.onTap,
     this.onLongPress,
     required this.disabled,
+    this.opacityDisabled = 0.5,
     this.textStyle,
     this.disableTextStyle,
     required this.size,
@@ -29,6 +30,8 @@ abstract class ERbButtonBase extends StatefulWidget {
   final VoidCallback? onLongPress;
 
   final bool disabled;
+
+  final double opacityDisabled;
 
   final TextStyle? textStyle;
   final TextStyle? disableTextStyle;
@@ -56,10 +59,10 @@ mixin ERbButtonBaseMixin<T extends ERbButtonBase> on State<T> {
     Gradient? gradient,
   }) =>
       Opacity(
-        opacity: widget.disabled ? 0.5 : 1,
+        opacity: widget.disabled ? widget.opacityDisabled : 1,
         child: ERbButtonInk(
-          onTap: widget.onTap,
-          onLongPress: widget.onLongPress,
+          onTap: !widget.disabled ? widget.onTap : null,
+          onLongPress: !widget.disabled ? widget.onLongPress : null,
           splashRadius: widget.shape == ERbButtonShape.circle
               ? BorderRadius.all(Radius.circular(_getHeight()))
               : borderRadius,
