@@ -1,8 +1,8 @@
 /// All Env classes must implement all these values
 abstract class EnvFields {
   // TODO: Add non-static fields here and in the class for each flavor: [AppEnv], [DevEnv], [LocalEnv], [ProdEnv], and [StagingEnv]
-  abstract final String baseUrl;
-  abstract final String tmdbUrl;
-  abstract final String tmdbImg;
-  abstract final String tmdbToken;
+  abstract final String? baseUrl;
+  abstract final String? tmdbUrl;
+  abstract final String? tmdbImg;
+  abstract final String? tmdbToken;
 }

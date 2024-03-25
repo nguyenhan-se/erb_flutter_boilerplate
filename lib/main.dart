@@ -10,8 +10,8 @@ Future<void> main() async {
   final container = await mainInitializer();
 
   runApp(
-    ProviderScope(
-      parent: container,
+    UncontrolledProviderScope(
+      container: container,
       child: ResponsiveBreakpoints.builder(
         breakpoints: const [
           Breakpoint(start: 0, end: 450, name: MOBILE),

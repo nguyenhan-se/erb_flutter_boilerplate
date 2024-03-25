@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '_const/position.dart';
 
+@Deprecated("Use ERbButton instead.")
 class ERbElevatedButton extends StatefulWidget {
   const ERbElevatedButton({
     this.onPressed,
@@ -131,7 +132,8 @@ class _ERbElevatedButtonState extends State<ERbElevatedButton> {
       child: Ink(
         decoration: BoxDecoration(
           borderRadius: _borderRadius,
-          gradient: widget.enableGradient && !btnDisabled ? gradientColor : null,
+          gradient:
+              widget.enableGradient && !btnDisabled ? gradientColor : null,
         ),
         child: Container(
           width: buttonWidth(),
