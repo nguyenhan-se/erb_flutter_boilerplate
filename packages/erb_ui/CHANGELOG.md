@@ -1,5 +1,7 @@
 ## NEXT_VERSION
 
+## 0.0.4
+
 ### Features
 
 - Add `prop` opacityDisabled `ERbButton`
