@@ -63,7 +63,7 @@ class ERbThemeData {
         floatingLabelStyle: TextStyle(
           fontWeight: FontWeight.w700,
           fontSize: 13,
-          color: colorScheme.onBackground,
+          color: colorScheme.onSurface,
         ),
       );
 

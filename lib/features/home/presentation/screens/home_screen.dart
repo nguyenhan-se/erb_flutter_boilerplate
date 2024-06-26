@@ -60,6 +60,7 @@ class HomeScreen extends HookConsumerWidget {
                       // child: const Text('Toggle theme'),
                     ),
                     KSizedBox.h12.size.flex,
+                    // ignore: deprecated_member_use
                     ERbElevatedButton(
                       label: 'Go Demos',
                       onPressed: () {

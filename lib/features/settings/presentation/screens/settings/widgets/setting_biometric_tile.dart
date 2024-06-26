@@ -68,6 +68,7 @@ class SettingBiometricTile extends ERbSettingsTile {
                       reason: t.system.requestPermissionMsg.biometric,
                       onPositiveClick: (context) {
                         goAppSetting();
+                        // ignore: deprecated_member_use
                         AutoRouter.of(context).pop();
                       },
                     );

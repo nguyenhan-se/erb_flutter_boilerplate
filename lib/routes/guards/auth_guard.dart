@@ -17,6 +17,7 @@ class AuthGuard extends AutoRouteGuard {
       router.push(
         SignInRoute(
           onSignInResult: (_) {
+            // ignore: deprecated_member_use
             router.pop();
             resolver.next();
           },

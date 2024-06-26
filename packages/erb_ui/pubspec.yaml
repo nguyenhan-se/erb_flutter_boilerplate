@@ -2,6 +2,8 @@ name: erb_ui
 description: ERb libs - simple, generic widgets
 version: 0.0.4
 
+publish_to: "none"
+
 environment:
   sdk: ">=3.2.0 <4.0.0"
   flutter: ">=1.17.0"
@@ -9,11 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  erb_shared: ^0.0.1
+  erb_shared:
+    path: ../erb_shared
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
+  flutter_lints: ^4.0.0
 
 flutter:

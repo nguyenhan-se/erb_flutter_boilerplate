@@ -25,7 +25,8 @@ class ProviderAddLog extends TalkerLog {
   String get title => talkerTitle;
 
   @override
-  String generateTextMessage() {
+  String generateTextMessage(
+      {TimeFormat timeFormat = TimeFormat.timeAndSeconds}) {
     return _createMessage();
   }
 
@@ -61,7 +62,8 @@ class ProviderUpdateLog extends TalkerLog {
   String get title => talkerTitle;
 
   @override
-  String generateTextMessage() {
+  String generateTextMessage(
+      {TimeFormat timeFormat = TimeFormat.timeAndSeconds}) {
     return _createMessage();
   }
 

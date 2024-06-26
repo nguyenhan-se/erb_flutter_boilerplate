@@ -32,6 +32,7 @@ class AsyncButton extends HookWidget {
       }
     }
 
+    // ignore: deprecated_member_use
     return ERbElevatedButton(
       onPressed: enabled
           ? switch (snapshot) {

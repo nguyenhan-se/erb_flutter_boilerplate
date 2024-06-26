@@ -58,7 +58,7 @@ class ERbOutlineGradientButton extends StatelessWidget {
         const DefaultERbColorScheme.light().primaryGradient;
 
     final padding = theme.elevatedButtonTheme.style!.padding!
-        .resolve({MaterialState.pressed})!;
+        .resolve({WidgetState.pressed})!;
 
     return Material(
       color: backgroundColor,

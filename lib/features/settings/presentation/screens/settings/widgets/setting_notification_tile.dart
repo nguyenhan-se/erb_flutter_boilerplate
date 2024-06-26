@@ -64,6 +64,7 @@ class SettingNotificationTile extends ERbSettingsTile {
                 reason: t.system.requestPermissionMsg.notification,
                 onPositiveClick: (context) {
                   goAppSetting(type: AppSettingsType.notification);
+                  // ignore: deprecated_member_use
                   AutoRouter.of(context).pop();
                 },
               );
