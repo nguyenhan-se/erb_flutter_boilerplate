@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:erb_ui/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -112,7 +114,7 @@ class _ERbElevatedButtonState extends State<ERbElevatedButton> {
         widget.gradient ?? theme.eRbColorScheme.primaryGradient;
 
     final padding = theme.elevatedButtonTheme.style!.padding!
-        .resolve({MaterialState.pressed});
+        .resolve({WidgetState.pressed});
 
     final btnDisabled = widget.onPressed == null;
 

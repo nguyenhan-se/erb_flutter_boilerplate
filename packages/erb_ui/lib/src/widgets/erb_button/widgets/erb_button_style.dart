@@ -37,7 +37,7 @@ class ERbButtonStyle {
         backgroundColor = Theme.of(context).colorScheme.primaryContainer;
         break;
       case ERbButtonTheme.defaultTheme:
-        backgroundColor = Theme.of(context).colorScheme.surfaceVariant;
+        backgroundColor = Theme.of(context).colorScheme.surfaceContainerHighest;
         textColor = Theme.of(context).colorScheme.onSurfaceVariant;
         break;
 

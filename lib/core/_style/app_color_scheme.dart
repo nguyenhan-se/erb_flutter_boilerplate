@@ -62,8 +62,6 @@ const defLightScheme = ColorScheme(
   errorContainer: AppStaticColors.errorContainer,
   onError: AppStaticColors.onError,
   onErrorContainer: AppStaticColors.onErrorContainer,
-  background: AppStaticColors.background,
-  onBackground: AppStaticColors.onBackground,
   outline: AppStaticColors.outline,
   onInverseSurface: AppStaticColors.onInverseSurface,
   inverseSurface: AppStaticColors.inverseSurface,
@@ -74,7 +72,6 @@ const defLightScheme = ColorScheme(
   scrim: AppStaticColors.scrim,
   surface: AppStaticColors.surface,
   onSurface: AppStaticColors.onSurface,
-  surfaceVariant: AppStaticColors.surfaceVariant,
   onSurfaceVariant: AppStaticColors.onSurfaceVariant,
   brightness: Brightness.light,
 );
