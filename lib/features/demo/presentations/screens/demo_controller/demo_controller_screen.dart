@@ -42,9 +42,8 @@ class DemoControllerScreen extends HookConsumerWidget {
 
         return PopScope(
           canPop: tabsRouter.activeIndex == 0,
-          onPopInvoked: (didPop) {
-            tabsRouter.setActiveIndex(0);
-          },
+          onPopInvokedWithResult: (didPop, result) =>
+              tabsRouter.setActiveGuardIndex(0),
           child: Scaffold(
             body: child,
             bottomNavigationBar: const _BottomNavBar(),

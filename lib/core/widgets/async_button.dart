@@ -32,17 +32,14 @@ class AsyncButton extends HookWidget {
       }
     }
 
-    // ignore: deprecated_member_use
-    return ERbElevatedButton(
-      onPressed: enabled
+    return ERbGradientButton(
+      onTap: enabled
           ? switch (snapshot) {
               AsyncSnapshot(connectionState: ConnectionState.waiting) => null,
               _ => pressButton,
             }
           : null,
-      enableGradient: true,
-      position: ERbPosition.end,
-      icon: switch (snapshot) {
+      iconRight: switch (snapshot) {
         AsyncSnapshot(connectionState: ConnectionState.waiting) =>
           const SizedBox.square(
             dimension: 16,
@@ -52,7 +49,7 @@ class AsyncButton extends HookWidget {
           ),
         _ => null,
       },
-      label: label,
+      text: label,
     );
   }
 }

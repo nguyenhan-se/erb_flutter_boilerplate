@@ -62,6 +62,7 @@ class NoInternetScreen extends HookConsumerWidget {
                     await networkInfo.hasInternetConnection.then(
                       (value) {
                         if (value) {
+                          // ignore: use_build_context_synchronously
                           AutoRouter.of(context)
                               .replaceAll([const SplashRoute()]);
                         }
