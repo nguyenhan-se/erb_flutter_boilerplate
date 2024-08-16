@@ -20,8 +20,8 @@ class LanguageSettingScreen extends HookConsumerWidget {
       ref.read(appSettingsServiceProvider.notifier).setLocale(locale);
       Future.delayed(
         const Duration(milliseconds: 500),
-        // ignore: deprecated_member_use
-        () => AutoRouter.of(context).pop(),
+        // ignore: use_build_context_synchronously
+        () => AutoRouter.of(context).maybePop(),
       );
     }
 

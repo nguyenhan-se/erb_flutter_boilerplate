@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:async';
 
 import 'package:erb_ui/widgets.dart';
@@ -85,10 +83,10 @@ abstract class Dialogs {
             child: HookConsumer(builder: (context, ref, child) {
               final t = useI18n();
 
-              return ERbElevatedButton(
-                label: positiveText ?? t.common.ok,
-                onPressed: () {
-                  AutoRouter.of(context).pop();
+              return ERbButton(
+                text: positiveText ?? t.common.ok,
+                onTap: () {
+                  AutoRouter.of(context).maybePop();
                   onPressed?.call();
                 },
               );
@@ -159,14 +157,13 @@ abstract class Dialogs {
               final t = useI18n();
 
               return TextButton(
-                onPressed: () => AutoRouter.of(context).pop(),
+                onPressed: () => AutoRouter.of(context).maybePop(),
                 child: Text(t.common.cancel),
               );
             },
           ),
-          ERbElevatedButton(
-            enableGradient: true,
-            onPressed: () {
+          ERbGradientButton(
+            onTap: () {
               onPositiveClick?.call(context);
             },
             child: HookConsumer(
